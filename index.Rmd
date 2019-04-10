@@ -1,0 +1,35 @@
+--- 
+title: "Applied Statistics and Data Analysis"
+author: "Minh Tang"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook:
+    lib_dir: assets
+    split_by: section
+    config:
+      toolbar:
+        position: static
+  bookdown::html_book:
+    css: toc.css
+  bookdown::pdf_book: 
+    keep_tex: yes
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: plainnat
+link-citations: yes
+github-repo: rstudio/applied-stats
+description: "This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University"
+---
+
+# Preface {-}
+Advanced praise for the book
+
+> "When I was young, I would rather write a (linear model) book than read one. But now that I am older, I would rather write two (linear model) books than read one."
+>
+> --- R. H. Bing
+
+> "I was at the job of reading it for days and days, endlessly daunted and halted by its laborious dullness, its flatulent fatuity, its almost fabulous inconsequentiality."
+>
+> --- Mencken
+
+

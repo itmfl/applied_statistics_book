@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Applied Statistics and Data Analysis</title>
+  <meta name="description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Applied Statistics and Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University" />
+  <meta name="github-repo" content="rstudio/applied-stats" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Applied Statistics and Data Analysis" />
+  
+  <meta name="twitter:description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University" />
+  
+
+<meta name="author" content="Minh Tang">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="sum-square.html">
+<link rel="next" href="literature.html">
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Applied Statistics and Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>1</b> Simple linear regression</a><ul>
+<li class="chapter" data-level="1.1" data-path="advertising.html"><a href="advertising.html"><i class="fa fa-check"></i><b>1.1</b> Example: Advertising dataset</a></li>
+<li class="chapter" data-level="1.2" data-path="r-lang.html"><a href="r-lang.html"><i class="fa fa-check"></i><b>1.2</b> R ? Aaargh!</a></li>
+<li class="chapter" data-level="1.3" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html"><i class="fa fa-check"></i><b>1.3</b> Relationships between variables</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#regression-models"><i class="fa fa-check"></i><b>1.3.1</b> Regression models</a></li>
+<li class="chapter" data-level="1.3.2" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#the-simple-regression-model"><i class="fa fa-check"></i><b>1.3.2</b> The simple regression model</a></li>
+<li class="chapter" data-level="1.3.3" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#more-general-linear-regression-models"><i class="fa fa-check"></i><b>1.3.3</b> More general linear regression models</a></li>
+<li class="chapter" data-level="1.3.4" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#data-for-regression-model"><i class="fa fa-check"></i><b>1.3.4</b> Data for regression model</a></li>
+<li class="chapter" data-level="1.3.5" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#steps-in-regression-analysis"><i class="fa fa-check"></i><b>1.3.5</b> Steps in regression analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html"><i class="fa fa-check"></i><b>1.4</b> Least squares estimation</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>1.4.1</b> Gauss-Markov theorem</a></li>
+<li class="chapter" data-level="1.4.2" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#point-estimator-for-simple-linear-regression-model"><i class="fa fa-check"></i><b>1.4.2</b> Point estimator for simple linear regression model</a></li>
+<li class="chapter" data-level="1.4.3" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#example-electricity-usage"><i class="fa fa-check"></i><b>1.4.3</b> Example: Electricity usage</a></li>
+<li class="chapter" data-level="1.4.4" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#example-midterm-vs-final-exam-score"><i class="fa fa-check"></i><b>1.4.4</b> Example: Midterm vs Final exam score</a></li>
+<li class="chapter" data-level="1.4.5" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#normal-error-regression-model"><i class="fa fa-check"></i><b>1.4.5</b> Normal error regression model</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html"><i class="fa fa-check"></i><b>1.5</b> Normally distributed random variables</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html#chi_m2-distribution"><i class="fa fa-check"></i><b>1.5.1</b> <span class="math inline">\(\chi_{m}^{2}\)</span> distribution</a></li>
+<li class="chapter" data-level="1.5.2" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html#student-t-distribution"><i class="fa fa-check"></i><b>1.5.2</b> Student <span class="math inline">\(t\)</span>-distribution</a></li>
+<li class="chapter" data-level="1.5.3" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html#f-distribution"><i class="fa fa-check"></i><b>1.5.3</b> <span class="math inline">\(F\)</span>-distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="hitchhiker-review-of-hypothesis-testing.html"><a href="hitchhiker-review-of-hypothesis-testing.html"><i class="fa fa-check"></i><b>1.6</b> Hitchhiker review of hypothesis testing</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="hitchhiker-review-of-hypothesis-testing.html"><a href="hitchhiker-review-of-hypothesis-testing.html#q.-what-is-power-a.-watt-is-power."><i class="fa fa-check"></i><b>1.6.1</b> Q. What is power ? A. Watt is power.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html"><i class="fa fa-check"></i><b>1.7</b> Inferences concerning <span class="math inline">\(\hat{\beta}_1\)</span></a><ul>
+<li class="chapter" data-level="1.7.1" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#inferences-concerning-hatbeta_0"><i class="fa fa-check"></i><b>1.7.1</b> Inferences concerning <span class="math inline">\(\hat{\beta}_0\)</span></a></li>
+<li class="chapter" data-level="1.7.2" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#inference-regarding-mathbbey_h"><i class="fa fa-check"></i><b>1.7.2</b> Inference regarding <span class="math inline">\(\mathbb{E}[Y_h]\)</span></a></li>
+<li class="chapter" data-level="1.7.3" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#predicting-y-for-a-given-x."><i class="fa fa-check"></i><b>1.7.3</b> Predicting <span class="math inline">\(Y\)</span> for a given <span class="math inline">\(X\)</span>.</a></li>
+<li class="chapter" data-level="1.7.4" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#confidence-band-for-regression-line"><i class="fa fa-check"></i><b>1.7.4</b> Confidence band for regression line</a></li>
+<li class="chapter" data-level="1.7.5" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#example-synthetic-dataset"><i class="fa fa-check"></i><b>1.7.5</b> Example: synthetic dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="sum-square.html"><a href="sum-square.html"><i class="fa fa-check"></i><b>1.8</b> Sum of squares and regression analysis</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="sum-square.html"><a href="sum-square.html#f-test-and-t-test"><i class="fa fa-check"></i><b>1.8.1</b> <span class="math inline">\(F\)</span>-test and <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="1.8.2" data-path="sum-square.html"><a href="sum-square.html#general-linear-test-approach"><i class="fa fa-check"></i><b>1.8.2</b> General linear test approach</a></li>
+<li class="chapter" data-level="1.8.3" data-path="sum-square.html"><a href="sum-square.html#descriptive-measures-of-linear-association"><i class="fa fa-check"></i><b>1.8.3</b> Descriptive measures of linear association</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="correlation-analysis.html"><a href="correlation-analysis.html"><i class="fa fa-check"></i><b>1.9</b> Correlation analysis</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="correlation-analysis.html"><a href="correlation-analysis.html#bivariate-normal-distribution"><i class="fa fa-check"></i><b>1.9.1</b> Bivariate normal distribution</a></li>
+<li class="chapter" data-level="1.9.2" data-path="correlation-analysis.html"><a href="correlation-analysis.html#examples"><i class="fa fa-check"></i><b>1.9.2</b> Examples</a></li>
+<li class="chapter" data-level="1.9.3" data-path="correlation-analysis.html"><a href="correlation-analysis.html#sample-correlation-and-aggregation"><i class="fa fa-check"></i><b>1.9.3</b> Sample Correlation and Aggregation</a></li>
+<li class="chapter" data-level="1.9.4" data-path="correlation-analysis.html"><a href="correlation-analysis.html#pearsons-correlation-and-linearity"><i class="fa fa-check"></i><b>1.9.4</b> Pearson’s correlation and linearity</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a><ul>
+<li class="chapter" data-level="4.1" data-path="example-one.html"><a href="example-one.html"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
+<li class="chapter" data-level="4.2" data-path="example-two.html"><a href="example-two.html"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Applied Statistics and Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="correlation-analysis" class="section level2">
+<h2><span class="header-section-number">1.9</span> Correlation analysis</h2>
+<div id="bivariate-normal-distribution" class="section level3">
+<h3><span class="header-section-number">1.9.1</span> Bivariate normal distribution</h3>
+Let <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> be two normally distributed random variables. The pair <span class="math inline">\((Y_1, Y_2)\)</span> is said to have the <em>bivariate normal</em> distribution if, for some <span class="math inline">\(\mu_1, \mu_2 \in \mathbb{R}, \sigma_1^{2} \geq 0, \sigma_{2}^2 \geq 0, \rho \in  [-1,1]\)</span>, the distribution of <span class="math inline">\((Y_1, Y_2)\)</span> has the form
+<span class="math display" id="eq:bivariate">\[\begin{equation}
+    \tag{1.8}
+    \begin{split}
+    f(y_1, y_2) =  \frac{1}{2 \pi \sigma_1 \sigma_2 \sqrt{1
+      - \rho^2}} \exp\Bigl[ -\tfrac{1}{2(1 - \rho^2)}\Bigl(\tfrac{(y_1 -
+      \mu_1)^2}{\sigma_{1}^2} &amp; -  \tfrac{2 \rho(y_1 - \mu_1)(y_2 -
+      \mu_2)}{\sigma_1 \sigma_2} + \tfrac{(y_2 - \mu_2)^2}{\sigma_2^2}\Bigr)\Bigr]
+    \end{split}
+  \end{equation}\]</span>
+<p>For <span class="math inline">\((Y_1, Y_2)\)</span> being bivariate normal, the random variables <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are also normally distributed. That is to say, the marginal distribution of <span class="math inline">\(Y_1\)</span> is <span class="math inline">\(\mathcal{N}(\mu_1, \sigma_1^2)\)</span> and the marginal distribution of <span class="math inline">\(Y_2\)</span> is <span class="math inline">\(\mathcal{N}(\mu_2, \sigma_2^2)\)</span>.</p>
+The conditional distribution of <span class="math inline">\(Y_1 | Y_2\)</span> and <span class="math inline">\(Y_2 | Y_1\)</span> are given by
+<span class="math display">\[\begin{gather*}
+    Y_1 | Y_2 \sim N(\mu_1 - \mu_2 \rho \tfrac{\sigma_1}{\sigma_2} + 
+    \rho \tfrac{\sigma_1}{\sigma_2} Y_2, \sigma_1^2(1 - \rho^2) \\
+    Y_2 | Y_1 \sim N(\mu_2 - \mu_1 \rho \tfrac{\sigma_2}{\sigma_1} + \rho \tfrac{\sigma_{2}}{\sigma_{1}} Y_1, \sigma_2^2 (1 - \rho^2))
+\end{gather*}\]</span>
+One way to derive the above expression is via the following “de-correlation” trick. Let <span class="math inline">\(Z\)</span> be the random variable <span class="math inline">\(Z = Y_1 - \rho \frac{\sigma_1}{\sigma_2} Y_2.\)</span> We note that <span class="math inline">\(\mathrm{Cov}(Z, Y_2) = 0\)</span>, which implies that <span class="math inline">\(Z\)</span> is independent of <span class="math inline">\(Y_2\)</span>. We thus have <span class="math display">\[Y_1 | Y_2 = Z + \rho \frac{\sigma_1}{\sigma_2} Y_2 | Y_2 = Z + \rho \frac{\sigma_1}{\sigma_2} Y_2 \]</span> and since <span class="math inline">\(Z\)</span> is normally distributed, <span class="math inline">\(Y_1 | Y_2\)</span> is normally distributed with mean and variance
+<span class="math display">\[\begin{gather*}
+\mathbb{E}[Y_1 | Y_2] = \mathbb{E}[Z] + \rho \frac{\sigma_1}{\sigma_2} Y_2 = \mu_1 + \rho \frac{\sigma_1}{\sigma_2}(Y_2 - \mu_2) \\ \mathrm{Var}[Y_1 | Y_2] = \mathrm{Var}[Z + \frac{\sigma_1}{\sigma_2} Y_2 | Y_2] = \mathrm{Var}[Z] = \sigma_1^2 - 2 \rho^2 \sigma_1^2 + \rho^2 \sigma_1^2 = \sigma_1^2(1 - \rho^2)
+\end{gather*}\]</span>
+<p>as desired. The distribution for <span class="math inline">\(Y_2 | Y_1\)</span> is derived in an identical manner.</p>
+<p>Thus <span class="math inline">\(Y_1 | Y_2\)</span> correspond to the normal error simple linear regression model <span class="math inline">\(Y = \beta_0 + \beta_1 X + \epsilon\)</span> with <span class="math inline">\(\beta_0 = \mu_1 -  \tfrac{\sigma_{1}}{\sigma_{2}} \rho \mu_2\)</span>, <span class="math inline">\(\beta_1 =  \tfrac{\sigma_{1}}{\sigma_{2}} \rho\)</span> and error <span class="math inline">\(\epsilon \sim N(0,  (1 - \rho^2)\sigma_1^2)\)</span> and similarly for <span class="math inline">\(Y_2 | Y_1\)</span>.</p>
+Given a collection of <span class="math inline">\(\{(Y^{(i)}_1, Y^{(i)}_{2})\}\)</span> that are i.i.d. from some bivariate distribution <span class="math inline">\(F\)</span>, a common inference task is to infer the correlation <span class="math inline">\(\rho\)</span> between the <span class="math inline">\((Y^{(i)}_{1})\)</span> and the <span class="math inline">\((Y^{(i)}_{2})\)</span>. An estimate of <span class="math inline">\(\rho\)</span> is given by the following <em>Pearson correlation coefficient</em>
+<span class="math display">\[\begin{equation*}
+    \hat{\rho} = \frac{\sum{(Y^{(i)}_{1} - \bar{Y}_{1})(Y^{(i)}_2 -
+        \bar{Y}_2)}}{\sqrt{\bigl(\sum{(Y^{(i)}_{1} - \bar{Y}_{1})^2\bigr)}\bigl(\sum{(Y^{(i)}_2 -
+        \bar{Y}_2)^2}\bigr)}}
+  \end{equation*}\]</span>
+<p>It can be shown that if the distribution <span class="math inline">\(F\)</span> of the pair <span class="math inline">\((Y_{1}, Y_2)\)</span> is bivariate normal with <span class="math inline">\(\rho = 0\)</span>, i.e., <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent normally distributed random variables, then <span class="math inline">\(\hat{\rho}\sqrt{n-2}/\sqrt{1 - \hat{\rho}^2}\)</span> follows the Student <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df = n - 2\)</span>. See Section 16.28 of <span class="citation">Stuart and Ord (<a href="#ref-stuart-ord">1994</a>)</span>.</p>
+<p>On the other hand, if the distribution of the pair <span class="math inline">\((Y_{1}, Y_2)\)</span> is bivariate normal with <span class="math inline">\(\rho \not = 0\)</span>, then the distribution of <span class="math inline">\(\hat{\rho}\)</span> is sufficiently complex. For large <span class="math inline">\(n\)</span>, the central limit theorem yield the following large sample approximation for <span class="math inline">\(\hat{\rho} - \rho\)</span>.</p>
+
+<div class="proposition">
+<span id="prp:sample-correlation" class="proposition"><strong>Proposition 1.4  </strong></span>If <span class="math inline">\(\hat{\rho}\)</span> is the sample correlation coefficient of a sample of <span class="math inline">\(n\)</span> pairs <span class="math inline">\(\{(Y_{1}^{(i)}, Y_{2}^{(i)})\}\)</span> from a bivariate normal distribution with correlation coefficient <span class="math inline">\(\rho\)</span>, then <span class="math display">\[ \sqrt{n}(\hat{\rho} - \rho) \longrightarrow N(0, (1 - \rho^2)^2)\]</span> as <span class="math inline">\(n \rightarrow \infty\)</span>.
+</div>
+
+As the large-sample variance of <span class="math inline">\(\sqrt{n}(\hat{\rho} - \rho)\)</span> depends on the true parameter <span class="math inline">\(\rho\)</span>, Sir Ronald A. Fisher suggested the following transformation of <span class="math inline">\(\hat{\rho}\)</span>
+<span class="math display">\[\begin{equation*}
+\hat{\zeta} = \tfrac{1}{2}
+  \log\Bigl(\frac{1 + \hat{\rho}}{1 - \hat{\rho}}\Bigr).
+  \end{equation*}\]</span>
+This is motivated by the fact that, in general, for any (differentiable) transformation <span class="math inline">\(f\)</span> of <span class="math inline">\(\hat{\rho}\)</span>, the delta-method (equivalently, Taylor’s theorem) yield
+<span class="math display">\[\begin{equation*}
+  \sqrt{n}(f(\hat{\rho}) - f(\rho)) \longrightarrow N(0,
+  (f&#39;(\rho))^2( 1- \rho^2)^2)
+\end{equation*}\]</span>
+Letting <span class="math inline">\(f&#39;(\rho)(1 - \rho^2) = 1\)</span> we have
+<span class="math display">\[\begin{equation*}
+    f&#39;(\rho) = \frac{1}{1 - \rho^2} = \frac{1}{2} \Bigl(\frac{1}{1
+      + \rho} + \frac{1}{1 - \rho}\Bigr)
+  \end{equation*}\]</span>
+and so
+<span class="math display">\[\begin{equation*}
+   f(\rho) = \int \frac{1}{2} \Bigl(\frac{1}{1
+      + \rho} + \frac{1}{1 - \rho}\Bigr) \mathrm{d} \rho = \tfrac{1}{2}
+  \log\Bigl(\frac{1 + \rho}{1 - \rho}\Bigr)
+  \end{equation*}\]</span>
+<p>which gives the transformation <span class="math inline">\(\hat{\rho} \mapsto \hat{\zeta}\)</span> defined above. The transformation <span class="math inline">\(\hat{\rho} \mapsto \hat{\zeta}\)</span> is viewed as a variance stabilizing transformation.</p>
+Thus, for large <span class="math inline">\(n\)</span>, we have <span class="math inline">\(\sqrt{n}(\hat{\zeta} - \zeta) \sim  N(0,1)\)</span> (contrast this with <span class="math inline">\(\sqrt{n}(\hat{\rho} - \rho) \sim N(0, (1 -  \rho^2)^2)\)</span>). This allows us to do simple hypothesis testing and interval estimation for <span class="math inline">\(\rho\)</span>. As an example, for a given <span class="math inline">\(\alpha  \in [0,1]\)</span>, the <span class="math inline">\(100\% \times (1 - \alpha)\)</span> confidence interval for <span class="math inline">\(\zeta\)</span> is
+<span class="math display">\[\begin{equation*}
+    \hat{\zeta} \pm \frac{1}{\sqrt{n}} \ast \mathrm{qnorm}(1 - \alpha/2)
+  \end{equation*}\]</span>
+where <span class="math inline">\(\mathrm{qnorm}\)</span> is the quantile function for the standard normal distribution. This implies the <span class="math inline">\(100\% \times (1 - \alpha)\)</span> confidence interval
+<span class="math display">\[\begin{equation*}
+    [\tanh(\hat{\zeta} - \frac{1}{\sqrt{n}} \mathrm{qnorm}(1 -
+    \alpha/2)), \tanh(\hat{\zeta} + \frac{1}{\sqrt{n}} \mathrm{qnorm}(1 - \alpha/2))]
+  \end{equation*}\]</span>
+<p>where <span class="math inline">\(\tanh(x) = \tfrac{e^{2x} - 1}{e^{2x} + 1}\)</span> is the inverse map of <span class="math inline">\(\tfrac{1}{2} \log{\tfrac{1 + x}{1 - x}}\)</span>.</p>
+</div>
+<div id="examples" class="section level3">
+<h3><span class="header-section-number">1.9.2</span> Examples</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nmc &lt;-<span class="st"> </span><span class="dv">10000</span>
+n &lt;-<span class="st"> </span><span class="dv">100</span>
+r &lt;-<span class="st"> </span><span class="kw">numeric</span>(nmc)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nmc) {
+    X &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+    Y &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>X <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+    r[i] &lt;-<span class="st"> </span><span class="kw">cor</span>(X, Y)
+}
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">hist</span>(r, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Sample correlation&quot;</span>)
+<span class="kw">hist</span>(<span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span><span class="kw">log</span>((<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>r)<span class="op">/</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>r)), <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;zeta-transformed sample correlation&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/fisher-example-1-1.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## The following data set are the heights of siblings (brothers &amp; sisters)
+## from a study in 1902 by K. Pearson and A. Lee. This data set appears as
+## data set 373 in &#39;A Handbook of Small Data Sets&#39; by D. J. Hand et al.
+
+brother =<span class="st"> </span><span class="kw">c</span>(<span class="dv">71</span>, <span class="dv">68</span>, <span class="dv">66</span>, <span class="dv">67</span>, <span class="dv">70</span>, <span class="dv">71</span>, <span class="dv">70</span>, <span class="dv">73</span>, <span class="dv">72</span>, <span class="dv">65</span>, <span class="dv">66</span>)
+sister =<span class="st"> </span><span class="kw">c</span>(<span class="dv">69</span>, <span class="dv">64</span>, <span class="dv">65</span>, <span class="dv">63</span>, <span class="dv">65</span>, <span class="dv">62</span>, <span class="dv">65</span>, <span class="dv">64</span>, <span class="dv">66</span>, <span class="dv">59</span>, <span class="dv">62</span>)
+<span class="kw">plot</span>(brother, sister)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/brother-sister-example-1.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(rho &lt;-<span class="st"> </span><span class="kw">cor</span>(brother, sister))</code></pre></div>
+<pre><code>## _0.5581_</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(zeta &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span><span class="kw">log</span>((<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>rho)<span class="op">/</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>rho)))</code></pre></div>
+<pre><code>## _0.63_</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="kw">length</span>(sister)
+(rho.CI &lt;-<span class="st"> </span><span class="kw">tanh</span>(zeta <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>), <span class="kw">qnorm</span>(<span class="fl">0.975</span>)) <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>(n))))</code></pre></div>
+<pre><code>## _0.03903_ and _0.8399_</code></pre>
+</div>
+<div id="sample-correlation-and-aggregation" class="section level3">
+<h3><span class="header-section-number">1.9.3</span> Sample Correlation and Aggregation</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">1000</span>
+X &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">sd =</span> <span class="dv">1</span>)
+Y &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.3</span> <span class="op">*</span><span class="st"> </span>X <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+<span class="kw">coefficients</span>(<span class="kw">lm</span>(Y <span class="op">~</span><span class="st"> </span>X))  ## This give us the estimate beta1.hat</code></pre></div>
+<table style="width:31%;">
+<colgroup>
+<col width="19%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">(Intercept)</th>
+<th align="center">X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.5637</td>
+<td align="center">0.2739</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(X, Y)</code></pre></div>
+<p><em>0.2767</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">K &lt;-<span class="st"> </span><span class="dv">10</span>
+X.expand &lt;-<span class="st"> </span><span class="kw">rep</span>(X, <span class="dt">each =</span> K)
+Y &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.3</span> <span class="op">*</span><span class="st"> </span>X.expand <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n <span class="op">*</span><span class="st"> </span>K, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Z &lt;-<span class="st"> </span><span class="kw">matrix</span>(Y, <span class="dt">nrow =</span> n, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)
+Z &lt;-<span class="st"> </span><span class="kw">rowMeans</span>(Z)
+<span class="kw">coefficients</span>(<span class="kw">lm</span>(Z <span class="op">~</span><span class="st"> </span>X))</code></pre></div>
+<table style="width:31%;">
+<colgroup>
+<col width="19%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">(Intercept)</th>
+<th align="center">X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.4977</td>
+<td align="center">0.2982</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(X, Z)</code></pre></div>
+<p><em>0.6939</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">K &lt;-<span class="st"> </span><span class="dv">50</span>
+X.expand &lt;-<span class="st"> </span><span class="kw">rep</span>(X, <span class="dt">each =</span> K)
+Y &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.3</span> <span class="op">*</span><span class="st"> </span>X.expand <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n <span class="op">*</span><span class="st"> </span>K, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Z &lt;-<span class="st"> </span><span class="kw">matrix</span>(Y, <span class="dt">nrow =</span> n, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)
+Z &lt;-<span class="st"> </span><span class="kw">rowMeans</span>(Z)
+<span class="kw">coefficients</span>(<span class="kw">lm</span>(Z <span class="op">~</span><span class="st"> </span>X))</code></pre></div>
+<table style="width:31%;">
+<colgroup>
+<col width="19%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">(Intercept)</th>
+<th align="center">X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.4949</td>
+<td align="center">0.2989</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(X, Z)</code></pre></div>
+<p><em>0.9056</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">K &lt;-<span class="st"> </span><span class="dv">2000</span>
+X.expand &lt;-<span class="st"> </span><span class="kw">rep</span>(X, <span class="dt">each =</span> K)
+Y &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.3</span> <span class="op">*</span><span class="st"> </span>X.expand <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n <span class="op">*</span><span class="st"> </span>K, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Z &lt;-<span class="st"> </span><span class="kw">matrix</span>(Y, <span class="dt">nrow =</span> n, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)
+Z &lt;-<span class="st"> </span><span class="kw">rowMeans</span>(Z)
+<span class="kw">coefficients</span>(<span class="kw">lm</span>(Z <span class="op">~</span><span class="st"> </span>X))</code></pre></div>
+<table style="width:31%;">
+<colgroup>
+<col width="19%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">(Intercept)</th>
+<th align="center">X</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.5005</td>
+<td align="center">0.3004</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(X, Z)</code></pre></div>
+<p><em>0.9974</em></p>
+<blockquote>
+<p>The misuse of correlations derived from aggregated data to represent the correlation for individuals is sometimes known as the `fallacy of ecological correlation’</p>
+<p>``Kendall’s Advanced Theory of Statistics’’, Volume 1.</p>
+</blockquote>
+</div>
+<div id="pearsons-correlation-and-linearity" class="section level3">
+<h3><span class="header-section-number">1.9.4</span> Pearson’s correlation and linearity</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">100</span>
+X &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Y &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.4</span> <span class="op">*</span><span class="st"> </span>X <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Z &lt;-<span class="st"> </span>X<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>)
+<span class="kw">cor</span>(X, Y)</code></pre></div>
+<pre><code>## _0.425_</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(X, Z)</code></pre></div>
+<pre><code>## _0.2558_</code></pre>
+<p>Pearson’s product-moment correlation <span class="math inline">\(\rho\)</span> is only a measure of n linearity association. In addition, inferences on <span class="math inline">\(\rho\)</span> usually assume that the pair <span class="math inline">\((Y_1, Y_2)\)</span> is distributed bivariate normal.</p>
+<p>Other notions of correlation/association coefficients can also be defined. Another correlation coefficient is the <em>Spearman rank correlation coefficient</em> <span class="math inline">\(r_S\)</span>. <span class="math inline">\(r_S\)</span> is an example of a nonparametric statistic in the sense that it does not assume the population from which the data is sampled has any characteristic structure. For a collection of <span class="math inline">\(\{(Y^{(i)}_1, Y^{(i)}_{2})\}\)</span> sampled from a general bivariate distribution <span class="math inline">\(F\)</span>, let <span class="math inline">\(\{R^{(i)}_1\}\)</span> and <span class="math inline">\(\{R^{(i)}_{2}\}\)</span> be the ranks of the <span class="math inline">\(\{Y^{(i)}_{1}\}\)</span> and <span class="math inline">\(\{Y^{(i)}_{2}\}\)</span>, respectively.</p>
+The Spearman rank correlation coefficient is defined as
+<span class="math display">\[\begin{equation*}
+    r_{S} = \frac{\sum{(R^{(i)}_{1} - \bar{R}_1)(R^{(i)}_{2} -
+        \bar{R}_2)}}{\sqrt{(\sum{(R^{(i)}_1 - \bar{R}_1)^2}) (\sum{(R^{(i)}_2 - \bar{R}_2)^2})}}
+  \end{equation*}\]</span>
+<p>where <span class="math inline">\(\bar{R}_1 = \bar{R}_2 = (n+1)/2\)</span> are the average of the ranks of <span class="math inline">\(R^{(i)}_1\)</span> and <span class="math inline">\(R^{(i)}_2\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X[<span class="dv">1</span><span class="op">:</span><span class="dv">95</span>] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">95</span>)
+X[<span class="dv">96</span><span class="op">:</span><span class="dv">100</span>] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Y[<span class="dv">1</span><span class="op">:</span><span class="dv">95</span>] &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>X[<span class="dv">1</span><span class="op">:</span><span class="dv">95</span>] <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">95</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Y[<span class="dv">96</span><span class="op">:</span><span class="dv">100</span>] &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>X[<span class="dv">96</span><span class="op">:</span><span class="dv">100</span>] <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">sd =</span> <span class="dv">4</span>)
+<span class="kw">cor</span>(X, Y)  ## Pearson&#39;s correlation</code></pre></div>
+<p><em>0.7194</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">RX &lt;-<span class="st"> </span><span class="kw">rank</span>(X)  ## Rank of the elements in X
+RY &lt;-<span class="st"> </span><span class="kw">rank</span>(Y)
+<span class="kw">cor</span>(RX, RY)  ## Spearman&#39;s correlation </code></pre></div>
+<p><em>0.5376</em></p>
+<p>We see that the Spearman rank correlation suffers less from “outliers”.</p>
+<p>We note that <span class="math inline">\(-1 \leq r_S \leq 1\)</span>. The Spearman rank correlation coefficient measure the <em>monotonic association</em> between the <span class="math inline">\(\{Y^{(i)}_{1}\}\)</span> and the <span class="math inline">\(\{Y^{(i)}_{2}\}\)</span>, e.g., <span class="math inline">\(Y^{(i)}_1 &gt; Y^{(j)}_1\)</span> is usually associated with <span class="math inline">\(Y^{(i)}_2 &gt; Y^{(j)}_2\)</span> for any <span class="math inline">\(i,j\)</span> pair if <span class="math inline">\(r_s \approx 1\)</span>, and <span class="math inline">\(Y^{(i)}_1 &gt; Y^{(j)}_1\)</span> is usually associated with <span class="math inline">\(Y^{(i)}_2 &lt; Y^{(j)}_2\)</span> if <span class="math inline">\(r_s \approx -  1\)</span>.</p>
+<p>We can perform hypothesis testing of monotone association, by using the fact that the test statistic <span class="math inline">\(\tfrac{r_{S} \sqrt{n - 2}}{1 -  r_{S}^2}\)</span> follows approximately the Student <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n - 2\)</span> degree of freedom under the null hypothesis (the null hypothesis being that ``there is no monotonic association’’).</p>
+
+</div>
+</div>
+<!-- </div> -->
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-stuart-ord">
+<p>Stuart, A., and J. K. Ord. 1994. <em>Kendall’s Advanced Theory of Statistics: Vol 1</em>. 6th ed. Hodder &amp; Stoughton.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sum-square.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

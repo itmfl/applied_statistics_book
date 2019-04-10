@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="simple-linear-regression.html">
+<link rel="prev" href="simple-linear-regression.html">
+<link rel="next" href="r-lang.html">
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -175,30 +175,163 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Applied Statistics and Data Analysis</h1>
-<h4 class="author"><em>Minh Tang</em></h4>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>Advanced praise for the book</p>
-<blockquote>
-<p>“When I was young, I would rather write a (linear model) book than read one. But now that I am older, I would rather write two (linear model) books than read one.”</p>
-<p>— R. H. Bing</p>
-</blockquote>
-<blockquote>
-<p>“I was at the job of reading it for days and days, endlessly daunted and halted by its laborious dullness, its flatulent fatuity, its almost fabulous inconsequentiality.”</p>
-<p>— Mencken</p>
-</blockquote>
-
+<div id="advertising" class="section level2">
+<h2><span class="header-section-number">1.1</span> Example: Advertising dataset</h2>
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 1.1: </span>Snippet of the data</caption>
+<thead>
+<tr class="header">
+<th align="right">Sales</th>
+<th align="right">TV</th>
+<th align="right">Radio</th>
+<th align="right">Newspaper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">22.72</td>
+<td align="right">273.04</td>
+<td align="right">42.66</td>
+<td align="right">7.93</td>
+</tr>
+<tr class="even">
+<td align="right">22.68</td>
+<td align="right">297.89</td>
+<td align="right">21.68</td>
+<td align="right">80.86</td>
+</tr>
+<tr class="odd">
+<td align="right">10.49</td>
+<td align="right">94.24</td>
+<td align="right">18.69</td>
+<td align="right">40.14</td>
+</tr>
+<tr class="even">
+<td align="right">6.53</td>
+<td align="right">29.87</td>
+<td align="right">0.28</td>
+<td align="right">56.93</td>
+</tr>
+<tr class="odd">
+<td align="right">15.82</td>
+<td align="right">131.68</td>
+<td align="right">36.34</td>
+<td align="right">70.25</td>
+</tr>
+<tr class="even">
+<td align="right">16.81</td>
+<td align="right">193.86</td>
+<td align="right">30.39</td>
+<td align="right">0.69</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  g &lt;-<span class="st"> </span><span class="kw">lm</span>(Sales <span class="op">~</span><span class="st"> </span>TV <span class="op">+</span><span class="st"> </span>Radio <span class="op">+</span><span class="st"> </span>Newspaper, df)
+  g</code></pre></div>
+<table style="width:88%;">
+<caption>Fitting linear model: Sales ~ TV + Radio + Newspaper</caption>
+<colgroup>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">2.837</td>
+<td align="center">0.6154</td>
+<td align="center">4.611</td>
+<td align="center">3.204e-05</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>TV</strong></td>
+<td align="center">0.04819</td>
+<td align="center">0.002059</td>
+<td align="center">23.41</td>
+<td align="center">3.419e-27</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Radio</strong></td>
+<td align="center">0.1818</td>
+<td align="center">0.0129</td>
+<td align="center">14.09</td>
+<td align="center">2.67e-18</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Newspaper</strong></td>
+<td align="center">0.008452</td>
+<td align="center">0.006925</td>
+<td align="center">1.22</td>
+<td align="center">0.2285</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  ## Compare model with TV + Radio 
+  ## and model with TV + Radio + Newspaper
+  g &lt;-<span class="st"> </span><span class="kw">lm</span>(Sales <span class="op">~</span><span class="st"> </span>TV <span class="op">+</span><span class="st"> </span>Radio <span class="op">+</span><span class="st"> </span>Newspaper, df)
+  g2 &lt;-<span class="st"> </span><span class="kw">lm</span>(Sales <span class="op">~</span><span class="st"> </span>TV <span class="op">+</span><span class="st"> </span>Radio, df)
+  <span class="kw">panderOptions</span>(<span class="st">&#39;missing&#39;</span>, <span class="st">&#39;&#39;</span>)
+  <span class="kw">anova</span>(g2, g)</code></pre></div>
+<table style="width:68%;">
+<caption>Analysis of Variance Table</caption>
+<colgroup>
+<col width="12%" />
+<col width="11%" />
+<col width="6%" />
+<col width="16%" />
+<col width="9%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Res.Df</th>
+<th align="center">RSS</th>
+<th align="center">Df</th>
+<th align="center">Sum of Sq</th>
+<th align="center">F</th>
+<th align="center">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">47</td>
+<td align="center">78.6</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">46</td>
+<td align="center">76.13</td>
+<td align="center">1</td>
+<td align="center">2.465</td>
+<td align="center">1.49</td>
+<td align="center">0.2285</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">plot</span>(g2<span class="op">$</span>fitted, Sales, <span class="dt">xlab =</span> <span class="st">&quot;Estimated Sales&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Observed Sales&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="simple-linear-regression.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="simple-linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-lang.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

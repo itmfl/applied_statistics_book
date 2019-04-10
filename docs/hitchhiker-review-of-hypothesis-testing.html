@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="simple-linear-regression.html">
+<link rel="prev" href="normally-distributed-random-variables.html">
+<link rel="next" href="inferences-concerning-hatbeta-1.html">
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -175,30 +175,95 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Applied Statistics and Data Analysis</h1>
-<h4 class="author"><em>Minh Tang</em></h4>
+<div id="hitchhiker-review-of-hypothesis-testing" class="section level2">
+<h2><span class="header-section-number">1.6</span> Hitchhiker review of hypothesis testing</h2>
+<div class="figure" style="text-align: center"><span id="fig:anova-fig"></span>
+<img src="figure/anova-fig.png" alt="Piled higher and deeper" width="80%" />
+<p class="caption">
+Figure 1.6: Piled higher and deeper
+</p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>Advanced praise for the book</p>
-<blockquote>
-<p>“When I was young, I would rather write a (linear model) book than read one. But now that I am older, I would rather write two (linear model) books than read one.”</p>
-<p>— R. H. Bing</p>
-</blockquote>
-<blockquote>
-<p>“I was at the job of reading it for days and days, endlessly daunted and halted by its laborious dullness, its flatulent fatuity, its almost fabulous inconsequentiality.”</p>
-<p>— Mencken</p>
-</blockquote>
-
+Let <span class="math inline">\(\mathbf{X} = (X_1, X_2, \dots, X_n)\)</span> are observed data. Then a parametric <em>statistical model</em> <span class="math inline">\(\mathcal{P}\)</span> for <span class="math inline">\(\mathbf{X}\)</span> is a family of distributions <span class="math inline">\(P_{\theta}\)</span> with <span class="math inline">\(\theta \in \Theta \subset \mathbb{R}^{k}\)</span> for some <span class="math inline">\(k\)</span>, i.e.,
+<span class="math display">\[\begin{equation*}
+   \mathcal{P} = \{ P_{\theta} \colon \theta \in \Theta \subset \mathbb{R}^{k} \}.
+\end{equation*}\]</span>
+<p>with <span class="math inline">\(P_{\theta^{*}} \in \mathcal{P}\)</span> being the distribution of <span class="math inline">\(\mathbf{X}\)</span>.</p>
+<p>Let <span class="math inline">\(\Theta_0\)</span> and <span class="math inline">\(\Theta_1\)</span> be disjoint partition of <span class="math inline">\(\Theta\)</span>, i.e., <span class="math inline">\(\Theta_0 \cup \Theta_1 = \Theta\)</span> and <span class="math inline">\(\Theta_0 \cap \Theta_1 = \emptyset\)</span>. We will call <span class="math inline">\(\Theta_0\)</span> as the <em>null</em> hypothesis and <span class="math inline">\(\Theta_1\)</span> as the <em>alternative</em> hypothesis.</p>
+<p>The problem of hypothesis testing correspond to the problem of asking whether <span class="math inline">\(P_{\theta^{*}} \in \mathcal{P}_0 = \{ P_{\theta} \colon \theta \in \Theta_0 \}\)</span> or that <span class="math inline">\(P_{\theta^{*}} \in \mathcal{P}_{1} = \{P_{\theta} \colon \theta \in \Theta_1 \}\)</span>. That is <span class="math display">\[
+    H_0 \colon \theta^{*} \in \Theta_0 \quad \text{versus} \quad H_1
+    \colon \theta^{*} \in \Theta_1
+\]</span> A hypothesis (null or alternative) is <em>simple</em> if it specifies a single distribution, e.g., <span class="math inline">\(\Theta_0\)</span> is simple if <span class="math inline">\(|\mathcal{P}_0| = 1\)</span>, and <em>composite</em> otherwise. If <span class="math inline">\(\Theta\)</span> has an order relation, then we can refer to “one-sided” or “two-sided” hypothesis.</p>
+For example, let <span class="math inline">\(\mathbf{X}\)</span> be a sequence of head/tail observations when flipping a coin <span class="math inline">\(100\)</span> times. Then a possible statistical model for <span class="math inline">\(\mathbf{X}\)</span> is <span class="math inline">\(\mathcal{P} = \{ \mathrm{Binomial}(100, p) \colon p \in (0,1) \}\)</span> with <span class="math inline">\(\Theta = (0,1)\)</span>. Consider the following partitions of <span class="math inline">\(\Theta\)</span>
+<span class="math display">\[\begin{gather*}
+    \Theta_0 = \{0.5\}; \quad \Theta_1 = \{ \theta \not = 0.5
+    \} \tag{a} \\
+    \Theta_0 = \{\theta \leq 0.5 \}; \quad \Theta_1 = \{\theta &gt; 0.5\} \tag{b}\\
+    \Theta_0 = \{\theta \geq 0.5 \}; \quad \Theta_1 = \{\theta &lt; 0.5
+    \} \tag{c} \\
+    \Theta_0 = \{ 0.3 \leq \theta \leq 0.7 \}; \quad \Theta_1 = \{
+    \theta &lt; 0.3 \vee \theta &gt; 0.7 \} \tag{d}
+  \end{gather*}\]</span>
+<p>Then in (a), <span class="math inline">\(\Theta_0\)</span> is simple and <span class="math inline">\(\Theta_1\)</span> is composite. (a) is also an example of a “two-sided” test. In (b), both hypothesis are composite. (b) and (c) are examples of a “one-sided” test. (d) is an example of a general “two-sided” test.</p>
+<p>Another possible statistical model for <span class="math inline">\(\mathbf{X}\)</span> is <span class="math inline">\(\mathcal{P} = \{ \mathrm{Binomial}(100,p) \colon p \in \Theta \}\)</span> with <span class="math inline">\(\Theta = \{0.3, 0.7\}\)</span>. Then <span class="math inline">\(\Theta_0 = \{0.3\}\)</span> and <span class="math inline">\(\Theta_1 = \{0.7\}\)</span> are both simple “hypothesis”.</p>
+<p>A rejection region is a subset <span class="math inline">\(C\)</span> of the observation space for which we will reject the null hypothesis <span class="math inline">\(H_0\)</span> if our observation <span class="math inline">\(\mathbf{X}\)</span> lies in <span class="math inline">\(C\)</span>. For example, if <span class="math inline">\(\mathbf{X} = \{X_1, X_2, \dots, X_n\}\)</span> and each of the <span class="math inline">\(X_i \in \{0,1\}\)</span> then the rejection region is a subset of <span class="math inline">\(\{0,1\}^{n}\)</span>. Similarly, if <span class="math inline">\(X_i \in \mathbb{R}\)</span> then the rejection region is a subset of <span class="math inline">\(\mathbb{R}^{n}\)</span>.</p>
+<div id="q.-what-is-power-a.-watt-is-power." class="section level3">
+<h3><span class="header-section-number">1.6.1</span> Q. What is power ? A. Watt is power.</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Action</th>
+<th><span class="math inline">\(H_0\)</span> is true</th>
+<th><span class="math inline">\(H_0\)</span> is false</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reject <span class="math inline">\(H_0\)</span></td>
+<td>Type-I error</td>
+<td>No error</td>
+</tr>
+<tr class="even">
+<td>Fail to reject <span class="math inline">\(H_0\)</span></td>
+<td>No error</td>
+<td>Type-II error</td>
+</tr>
+</tbody>
+</table>
+<p>The two-type of errors are not equivalent. The distinguishing feature of hypothesis testing is the manner in which it addresses the trade-off between Type-I error and Type-II error. Under the Neyman-Pearson formulation of hypothesis testing, the null hypothesis is given a privileged status, i.e., <span class="math inline">\(H_0\)</span> is maintained unless there is compelling evidence against it. Under the Neyman-Pearson formulation, the <em>significance</em> level of a test is the upper bound on the maximum Type-I error of the test and the <em>power</em> of a test is one minus the Type-II error of the test.</p>
+<p>Many of the hypothesis testing problem in this course is concerned with a “two-sided” test or a “one-sided” test with the null hypothesis being a simple hypothesis.</p>
+<p>A test statistic <span class="math inline">\(T(\mathbf{X})\)</span> is a random variable (a function of the observed data) whose values are used to decide between the null and the alternative hypothesis. Associated with a test statistic is a partition <span class="math inline">\(C_0\)</span> and <span class="math inline">\(C_1\)</span> of <span class="math inline">\(\mathbb{R}\)</span> such that if <span class="math inline">\(T(\mathbf{X}) \in C_1\)</span> then we “reject” <span class="math inline">\(H_0\)</span> and if <span class="math inline">\(T(\mathbf{X}) \in C_0\)</span> then we “fail to reject” <span class="math inline">\(H_0\)</span>.</p>
+<p>For simplicity, we often formulate the test statistic <span class="math inline">\(T(\mathbf{X})\)</span> so that</p>
+<ul>
+<li><span class="math inline">\(T(\mathbf{X})\)</span> is large when rejecting <span class="math inline">\(H_0 \colon \theta \leq \theta_0\)</span> in favor of <span class="math inline">\(H_1 \colon \theta &gt; \theta_0\)</span>, that is <span class="math inline">\(C_1 = [a, \infty)\)</span> and <span class="math inline">\(C_0 = (-\infty, a)\)</span> for some <span class="math inline">\(a\)</span>.</li>
+<li><span class="math inline">\(T(\mathbf{X})\)</span> is small when rejecting <span class="math inline">\(H_0 \colon \theta \geq \theta_0\)</span> in favor of <span class="math inline">\(H_1 \colon \theta &lt; \theta_0\)</span>, that is <span class="math inline">\(C_1 = (-\infty, a)\)</span> and <span class="math inline">\(C_0 = (a, \infty)\)</span>.</li>
+<li><span class="math inline">\(T(\mathbf{X})\)</span> is far away from <span class="math inline">\(\theta_0\)</span> when rejecting <span class="math inline">\(H_0 \colon \theta = \theta_0\)</span> in favor of <span class="math inline">\(H_1 \colon \theta \not = \theta_0\)</span>, that is <span class="math inline">\(C_1 = (-\infty, a) \cup (b, \infty)\)</span> and <span class="math inline">\(C_0 = (a,b)\)</span>.</li>
+</ul>
+<p>For example, let <span class="math inline">\(\mathbf{X}\)</span> be <span class="math inline">\(n\)</span> throw of a coin. Let <span class="math inline">\(\mathcal{P} = \{ \mathrm{Binomial}(n, p) \}\)</span> be the statistical model and let <span class="math inline">\(T(\mathbf{X}) = \frac{\text{\# of &quot;H&quot; in the sequence $\mathbf{X}$}}{\text{length of
+$\mathbf{X}$}}\)</span> be the test statistic.</p>
+<p>Then in general, <span class="math inline">\(T(\mathbf{X})\)</span> is “large”&quot; when we reject <span class="math inline">\(H_0 \colon p \leq 0.5\)</span> in favor of <span class="math inline">\(H_1 \colon p &gt;= 0.5\)</span> and <span class="math inline">\(T(\mathbf{X})\)</span> is “far away” from <span class="math inline">\(0.3\)</span> when we reject <span class="math inline">\(H_0 \colon p = 0.3\)</span> in favor of <span class="math inline">\(H_1 \colon p \not = 0.3\)</span>.</p>
+<p>The <span class="math inline">\(p\)</span>-value corresponding to an observed <span class="math inline">\(T(\mathbf{X}) = t_{\mathrm{obs}}\)</span> is then the probability (under the null-hypothesis) that <span class="math inline">\(T(\mathbf{X}&#39;)\)</span> is “at least as extreme” as <span class="math inline">\(t_{\mathrm{obs}}\)</span> where <span class="math inline">\(\mathbf{X}&#39;\)</span> is an independent replication of <span class="math inline">\(\mathbf{X}\)</span>. An exact definition of <span class="math inline">\(p\)</span>-values is quite tricky <span class="citation">(Schervish <a href="#ref-schervish-pval">1996</a>)</span>.</p>
+<p>For more on <span class="math inline">\(p\)</span>-values, see also the articles <span class="citation">Gigerenzer (<a href="#ref-mindless">2004</a>)</span> and <span class="citation">Hoekstra et al. (<a href="#ref-robust-mis">2014</a>)</span>.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-schervish-pval">
+<p>Schervish, M. J. 1996. “<span class="math inline">\(P\)</span>-Values: What They Are and What They Are Not.” <em>The American Statistician</em> 50: 203–6. <a href="https://doi.org/10.1080/00031305.1996.10474380" class="uri">https://doi.org/10.1080/00031305.1996.10474380</a>.</p>
+</div>
+<div id="ref-mindless">
+<p>Gigerenzer, G. 2004. “Mindless Statistics.” <em>The Journal of Socio-Economics</em> 33: 587–606. <a href="https://doi.org/10.1016/j.socec.2004.09.033" class="uri">https://doi.org/10.1016/j.socec.2004.09.033</a>.</p>
+</div>
+<div id="ref-robust-mis">
+<p>Hoekstra, R., R. D. Morey, J. N. Rouder, and E. J. Wagenmakers. 2014. “Robust Misintepretation of Confidence Intervals.” <em>Psychonomic Bulletin and Review</em> 21: 1157–64. <a href="https://doi.org/10.3758/s13423-013-0572-3" class="uri">https://doi.org/10.3758/s13423-013-0572-3</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="simple-linear-regression.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="normally-distributed-random-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inferences-concerning-hatbeta-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

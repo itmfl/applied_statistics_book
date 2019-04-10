@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="simple-linear-regression.html">
+<link rel="prev" href="correlation-analysis.html">
+<link rel="next" href="sample-correlation-and-aggregation.html">
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -142,10 +142,10 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="1.9" data-path="correlation-analysis.html"><a href="correlation-analysis.html"><i class="fa fa-check"></i><b>1.9</b> Correlation analysis</a><ul>
 <li class="chapter" data-level="1.9.1" data-path="correlation-analysis.html"><a href="correlation-analysis.html#bivariate-normal-distribution"><i class="fa fa-check"></i><b>1.9.1</b> Bivariate normal distribution</a></li>
-<li class="chapter" data-level="1.9.2" data-path="correlation-analysis.html"><a href="correlation-analysis.html#examples"><i class="fa fa-check"></i><b>1.9.2</b> Examples</a></li>
-<li class="chapter" data-level="1.9.3" data-path="correlation-analysis.html"><a href="correlation-analysis.html#sample-correlation-and-aggregation"><i class="fa fa-check"></i><b>1.9.3</b> Sample Correlation and Aggregation</a></li>
-<li class="chapter" data-level="1.9.4" data-path="correlation-analysis.html"><a href="correlation-analysis.html#pearsons-correlation-and-linearity"><i class="fa fa-check"></i><b>1.9.4</b> Pearson’s correlation and linearity</a></li>
 </ul></li>
+<li class="chapter" data-level="1.10" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>1.10</b> Examples</a></li>
+<li class="chapter" data-level="1.11" data-path="sample-correlation-and-aggregation.html"><a href="sample-correlation-and-aggregation.html"><i class="fa fa-check"></i><b>1.11</b> Sample Correlation and Aggregation}</a></li>
+<li class="chapter" data-level="1.12" data-path="pearsons-correlation-and-linearity.html"><a href="pearsons-correlation-and-linearity.html"><i class="fa fa-check"></i><b>1.12</b> Pearson’s correlation and linearity</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
@@ -175,30 +175,43 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Applied Statistics and Data Analysis</h1>
-<h4 class="author"><em>Minh Tang</em></h4>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>Advanced praise for the book</p>
-<blockquote>
-<p>“When I was young, I would rather write a (linear model) book than read one. But now that I am older, I would rather write two (linear model) books than read one.”</p>
-<p>— R. H. Bing</p>
-</blockquote>
-<blockquote>
-<p>“I was at the job of reading it for days and days, endlessly daunted and halted by its laborious dullness, its flatulent fatuity, its almost fabulous inconsequentiality.”</p>
-<p>— Mencken</p>
-</blockquote>
+<div id="examples" class="section level2">
+<h2><span class="header-section-number">1.10</span> Examples</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nmc &lt;-<span class="st"> </span><span class="dv">10000</span>
+n &lt;-<span class="st"> </span><span class="dv">400</span>
+r &lt;-<span class="st"> </span><span class="kw">numeric</span>(nmc)
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nmc) {
+    X &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+    Y &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>X <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+    r[i] &lt;-<span class="st"> </span><span class="kw">cor</span>(X, Y)
+}
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">hist</span>(r, <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;Sample correlation&quot;</span>)
+<span class="kw">hist</span>(<span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span><span class="kw">log</span>((<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>r)<span class="op">/</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>r)), <span class="dt">freq =</span> <span class="ot">FALSE</span>, <span class="dt">main =</span> <span class="st">&quot;zeta-transformed sample correlation&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/fisher-example-1-1.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## The following data set are the heights of siblings (brothers &amp; sisters)
+## from a study in 1902 by K. Pearson and A. Lee. This data set appears as
+## data set 373 in &#39;A Handbook of Small Data Sets&#39; by D. J. Hand et al.
 
+brother =<span class="st"> </span><span class="kw">c</span>(<span class="dv">71</span>, <span class="dv">68</span>, <span class="dv">66</span>, <span class="dv">67</span>, <span class="dv">70</span>, <span class="dv">71</span>, <span class="dv">70</span>, <span class="dv">73</span>, <span class="dv">72</span>, <span class="dv">65</span>, <span class="dv">66</span>)
+sister =<span class="st"> </span><span class="kw">c</span>(<span class="dv">69</span>, <span class="dv">64</span>, <span class="dv">65</span>, <span class="dv">63</span>, <span class="dv">65</span>, <span class="dv">62</span>, <span class="dv">65</span>, <span class="dv">64</span>, <span class="dv">66</span>, <span class="dv">59</span>, <span class="dv">62</span>)
+<span class="kw">plot</span>(brother, sister)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/brother-sister-example-1.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(rho &lt;-<span class="st"> </span><span class="kw">cor</span>(brother, sister))</code></pre></div>
+<pre><code>## _0.5581_</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(zeta &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span><span class="kw">log</span>((<span class="dv">1</span> <span class="op">+</span><span class="st"> </span>rho)<span class="op">/</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>rho)))</code></pre></div>
+<pre><code>## _0.63_</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="kw">length</span>(sister)
+(rho.CI &lt;-<span class="st"> </span><span class="kw">tanh</span>(zeta <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="kw">qnorm</span>(<span class="fl">0.975</span>), <span class="kw">qnorm</span>(<span class="fl">0.975</span>)) <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">1</span><span class="op">/</span>(n))))</code></pre></div>
+<pre><code>## _0.03903_ and _0.8399_</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="simple-linear-regression.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="correlation-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sample-correlation-and-aggregation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

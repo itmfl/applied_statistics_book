@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Applied Statistics and Data Analysis" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University" />
+<meta name="github-repo" content="rstudio/applied-stats" />
+
+<meta name="author" content="Minh Tang" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University">
+
+<title>Applied Statistics and Data Analysis</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte-fonts.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-background.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-italics.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+<link rel="stylesheet" href="toc.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#preface">Preface</a></li>
+<li class="has-sub"><a href="1-simple-linear-regression.html#simple-linear-regression"><span class="toc-section-number">1</span> Simple linear regression</a><ul>
+<li><a href="1-1-advertising.html#advertising"><span class="toc-section-number">1.1</span> Example: Advertising dataset</a></li>
+<li><a href="1-2-r-lang.html#r-lang"><span class="toc-section-number">1.2</span> R ? Aaargh!</a></li>
+<li class="has-sub"><a href="1-3-relationships-between-variables.html#relationships-between-variables"><span class="toc-section-number">1.3</span> Relationships between variables</a><ul>
+<li><a href="1-3-relationships-between-variables.html#regression-models"><span class="toc-section-number">1.3.1</span> Regression models</a></li>
+<li><a href="1-3-relationships-between-variables.html#the-simple-regression-model"><span class="toc-section-number">1.3.2</span> The simple regression model</a></li>
+<li><a href="1-3-relationships-between-variables.html#more-general-linear-regression-models"><span class="toc-section-number">1.3.3</span> More general linear regression models</a></li>
+<li><a href="1-3-relationships-between-variables.html#data-for-regression-model"><span class="toc-section-number">1.3.4</span> Data for regression model</a></li>
+<li><a href="1-3-relationships-between-variables.html#steps-in-regression-analysis"><span class="toc-section-number">1.3.5</span> Steps in regression analysis</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-4-least-squares-estimation.html#least-squares-estimation"><span class="toc-section-number">1.4</span> Least squares estimation</a><ul>
+<li><a href="1-4-least-squares-estimation.html#gauss-markov-theorem"><span class="toc-section-number">1.4.1</span> Gauss-Markov theorem</a></li>
+<li><a href="1-4-least-squares-estimation.html#point-estimator-for-simple-linear-regression-model"><span class="toc-section-number">1.4.2</span> Point estimator for simple linear regression model</a></li>
+<li><a href="1-4-least-squares-estimation.html#example-electricity-usage"><span class="toc-section-number">1.4.3</span> Example: Electricity usage</a></li>
+<li><a href="1-4-least-squares-estimation.html#example-midterm-vs-final-exam-score"><span class="toc-section-number">1.4.4</span> Example: Midterm vs Final exam score</a></li>
+<li><a href="1-4-least-squares-estimation.html#normal-error-regression-model"><span class="toc-section-number">1.4.5</span> Normal error regression model</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-5-normally-distributed-random-variables.html#normally-distributed-random-variables"><span class="toc-section-number">1.5</span> Normally distributed random variables</a><ul>
+<li><a href="1-5-normally-distributed-random-variables.html#chi_m2-distribution"><span class="toc-section-number">1.5.1</span> <span class="math inline">\(\chi_{m}^{2}\)</span> distribution</a></li>
+<li><a href="1-5-normally-distributed-random-variables.html#student-t-distribution"><span class="toc-section-number">1.5.2</span> Student <span class="math inline">\(t\)</span>-distribution</a></li>
+<li><a href="1-5-normally-distributed-random-variables.html#f-distribution"><span class="toc-section-number">1.5.3</span> <span class="math inline">\(F\)</span>-distribution</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-6-hitchhiker-review-of-hypothesis-testing.html#hitchhiker-review-of-hypothesis-testing"><span class="toc-section-number">1.6</span> Hitchhiker review of hypothesis testing</a><ul>
+<li><a href="1-6-hitchhiker-review-of-hypothesis-testing.html#q.-what-is-power-a.-watt-is-power."><span class="toc-section-number">1.6.1</span> Q. What is power ? A. Watt is power.</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-7-inferences-concerning-hatbeta-1.html#inferences-concerning-hatbeta_1"><span class="toc-section-number">1.7</span> Inferences concerning <span class="math inline">\(\hat{\beta}_1\)</span></a><ul>
+<li><a href="1-7-inferences-concerning-hatbeta-1.html#inferences-concerning-hatbeta_0"><span class="toc-section-number">1.7.1</span> Inferences concerning <span class="math inline">\(\hat{\beta}_0\)</span></a></li>
+<li><a href="1-7-inferences-concerning-hatbeta-1.html#inference-regarding-mathbbey_h"><span class="toc-section-number">1.7.2</span> Inference regarding <span class="math inline">\(\mathbb{E}[Y_h]\)</span></a></li>
+<li><a href="1-7-inferences-concerning-hatbeta-1.html#predicting-y-for-a-given-x."><span class="toc-section-number">1.7.3</span> Predicting <span class="math inline">\(Y\)</span> for a given <span class="math inline">\(X\)</span>.</a></li>
+<li><a href="1-7-inferences-concerning-hatbeta-1.html#confidence-band-for-regression-line"><span class="toc-section-number">1.7.4</span> Confidence band for regression line</a></li>
+<li><a href="1-7-inferences-concerning-hatbeta-1.html#example-synthetic-dataset"><span class="toc-section-number">1.7.5</span> Example: synthetic dataset</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-8-sum-square.html#sum-square"><span class="toc-section-number">1.8</span> Sum of squares and regression analysis</a><ul>
+<li><a href="1-8-sum-square.html#f-test-and-t-test"><span class="toc-section-number">1.8.1</span> <span class="math inline">\(F\)</span>-test and <span class="math inline">\(t\)</span>-test</a></li>
+<li><a href="1-8-sum-square.html#general-linear-test-approach"><span class="toc-section-number">1.8.2</span> General linear test approach</a></li>
+<li><a href="1-8-sum-square.html#descriptive-measures-of-linear-association"><span class="toc-section-number">1.8.3</span> Descriptive measures of linear association</a></li>
+</ul></li>
+</ul></li>
+<li><a href="2-literature.html#literature"><span class="toc-section-number">2</span> Literature</a></li>
+<li><a href="3-methods.html#methods"><span class="toc-section-number">3</span> Methods</a></li>
+<li class="has-sub"><a href="4-applications.html#applications"><span class="toc-section-number">4</span> Applications</a><ul>
+<li><a href="4-1-example-one.html#example-one"><span class="toc-section-number">4.1</span> Example one</a></li>
+<li><a href="4-2-example-two.html#example-two"><span class="toc-section-number">4.2</span> Example two</a></li>
+</ul></li>
+<li><a href="5-final-words.html#final-words"><span class="toc-section-number">5</span> Final Words</a></li>
+<li><a href="references.html#references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="advertising" class="section level2">
+<h2><span class="header-section-number">1.1</span> Example: Advertising dataset</h2>
+<p><!--
+<caption>--><span class="marginnote shownote"><span id="tab:unnamed-chunk-1">Table 1.1: </span>Snippet of the data</span><!--</caption>--></p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Sales</th>
+<th align="right">TV</th>
+<th align="right">Radio</th>
+<th align="right">Newspaper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">22.72</td>
+<td align="right">273.04</td>
+<td align="right">42.66</td>
+<td align="right">7.93</td>
+</tr>
+<tr class="even">
+<td align="right">22.68</td>
+<td align="right">297.89</td>
+<td align="right">21.68</td>
+<td align="right">80.86</td>
+</tr>
+<tr class="odd">
+<td align="right">10.49</td>
+<td align="right">94.24</td>
+<td align="right">18.69</td>
+<td align="right">40.14</td>
+</tr>
+<tr class="even">
+<td align="right">6.53</td>
+<td align="right">29.87</td>
+<td align="right">0.28</td>
+<td align="right">56.93</td>
+</tr>
+<tr class="odd">
+<td align="right">15.82</td>
+<td align="right">131.68</td>
+<td align="right">36.34</td>
+<td align="right">70.25</td>
+</tr>
+<tr class="even">
+<td align="right">16.81</td>
+<td align="right">193.86</td>
+<td align="right">30.39</td>
+<td align="right">0.69</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  g &lt;-<span class="st"> </span><span class="kw">lm</span>(Sales <span class="op">~</span><span class="st"> </span>TV <span class="op">+</span><span class="st"> </span>Radio <span class="op">+</span><span class="st"> </span>Newspaper, df)
+  g</code></pre></div>
+<table style="width:88%;">
+<caption>Fitting linear model: Sales ~ TV + Radio + Newspaper</caption>
+<colgroup>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">2.837</td>
+<td align="center">0.6154</td>
+<td align="center">4.611</td>
+<td align="center">3.204e-05</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>TV</strong></td>
+<td align="center">0.04819</td>
+<td align="center">0.002059</td>
+<td align="center">23.41</td>
+<td align="center">3.419e-27</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Radio</strong></td>
+<td align="center">0.1818</td>
+<td align="center">0.0129</td>
+<td align="center">14.09</td>
+<td align="center">2.67e-18</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Newspaper</strong></td>
+<td align="center">0.008452</td>
+<td align="center">0.006925</td>
+<td align="center">1.22</td>
+<td align="center">0.2285</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  ## Compare model with TV + Radio 
+  ## and model with TV + Radio + Newspaper
+  g &lt;-<span class="st"> </span><span class="kw">lm</span>(Sales <span class="op">~</span><span class="st"> </span>TV <span class="op">+</span><span class="st"> </span>Radio <span class="op">+</span><span class="st"> </span>Newspaper, df)
+  g2 &lt;-<span class="st"> </span><span class="kw">lm</span>(Sales <span class="op">~</span><span class="st"> </span>TV <span class="op">+</span><span class="st"> </span>Radio, df)
+  <span class="kw">panderOptions</span>(<span class="st">&#39;missing&#39;</span>, <span class="st">&#39;&#39;</span>)
+  <span class="kw">anova</span>(g2, g)</code></pre></div>
+<table style="width:68%;">
+<caption>Analysis of Variance Table</caption>
+<colgroup>
+<col width="12%" />
+<col width="11%" />
+<col width="6%" />
+<col width="16%" />
+<col width="9%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Res.Df</th>
+<th align="center">RSS</th>
+<th align="center">Df</th>
+<th align="center">Sum of Sq</th>
+<th align="center">F</th>
+<th align="center">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">47</td>
+<td align="center">78.6</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">46</td>
+<td align="center">76.13</td>
+<td align="center">1</td>
+<td align="center">2.465</td>
+<td align="center">1.49</td>
+<td align="center">0.2285</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">plot</span>(g2<span class="op">$</span>fitted, Sales, <span class="dt">xlab =</span> <span class="st">&quot;Estimated Sales&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Observed Sales&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<p style="text-align: center;">
+<a href="1-simple-linear-regression.html"><button class="btn btn-default">Previous</button></a>
+<a href="1-2-r-lang.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>

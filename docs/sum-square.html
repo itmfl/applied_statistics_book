@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Applied Statistics and Data Analysis</title>
+  <meta name="description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Applied Statistics and Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University" />
+  <meta name="github-repo" content="rstudio/applied-stats" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Applied Statistics and Data Analysis" />
+  
+  <meta name="twitter:description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University" />
+  
+
+<meta name="author" content="Minh Tang">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="inferences-concerning-hatbeta-1.html">
+<link rel="next" href="correlation-analysis.html">
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Applied Statistics and Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>1</b> Simple linear regression</a><ul>
+<li class="chapter" data-level="1.1" data-path="advertising.html"><a href="advertising.html"><i class="fa fa-check"></i><b>1.1</b> Example: Advertising dataset</a></li>
+<li class="chapter" data-level="1.2" data-path="r-lang.html"><a href="r-lang.html"><i class="fa fa-check"></i><b>1.2</b> R ? Aaargh!</a></li>
+<li class="chapter" data-level="1.3" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html"><i class="fa fa-check"></i><b>1.3</b> Relationships between variables</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#regression-models"><i class="fa fa-check"></i><b>1.3.1</b> Regression models</a></li>
+<li class="chapter" data-level="1.3.2" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#the-simple-regression-model"><i class="fa fa-check"></i><b>1.3.2</b> The simple regression model</a></li>
+<li class="chapter" data-level="1.3.3" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#more-general-linear-regression-models"><i class="fa fa-check"></i><b>1.3.3</b> More general linear regression models</a></li>
+<li class="chapter" data-level="1.3.4" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#data-for-regression-model"><i class="fa fa-check"></i><b>1.3.4</b> Data for regression model</a></li>
+<li class="chapter" data-level="1.3.5" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#steps-in-regression-analysis"><i class="fa fa-check"></i><b>1.3.5</b> Steps in regression analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html"><i class="fa fa-check"></i><b>1.4</b> Least squares estimation</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>1.4.1</b> Gauss-Markov theorem</a></li>
+<li class="chapter" data-level="1.4.2" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#point-estimator-for-simple-linear-regression-model"><i class="fa fa-check"></i><b>1.4.2</b> Point estimator for simple linear regression model</a></li>
+<li class="chapter" data-level="1.4.3" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#example-electricity-usage"><i class="fa fa-check"></i><b>1.4.3</b> Example: Electricity usage</a></li>
+<li class="chapter" data-level="1.4.4" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#example-midterm-vs-final-exam-score"><i class="fa fa-check"></i><b>1.4.4</b> Example: Midterm vs Final exam score</a></li>
+<li class="chapter" data-level="1.4.5" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#normal-error-regression-model"><i class="fa fa-check"></i><b>1.4.5</b> Normal error regression model</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html"><i class="fa fa-check"></i><b>1.5</b> Normally distributed random variables</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html#chi_m2-distribution"><i class="fa fa-check"></i><b>1.5.1</b> <span class="math inline">\(\chi_{m}^{2}\)</span> distribution</a></li>
+<li class="chapter" data-level="1.5.2" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html#student-t-distribution"><i class="fa fa-check"></i><b>1.5.2</b> Student <span class="math inline">\(t\)</span>-distribution</a></li>
+<li class="chapter" data-level="1.5.3" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html#f-distribution"><i class="fa fa-check"></i><b>1.5.3</b> <span class="math inline">\(F\)</span>-distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="hitchhiker-review-of-hypothesis-testing.html"><a href="hitchhiker-review-of-hypothesis-testing.html"><i class="fa fa-check"></i><b>1.6</b> Hitchhiker review of hypothesis testing</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="hitchhiker-review-of-hypothesis-testing.html"><a href="hitchhiker-review-of-hypothesis-testing.html#q.-what-is-power-a.-watt-is-power."><i class="fa fa-check"></i><b>1.6.1</b> Q. What is power ? A. Watt is power.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html"><i class="fa fa-check"></i><b>1.7</b> Inferences concerning <span class="math inline">\(\hat{\beta}_1\)</span></a><ul>
+<li class="chapter" data-level="1.7.1" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#inferences-concerning-hatbeta_0"><i class="fa fa-check"></i><b>1.7.1</b> Inferences concerning <span class="math inline">\(\hat{\beta}_0\)</span></a></li>
+<li class="chapter" data-level="1.7.2" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#inference-regarding-mathbbey_h"><i class="fa fa-check"></i><b>1.7.2</b> Inference regarding <span class="math inline">\(\mathbb{E}[Y_h]\)</span></a></li>
+<li class="chapter" data-level="1.7.3" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#predicting-y-for-a-given-x."><i class="fa fa-check"></i><b>1.7.3</b> Predicting <span class="math inline">\(Y\)</span> for a given <span class="math inline">\(X\)</span>.</a></li>
+<li class="chapter" data-level="1.7.4" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#confidence-band-for-regression-line"><i class="fa fa-check"></i><b>1.7.4</b> Confidence band for regression line</a></li>
+<li class="chapter" data-level="1.7.5" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#example-synthetic-dataset"><i class="fa fa-check"></i><b>1.7.5</b> Example: synthetic dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="sum-square.html"><a href="sum-square.html"><i class="fa fa-check"></i><b>1.8</b> Sum of squares and regression analysis</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="sum-square.html"><a href="sum-square.html#f-test-and-t-test"><i class="fa fa-check"></i><b>1.8.1</b> <span class="math inline">\(F\)</span>-test and <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="1.8.2" data-path="sum-square.html"><a href="sum-square.html#general-linear-test-approach"><i class="fa fa-check"></i><b>1.8.2</b> General linear test approach</a></li>
+<li class="chapter" data-level="1.8.3" data-path="sum-square.html"><a href="sum-square.html#descriptive-measures-of-linear-association"><i class="fa fa-check"></i><b>1.8.3</b> Descriptive measures of linear association</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="correlation-analysis.html"><a href="correlation-analysis.html"><i class="fa fa-check"></i><b>1.9</b> Correlation analysis</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="correlation-analysis.html"><a href="correlation-analysis.html#bivariate-normal-distribution"><i class="fa fa-check"></i><b>1.9.1</b> Bivariate normal distribution</a></li>
+<li class="chapter" data-level="1.9.2" data-path="correlation-analysis.html"><a href="correlation-analysis.html#examples"><i class="fa fa-check"></i><b>1.9.2</b> Examples</a></li>
+<li class="chapter" data-level="1.9.3" data-path="correlation-analysis.html"><a href="correlation-analysis.html#sample-correlation-and-aggregation"><i class="fa fa-check"></i><b>1.9.3</b> Sample Correlation and Aggregation</a></li>
+<li class="chapter" data-level="1.9.4" data-path="correlation-analysis.html"><a href="correlation-analysis.html#pearsons-correlation-and-linearity"><i class="fa fa-check"></i><b>1.9.4</b> Pearson’s correlation and linearity</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a><ul>
+<li class="chapter" data-level="4.1" data-path="example-one.html"><a href="example-one.html"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
+<li class="chapter" data-level="4.2" data-path="example-two.html"><a href="example-two.html"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Applied Statistics and Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sum-square" class="section level2">
+<h2><span class="header-section-number">1.8</span> Sum of squares and regression analysis</h2>
+Consider the simple regression model <span class="math inline">\(Y = \beta_0 + \beta_1 X +  \epsilon\)</span>. If we assume that <span class="math inline">\(\beta_1 = 0\)</span> then the best estimate <span class="math inline">\(\hat{\beta}_0\)</span> for fitting a constant <span class="math inline">\(\beta_0\)</span> to the <span class="math inline">\(\{Y_i\}\)</span> under least square is <span class="math inline">\(\hat{\beta}_0 =  \bar{Y}\)</span> and the squared error of using <span class="math inline">\(\bar{Y}\)</span> as an estimate for the <span class="math inline">\(\{Y_i\}\)</span> is
+<span class="math display">\[\begin{equation*}
+ \mathrm{SSTO} = \sum{(Y_i - \bar{Y})^2}.
+ \end{equation*}\]</span>
+If <span class="math inline">\(\beta_1 \not = 0\)</span> and we fit the “full” model, then the squared error of using <span class="math inline">\(\hat{\beta}_0 + \hat{\beta}_1 X\)</span> as an estimate for the <span class="math inline">\(\{Y_i\}\)</span> is
+<span class="math display">\[\begin{equation*}
+ \mathrm{SSE} = \sum{(Y_i - \hat{Y}_i)^2} = \sum{(Y_i -
+ \hat{\beta}_0 - \hat{\beta}_1 X_i)^2}
+ \end{equation*}\]</span>
+<p><span class="math inline">\(\mathrm{SSTO}\)</span> is termed the <em>total sum of squares</em> while <span class="math inline">\(\mathrm{SSE}\)</span> is termed the <em>error sum of squares</em>. Their difference is termed the <em>regression sum of squares</em> and is denoted <span class="math inline">\(\mathrm{SSR}\)</span>.</p>
+We note that
+<span class="math display">\[\begin{equation*}
+\begin{split}
+\mathrm{SSTO} &amp;= \sum{(Y_i - \bar{Y})^2} = \sum{(Y_i - \hat{Y}_i +
+\hat{Y}_i - \bar{Y}_i)^2} \\
+&amp;= \sum{(Y_i - \hat{Y}_i)^2} + {\color{blue}{2 \sum{(Y_i - \bar{Y})(Y_i -
+\hat{Y}_i)}}} +\sum{(\hat{Y}_i - \bar{Y})^2} \\
+&amp;= \sum{(Y_i - \hat{Y}_i)^2} + {\color{blue}{0}} + 
+\sum{(\hat{Y}_i - \bar{Y})^2} \\ &amp;= \mathrm{SSE} + \sum{(\hat{Y}_i
+- \bar{Y})^2} = \mathrm{SSE} + \mathrm{SSR}
+\end{split}
+\end{equation*}\]</span>
+
+<p>As <span class="math inline">\(\mathrm{SSE}\)</span> measure the squared error when fitting the model <span class="math inline">\(Y = \beta_0 + \beta_1 X + \epsilon\)</span> while <span class="math inline">\(\mathrm{SSTO}\)</span> measure the squared error when fitting the model <span class="math inline">\(Y = \beta_0 + \epsilon\)</span>, the ratio <span class="math inline">\(\tfrac{\mathrm{SSTO}}{\mathrm{SSE}}\)</span> is a reasonable test statistic for the hypothesis <span class="math inline">\(\mathbb{H}_0 \colon \beta_1 = 0\)</span> versus <span class="math inline">\(\mathbb{H}_{A} \colon \beta_1 \not = 0\)</span>. Note that <span class="math inline">\(\tfrac{\mathrm{SSTO}}{\mathrm{SSE}} = 1 + \tfrac{\mathrm{SSR}}{\mathrm{SSE}}\)</span>.</p>
+We summarize the above observation in the following proposition. 
+<div class="proposition">
+<span id="prp:anova" class="proposition"><strong>Proposition 1.3  </strong></span> Under the null hypothesis of <span class="math inline">\(\mathbb{H}_0 \colon \beta_1 = 0\)</span>, <span class="math inline">\(\mathrm{SSE}/\sigma^2\)</span> and <span class="math inline">\(\mathrm{SSR}/\sigma^2\)</span> are independent <span class="math inline">\(\chi^2_{n-2}\)</span> and <span class="math inline">\(\chi^2_{1}\)</span>, respectively.
+</div>
+ Thus, an equivalent test statistic for <span class="math inline">\(\mathbb{H}_0 \colon \beta_1 = 0\)</span> against <span class="math inline">\(\mathbb{H}_1 \colon \beta_1 \not = 0\)</span> is
+<span class="math display">\[\begin{equation*}
+  F^{*} = \frac{\mathrm{SSR}/df_{\mathrm{SSR}}}{\mathrm{SSE}/df_{\mathrm{SSE}}} =
+  \frac{\mathrm{MSR}}{\mathrm{MSE}} 
+\end{equation*}\]</span>
+<p>Under the <em>null hypothesis</em>, the above test statistic follows <span class="math inline">\(F(1, n-2)\)</span>, a <span class="math inline">\(F\)</span> distribution with degrees of freedom <span class="math inline">\(1\)</span> and <span class="math inline">\(n-2\)</span>.</p>
+<div id="f-test-and-t-test" class="section level3">
+<h3><span class="header-section-number">1.8.1</span> <span class="math inline">\(F\)</span>-test and <span class="math inline">\(t\)</span>-test</h3>
+<p>Let <span class="math inline">\(T\)</span> be the test statistic for testing the hypothesis <span class="math inline">\(\mathbb{H}_0 \colon \beta_1 = 0\)</span> versus <span class="math inline">\(\mathbb{H}_{A} \colon \beta_1 \not = 0\)</span> using the Student <span class="math inline">\(t\)</span>-distribution. Then <span class="math inline">\(T = \tfrac{\hat{\beta}_1}{s\{\hat{\beta}_1\}}.\)</span></p>
+Meanwhile,
+<span class="math display">\[\begin{equation*}
+F^{*} = \frac{\mathrm{MSR}}{\mathrm{MSE}} =
+\frac{\hat{\beta}_1^{2} t_{xx}}{ \mathrm{MSE}} =
+\frac{\hat{\beta}_1^{2}}{s^{2}\{\hat{\beta}_1\}} = T^2
+\end{equation*}\]</span>
+<p>as <span class="math inline">\(s^2\{\hat{\beta}_1\} = \mathrm{MSE}/t_{xx}\)</span>.</p>
+<p>Thus testing <span class="math inline">\(\mathbb{H}_0 \colon \beta_1 = 0\)</span> against <span class="math inline">\(\mathbb{H}_{A} \colon \beta_1 \not = 0\)</span> using either the test statistics <span class="math inline">\(F^{*}\)</span> and <span class="math inline">\(T\)</span> give identical results.</p>
+<p>In general, if <span class="math inline">\(T\)</span> is Student <span class="math inline">\(t\)</span> with <span class="math inline">\(n\)</span> degrees of freedom, then <span class="math inline">\(T^2\)</span> is <span class="math inline">\(F(1, n)\)</span>. The <span class="math inline">\(F\)</span> test will prove to be very useful when we want to test multiple coefficients in the multivariate linear regression model. On the other hand, one can test <span class="math inline">\(\mathbb{H}_0 \colon \beta_1 \leq 0\)</span> versus <span class="math inline">\(\mathbb{H}_{A} \colon \beta_1 \geq 0\)</span> using <span class="math inline">\(T\)</span> but not using <span class="math inline">\(F^{*}\)</span>.</p>
+<table>
+<caption><span id="tab:salinity-example0">Table 1.4: </span>The salinity dataset records the salinity level in the Pamlico Sound (North Carolina) from 1972 to 1977. There are 28 measurements in total. A snippet of the data is provided here.</caption>
+<thead>
+<tr class="header">
+<th align="right">salinity</th>
+<th align="right">lagged.salinity</th>
+<th align="right">trend</th>
+<th align="right">discharge</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">7.6</td>
+<td align="right">8.2</td>
+<td align="right">4</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="right">7.7</td>
+<td align="right">7.6</td>
+<td align="right">5</td>
+<td align="right">24</td>
+</tr>
+<tr class="odd">
+<td align="right">4.3</td>
+<td align="right">4.6</td>
+<td align="right">0</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="right">5.9</td>
+<td align="right">4.3</td>
+<td align="right">1</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="right">5.0</td>
+<td align="right">5.9</td>
+<td align="right">2</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="right">6.5</td>
+<td align="right">5.0</td>
+<td align="right">3</td>
+<td align="right">24</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;SemiPar&quot;</span>)
+<span class="kw">data</span>(salinity)
+salinity<span class="op">$</span>delta.salinity &lt;-<span class="st"> </span>salinity<span class="op">$</span>salinity <span class="op">-</span><span class="st"> </span>salinity<span class="op">$</span>lagged.sal
+Y &lt;-<span class="st"> </span>salinity<span class="op">$</span>delta.salinity
+X &lt;-<span class="st"> </span>salinity<span class="op">$</span>discharge
+txx &lt;-<span class="st"> </span><span class="kw">sum</span>((X <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(X))<span class="op">^</span><span class="dv">2</span>)
+txy &lt;-<span class="st"> </span><span class="kw">sum</span>((X <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(X)) <span class="op">*</span><span class="st"> </span>(Y <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(Y)))
+beta1.hat &lt;-<span class="st"> </span>txy<span class="op">/</span>txx
+beta0.hat &lt;-<span class="st"> </span><span class="kw">mean</span>(Y) <span class="op">-</span><span class="st"> </span>beta1.hat <span class="op">*</span><span class="st"> </span><span class="kw">mean</span>(X)
+<span class="kw">plot</span>(X, Y, <span class="dt">xlab =</span> <span class="st">&quot;discharge&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;changes in salinity&quot;</span>)
+<span class="kw">abline</span>(beta0.hat, beta1.hat, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/salinity-example1-1.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Y.fitted &lt;-<span class="st"> </span>beta0.hat <span class="op">+</span><span class="st"> </span>beta1.hat <span class="op">*</span><span class="st"> </span>X
+n &lt;-<span class="st"> </span><span class="kw">length</span>(Y)
+SSE &lt;-<span class="st"> </span><span class="kw">sum</span>((Y <span class="op">-</span><span class="st"> </span>Y.fitted)<span class="op">^</span><span class="dv">2</span>)
+SSTO &lt;-<span class="st"> </span><span class="kw">sum</span>((Y <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(Y))<span class="op">^</span><span class="dv">2</span>)
+MSE &lt;-<span class="st"> </span>SSE<span class="op">/</span>(n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)
+Fstar &lt;-<span class="st"> </span>(SSTO <span class="op">-</span><span class="st"> </span>SSE)<span class="op">/</span>SSE <span class="op">*</span><span class="st"> </span>(n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)<span class="op">/</span><span class="dv">1</span>  ## Fstar = (SSTO - SSE)/MSE
+s2.beta1.hat &lt;-<span class="st"> </span>MSE<span class="op">/</span>txx
+T &lt;-<span class="st"> </span>beta1.hat<span class="op">/</span><span class="kw">sqrt</span>(s2.beta1.hat)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">T</th>
+<th align="right">T^2</th>
+<th align="right">F</th>
+<th align="right">95% qf</th>
+<th align="right">97.5% qt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">-2.25</td>
+<td align="right">5.07</td>
+<td align="right">5.07</td>
+<td align="right">4.22</td>
+<td align="right">4.22</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="general-linear-test-approach" class="section level3">
+<h3><span class="header-section-number">1.8.2</span> General linear test approach</h3>
+The preceding approach to test the hypothesis <span class="math inline">\(\mathbb{H}_{0} \colon \beta_1 = 0\)</span> against the hypothesis <span class="math inline">\(\mathbb{H}_{A} \colon \beta_1 \not = 0\)</span> for the simple linear regression model can be extended to testing more general hypothesis. For example, suppose we posit the model
+<span class="math display">\[\begin{equation*}
+   Y_i = \beta_0 + \beta_1 X^{(1)}_{i} + \beta_2 X^{(2)}_i + \cdots + \beta_{k} X^{(k)}_i + \epsilon_i
+  \end{equation*}\]</span>
+Let <span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1, \dots, \hat{\beta}_k\)</span> be estimates of <span class="math inline">\(\beta_0, \beta_1, \dots, \beta_k\)</span> and consider the sum of squared error
+<span class="math display">\[\begin{equation*}
+    \mathrm{SSEF} = \sum{(Y_i - \hat{Y}_i)^2} = \sum{(Y_i -
+      \hat{\beta}_0 - \hat{\beta}_1 X^{(1)}_{i} - \cdots - \hat{\beta}_k X^{(k)}_{i})^2}.
+  \end{equation*}\]</span>
+Let us suppose that we are interested in whether, for some given <span class="math inline">\(S \subset \{1,2,\dots,k\}\)</span>, that <span class="math inline">\(\beta_k = 0\)</span> for <span class="math inline">\(k \in S\)</span>. We consider the sum of squared error
+<span class="math display">\[\begin{equation*}
+    \mathrm{SSER} = \sum{(Y_{i} - \tilde{Y}_{i})^2} = \sum{(Y_{i} -
+      \tilde{\beta}_0 - \sum_{k \in S}{\tilde{\beta}_{k} X^{(k)}_{i}})^2}.
+  \end{equation*}\]</span>
+<p>where the <span class="math inline">\(\tilde{\beta}_0\)</span> and <span class="math inline">\(\tilde{\beta}_k\)</span> for <span class="math inline">\(k \in S\)</span> are obtained by refitting the data with respect to the reduced variables.</p>
+<p><span class="math inline">\(\mathrm{SSEF}\)</span> measures the error for the “full” model while <span class="math inline">\(\mathrm{SSER}\)</span> measures the error for the “reduced” model.</p>
+The “full” model is to be preferred over the “reduced” model, that is, there exists <span class="math inline">\(\beta_{k} \not = 0\)</span> for some <span class="math inline">\(k \in S\)</span>, if <span class="math inline">\(\mathrm{SSEF}\)</span> is sufficiently smaller than <span class="math inline">\(\mathrm{SSER}\)</span>. One way to do this is to use the statistic <span class="math inline">\(\mathrm{SSER} -  \mathrm{SSEF}\)</span> and chose the “full” model for large value of the statistic. However, as the “full” model is more complex, e.g., <span class="math inline">\(df_{F} &lt; df_{R}\)</span>, we might also want to penalize this complexity. That is, we will prefer the “full” model only if <span class="math inline">\(\mathrm{SSEF}\)</span> is smaller than <span class="math inline">\(\mathrm{SSER}\)</span>, even after taking into account the extra complexity <span class="math inline">\(df_{R} -  df_{F}\)</span>. This suggest the statistic
+<span class="math display">\[\begin{equation*}
+    F^{*} = \frac{\mathrm{SSER} - \mathrm{SSEF}}{\mathrm{SSEF}}
+    \frac{df_{F}}{df_{R} - df_{F}}
+  \end{equation*}\]</span>
+<p>The distribution of <span class="math inline">\(F^{*}\)</span> follows a <span class="math inline">\(F\)</span>-distribution. We will discuss the statistic <span class="math inline">\(F^{*}\)</span> and its properties in more detail when we discuss inference for the general linear regression model. We now present an example illustrating the use of the <span class="math inline">\(F^{*}\)</span> statistic to compare two models for modeling the changes in salinity in the Pamlico Sound. More specifically,we want to compare the model <span class="math display">\[ \textrm{delta.salinity} = \beta_0 + \beta_1 \textrm{discharge} + \epsilon \]</span> with a linear term in the predictor variable <em>discharge</em> against the model <span class="math display">\[ \textrm{delta.salinity} = \beta_0 + \beta_1 \textrm{discharge} + \beta_2 \textrm{discharge}^2 + \epsilon.\]</span> with a quadratic term in the variable <em>discharge</em>. The following output indicates that the two models are possibly “different” at significance level <span class="math inline">\(\alpha = 0.05\)</span> but are “comparable” at significance level <span class="math inline">\(\alpha = 0.01\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">modelR &lt;-<span class="st"> </span><span class="kw">lm</span>(delta.salinity <span class="op">~</span><span class="st"> </span>discharge, salinity)
+modelF &lt;-<span class="st"> </span><span class="kw">lm</span>(delta.salinity <span class="op">~</span><span class="st"> </span>discharge <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(discharge<span class="op">^</span><span class="dv">2</span>), salinity)
+Y.fittedR &lt;-<span class="st"> </span><span class="kw">fitted.values</span>(modelR)
+Y.fittedF &lt;-<span class="st"> </span><span class="kw">fitted.values</span>(modelF)
+SSE.modelR &lt;-<span class="st"> </span><span class="kw">sum</span>((Y <span class="op">-</span><span class="st"> </span>Y.fittedR)<span class="op">^</span><span class="dv">2</span>)
+SSE.modelF &lt;-<span class="st"> </span><span class="kw">sum</span>((Y <span class="op">-</span><span class="st"> </span>Y.fittedF)<span class="op">^</span><span class="dv">2</span>)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">SSE (Reduced Model)</th>
+<th align="right">SSE (Full Model)</th>
+<th align="right">F value</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">54.3</td>
+<td align="right">43.5</td>
+<td align="right">6.23</td>
+<td align="right">0.02</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="descriptive-measures-of-linear-association" class="section level3">
+<h3><span class="header-section-number">1.8.3</span> Descriptive measures of linear association</h3>
+<p>Let <span class="math inline">\(R^2\)</span> be the statistic <span class="math inline">\(R^{2} = 1 -  \frac{\mathrm{SSE}}{\mathrm{SSTO}}\)</span>. <span class="math inline">\(R^2\)</span> measure the reduction <span class="math inline">\(\mathrm{SSTO} - \mathrm{SSR}\)</span> obtained by considering the linear term (<span class="math inline">\(\beta_1\)</span>) in the regression compared with the total variation <span class="math inline">\(\mathrm{SSTO}\)</span>. When <span class="math inline">\(\hat{\beta}_1 \not = 0\)</span> and all observations fall on the fitted regression line, then <span class="math inline">\(R^{2} =  1\)</span>. When <span class="math inline">\(Y_i = \bar{Y}\)</span> for all <span class="math inline">\(i\)</span>, then <span class="math inline">\(R^{2} = 0\)</span> (indicating a lack of a non-trivial linear relationship). For <span class="math inline">\(0 &lt; R^{2} &lt; 1\)</span>, large values suggests higher degree of linear association.</p>
+<p>There are several possible mis-understanding regarding <span class="math inline">\(R^{2}\)</span>. The main one is that <span class="math inline">\(R^{2}\)</span> only compares the fit between a horizontal line and a posited regression line. Thus large value of <span class="math inline">\(R^{2}\)</span> only indicates that the posited regression line fits better then the horizontal line and not that the posited regression line is a good fit for the data.</p>
+<div class="figure" style="text-align: center"><span id="fig:R2-fig"></span>
+<img src="figure/linear_regression.png" alt="https://xkcd.com/1725/" width="80%" />
+<p class="caption">
+Figure 1.8: <a href="https://xkcd.com/1725/" class="uri">https://xkcd.com/1725/</a>
+</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="inferences-concerning-hatbeta-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="correlation-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

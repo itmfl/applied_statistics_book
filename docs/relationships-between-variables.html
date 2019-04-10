@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="simple-linear-regression.html">
+<link rel="prev" href="r-lang.html">
+<link rel="next" href="least-squares-estimation.html">
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -175,30 +175,121 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Applied Statistics and Data Analysis</h1>
-<h4 class="author"><em>Minh Tang</em></h4>
+<div id="relationships-between-variables" class="section level2">
+<h2><span class="header-section-number">1.3</span> Relationships between variables</h2>
+<p>There are two type of relationships underlying regression analysis. They are (1) <em>functional</em> relationship and (2) <em>statistical</em> relationship. Suppose, for simplicity, that <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are two real-valued variables. Then functional relationships between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> are represented as</p>
+<span class="math display">\[\begin{equation*}
+ Y = f(X)
+\end{equation*}\]</span>
+<p>for some function <span class="math inline">\(f\)</span>.</p>
+For example,
+<span class="math display">\[\begin{equation*}
+ Y = 2X; \qquad Y = X^2; \qquad Y = \sin(2 \pi X)
+\end{equation*}\]</span>
+are all functional relationships. Similarly, if <span class="math inline">\(Y, X_1, X_2, \dots, X_m\)</span> are real-valued variables, then
+<span class="math display">\[\begin{equation*}
+ Y = \sqrt{X_1^{2} + X_{2}^{2} + \cdots +
+  X_m^{2}}, \qquad Y = X_1 + \frac{X_2}{2} + \frac{X_3}{3} + \cdots \frac{X_m}{m}
+\end{equation*}\]</span>
+<p>are functional relationships.</p>
+<p>Functional relationships are exact. However, as regression analysis is a <em>statistical</em> procedure, using only functional relationships is cumbersome/inadequate to represent relationships between the variables.</p>
+<p>For example, size of vocabulary of a child depends on the age of the child, education levels of the parents. But it is highly likely that the size of the vocabulary also depends on other factors, such as school attended, personality of the child, multilingual household/neighborhood, time/place of assessment and sleeping pattern. Thus, a relationship between size of vocabulary and age of child and education levels of parents will be inexact and subjected to statistical errors.</p>
+<p>A notional description of a statistical relationship of the form <span class="math inline">\(Y = f(X) + \color{red}{\epsilon}\)</span> where <span class="math inline">\(f(X)\)</span> describes a functional relationship and <span class="math inline">\(\color{red}{\epsilon}\)</span> is a statistical error, e.g., a random variable. The function <span class="math inline">\(f\)</span> describes the trend, i.e., the tendency of the changes in <span class="math inline">\(Y\)</span> as <span class="math inline">\(X\)</span> changes while <span class="math inline">\(\epsilon\)</span> describes the deviation from that trend.</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div id="regression-models" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Regression models</h3>
+<p>A regression model is a formal description of expressing the (statistical) relationship between a set of <em>explanatory</em> or <em>predictor</em> variables and a <em>response</em> variable. There is the trend component (expressed by <span class="math inline">\(f\)</span>) and a statistical component (expressed by the <span class="math inline">\(\epsilon\)</span>). That is</p>
+<ul>
+<li>There is a (conditional) probability distribution <span class="math inline">\(\mathbb{P}(Y | X)\)</span> of <span class="math inline">\(Y\)</span> for each given value of <span class="math inline">\(X\)</span>.</li>
+<li>The conditional mean <span class="math inline">\(\mathbb{E}[Y | X]\)</span> varies systematically with <span class="math inline">\(X\)</span>.</li>
+</ul>
+<p>General issues in regression model/analysis include</p>
+<ul>
+<li>The number of and choice of explanatory or predictor variables.</li>
+<li>Form of trend/functional relationship <span class="math inline">\(f\)</span>, e.g., linear, piecewise linear, quadratic, polynomials.</li>
+<li>Type/model for the error term/statistical deviation <span class="math inline">\(\epsilon\)</span>.</li>
+<li>Scope of model.</li>
+<li>Causality and association in interpreting regression analysis. That is, regression analysis might indicate the presence/form of relationships between variables, but does not necessarily indicate a cause-and-effect relationship among the variables.</li>
+</ul>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>Advanced praise for the book</p>
-<blockquote>
-<p>“When I was young, I would rather write a (linear model) book than read one. But now that I am older, I would rather write two (linear model) books than read one.”</p>
-<p>— R. H. Bing</p>
-</blockquote>
-<blockquote>
-<p>“I was at the job of reading it for days and days, endlessly daunted and halted by its laborious dullness, its flatulent fatuity, its almost fabulous inconsequentiality.”</p>
-<p>— Mencken</p>
-</blockquote>
-
+<div id="the-simple-regression-model" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> The simple regression model</h3>
+Consider the following model
+<span class="math display" id="eq:simple">\[\begin{equation}
+    Y = \beta_0 + \beta_1 X + \epsilon. \tag{1.1}
+  \end{equation}\]</span>
+<p>This a regression model with a single predictor variable <span class="math inline">\(X\)</span>. The trend relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is linear/affine. For <span class="math inline">\(n\)</span> trials, i.e., <span class="math inline">\(n\)</span> observations <span class="math inline">\((X_1, Y_1), (X_2, Y_2), \dots, (X_n, Y_n)\)</span> the above model correspond to</p>
+<p><span class="math display">\[  Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \quad i=1,2,\dots,n.\]</span></p>
+<p>The statistical deviation <span class="math inline">\(\epsilon_i\)</span> are assumed to have zero mean, variance <span class="math inline">\(\sigma^2\)</span> and are uncorrelated. That is <span class="math display">\[\mathbb{E}[\epsilon_i] = 0, \quad \mathrm{Var}[\epsilon_i] = \sigma^2, \quad i=1,2,\dots,n; \quad 
+\mathbb{E}[\epsilon_i \epsilon_j] = 0 \quad \text{for all $i \not = j$}.\]</span> The <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are termed <em>regression coefficients</em>.</p>
+<p>For example, consider the model <span class="math inline">\(Y = 9.5 + 2X + \epsilon\)</span> with <span class="math inline">\(\epsilon\)</span> having mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(0.2\)</span>.</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Some important features of the simple linear regression model are</p>
+<ul>
+<li>The <span class="math inline">\(Y_i\)</span> are random variables.</li>
+<li><span class="math inline">\(\mathbb{E}[Y_i] = \beta_0 + \beta_1 X_i\)</span> and <span class="math inline">\(\mathrm{Var}[Y_i] = \sigma^2\)</span>.</li>
+<li>The responses <span class="math inline">\(Y_i\)</span> and <span class="math inline">\(Y_j\)</span> are uncorrelated whenever <span class="math inline">\(i \not = j\)</span>.</li>
+<li>The model can be reparameterized. For example, if <span class="math inline">\(c\)</span> is any constant, then
+<span class="math display">\[\begin{equation*}
+  Y_i = \beta_0 + \beta_1 X_i + \epsilon_i = (\beta_0 + c \beta_1) +
+  \beta_1 (X_i - c) + \epsilon_i.
+\end{equation*}\]</span></li>
+</ul>
+</div>
+<div id="more-general-linear-regression-models" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> More general linear regression models</h3>
+<p>As an aside (and a pre-cursor of what to come later), suppose now that <span class="math inline">\(X_1, X_2, \dots, X_{K}\)</span> are predictor variables and <span class="math inline">\(Y\)</span> is a response variable. Then</p>
+<span class="math display">\[\begin{equation*}
+    Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_K X_{K}
+  \end{equation*}\]</span>
+<p>is a linear regression model. This is a general (multivariate) regression model. Similarly</p>
+<span class="math display">\[\begin{equation*}
+    Y = \beta_1 X_1 + \beta_2 X_1^{2} + \beta_{3} \tanh{X_2} +
+    \beta_{4} X_3 X_{K} + \beta_{5} e^{X_4 X_5} + \beta_{6} \log{X_5} + \epsilon
+  \end{equation*}\]</span>
+is also a linear regression model. Similarly
+<span class="math display">\[\begin{equation*}
+    \log{Y} = \beta_1 X_1 + \beta_2 X_1^{2} + \beta_{3} \tanh{X_2}
+    + \beta_{4} X_3 X_{K} + \beta_{5} e^{X_4 X_5} + \beta_{6} \log{X_5} + \epsilon
+  \end{equation*}\]</span>
+is also a linear regression model. In general, if <span class="math inline">\(f\)</span> is a function and <span class="math inline">\(g_1, g_2, \dots, g_m\)</span> are (multivariate) functions then
+<span class="math display">\[\begin{equation*}
+    f(Y) = \sum_{i}\beta_i g_i(X_1, \dots, X_K) + \epsilon
+  \end{equation*}\]</span>
+<p>is a linear regression model.</p>
+</div>
+<div id="data-for-regression-model" class="section level3">
+<h3><span class="header-section-number">1.3.4</span> Data for regression model</h3>
+<p>Suppose <span class="math inline">\((X_1,Y_1), (X_2, Y_2), \dots, (X_n, Y_n)\)</span> are given and a simple linear regression model <span class="math inline">\(Y_i = \beta_0 + \beta_1 X_i +  \epsilon\)</span> is posited. A goal of regression analysis might be to estimate the <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> along with characteristics of <span class="math inline">\(\epsilon_i\)</span> such as its mean and variance.</p>
+<p>But before that, some distinction can be made regarding the source of the <span class="math inline">\((X_i,Y_i)\)</span>. The <span class="math inline">\((X_i, Y_i)\)</span> could come from (1) observational data or (2) experimental data.</p>
+<p>Observational data arise from non-experimental studies and these studies do not control the explanatory/predictor variables of interest. A limitation of observation data might be that they do not provide adequate information to infer causal relationships among the predictor and response variables.</p>
+<p>Experimental data come from experimental studies and thus provide control over the predictor variables. If the experimental studies are well-designed, then it is possible to infer causality between predictor and response variables using experimental data. Well-designed experimental studies are usually properly randomized.</p>
+<p>As an example, the Lanarkshire milk experiment is an experiment carried out in 1930 in the schools of Lanarkshire that attempted to ascertain the effect of milk supplements on Scottish children. For four months, 5000 children received 3/4 pints of pasteurized milk, 5000 children received 3/4 pints of non-pasteurized milk and 10000 children received no milk. Each child was weighed and measured for height before and after the experiment. The final observations of the control group (the children not receiving any milk) exceeded the final observations of the treatment groups by average amount equivalent to 3 months in weight and height, thus suggesting that the milk supplements has detrimental effects to growth.</p>
+</div>
+<div id="steps-in-regression-analysis" class="section level3">
+<h3><span class="header-section-number">1.3.5</span> Steps in regression analysis</h3>
+<p>A notional workflow when performing regression analysis is</p>
+<ol style="list-style-type: decimal">
+<li>Exploratory data analysis</li>
+<li>Develop tentative models</li>
+<li>Evaluate candidate models</li>
+</ol>
+<ul>
+<li>If the candidate models are appropriate proceed to identify suitable model(s) and perform inference</li>
+<li>If the canddiate models are not appropriate, go back and revise/develop other tentative models.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Perform inference using the selected model(s).</li>
+</ol>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="simple-linear-regression.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-lang.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="least-squares-estimation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

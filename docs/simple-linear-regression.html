@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="simple-linear-regression.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="advertising.html">
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -175,30 +175,36 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Applied Statistics and Data Analysis</h1>
-<h4 class="author"><em>Minh Tang</em></h4>
+<div id="simple-linear-regression" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Simple linear regression</h1>
+<p><em>Regression analysis</em> is a <em>statistical</em> procedure for estimating or explaining the relationships among variables, and to utilizes these relations so that a response variable can be predicted from other variable(s). A few notional examples are</p>
+<ul>
+<li>Predict sales of product by estimating the relationship between sales and amount of advertise expenses.</li>
+<li>Predict size of vocabulary of a child by estimating the relationship between size of vocabulary, age of child and education level of parents.</li>
+<li>Predict time of travel by estimating the relationship between time of travel, distance of travel, mode of travel, traffic/road conditions, …, choice of music on the radio.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:advertising-fig"></span>
+<img src="figure/advertising.pdf" alt="The Advertising dataset. The plots display sales (in thousand of units) against advertising budgets (in thousand of USD) for TV, radio and newspaper." width="80%" />
+<p class="caption">
+Figure 1.1: The Advertising dataset. The plots display sales (in thousand of units) against advertising budgets (in thousand of USD) for TV, radio and newspaper.
+</p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>Advanced praise for the book</p>
-<blockquote>
-<p>“When I was young, I would rather write a (linear model) book than read one. But now that I am older, I would rather write two (linear model) books than read one.”</p>
-<p>— R. H. Bing</p>
-</blockquote>
-<blockquote>
-<p>“I was at the job of reading it for days and days, endlessly daunted and halted by its laborious dullness, its flatulent fatuity, its almost fabulous inconsequentiality.”</p>
-<p>— Mencken</p>
-</blockquote>
-
+<p>Suppose that we are asked to recommend a marketing plan for next year based on this sales &amp; advertising data. Several questions can then be posed</p>
+<ul>
+<li>Is there a relationship between advertising budget and sales ? If there is a relationship, how strong is the relationship ?</li>
+<li>Which media contributes to sales ? How strong is the contribution ?</li>
+<li>How accurately can we estimate the effect of each medium on sales ? How accurate can we predict future sales from the effect of the medium on sales ?</li>
+<li>Is the relationship between advertising budget and sales linear ?</li>
+<li>Is there synergies or interactions among the different medias as related to sales ?</li>
+</ul> 
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="simple-linear-regression.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="advertising.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

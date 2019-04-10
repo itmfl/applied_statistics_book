@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="simple-linear-regression.html">
+<link rel="prev" href="sample-correlation-and-aggregation.html">
+<link rel="next" href="literature.html">
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -142,10 +142,10 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="1.9" data-path="correlation-analysis.html"><a href="correlation-analysis.html"><i class="fa fa-check"></i><b>1.9</b> Correlation analysis</a><ul>
 <li class="chapter" data-level="1.9.1" data-path="correlation-analysis.html"><a href="correlation-analysis.html#bivariate-normal-distribution"><i class="fa fa-check"></i><b>1.9.1</b> Bivariate normal distribution</a></li>
-<li class="chapter" data-level="1.9.2" data-path="correlation-analysis.html"><a href="correlation-analysis.html#examples"><i class="fa fa-check"></i><b>1.9.2</b> Examples</a></li>
-<li class="chapter" data-level="1.9.3" data-path="correlation-analysis.html"><a href="correlation-analysis.html#sample-correlation-and-aggregation"><i class="fa fa-check"></i><b>1.9.3</b> Sample Correlation and Aggregation</a></li>
-<li class="chapter" data-level="1.9.4" data-path="correlation-analysis.html"><a href="correlation-analysis.html#pearsons-correlation-and-linearity"><i class="fa fa-check"></i><b>1.9.4</b> Pearson’s correlation and linearity</a></li>
 </ul></li>
+<li class="chapter" data-level="1.10" data-path="examples.html"><a href="examples.html"><i class="fa fa-check"></i><b>1.10</b> Examples</a></li>
+<li class="chapter" data-level="1.11" data-path="sample-correlation-and-aggregation.html"><a href="sample-correlation-and-aggregation.html"><i class="fa fa-check"></i><b>1.11</b> Sample Correlation and Aggregation}</a></li>
+<li class="chapter" data-level="1.12" data-path="pearsons-correlation-and-linearity.html"><a href="pearsons-correlation-and-linearity.html"><i class="fa fa-check"></i><b>1.12</b> Pearson’s correlation and linearity</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
@@ -175,30 +175,47 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Applied Statistics and Data Analysis</h1>
-<h4 class="author"><em>Minh Tang</em></h4>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>Advanced praise for the book</p>
-<blockquote>
-<p>“When I was young, I would rather write a (linear model) book than read one. But now that I am older, I would rather write two (linear model) books than read one.”</p>
-<p>— R. H. Bing</p>
-</blockquote>
-<blockquote>
-<p>“I was at the job of reading it for days and days, endlessly daunted and halted by its laborious dullness, its flatulent fatuity, its almost fabulous inconsequentiality.”</p>
-<p>— Mencken</p>
-</blockquote>
+<div id="pearsons-correlation-and-linearity" class="section level2">
+<h2><span class="header-section-number">1.12</span> Pearson’s correlation and linearity</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">100</span>
+X &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Y &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.4</span> <span class="op">*</span><span class="st"> </span>X <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Z &lt;-<span class="st"> </span>X<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>)
+<span class="kw">cor</span>(X, Y)</code></pre></div>
+<pre><code>## _0.425_</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(X, Z)</code></pre></div>
+<pre><code>## _0.2558_</code></pre>
+<p>Pearson’s product-moment correlation <span class="math inline">\(\rho\)</span> is only a measure of n linearity association. In addition, inferences on <span class="math inline">\(\rho\)</span> usually assume that the pair <span class="math inline">\((Y_1, Y_2)\)</span> is distributed bivariate normal.</p>
+<p>Other notions of correlation/association coefficients can also be defined. Another correlation coefficient is the <em>Spearman rank correlation coefficient</em> <span class="math inline">\(r_S\)</span>. <span class="math inline">\(r_S\)</span> is an example of a nonparametric statistic in the sense that it does not assume the population from which the data is sampled has any characteristic structure. For a collection of <span class="math inline">\(\{(Y^{(i)}_1, Y^{(i)}_{2})\}\)</span> sampled from a general bivariate distribution <span class="math inline">\(F\)</span>, let <span class="math inline">\(\{R^{(i)}_1\}\)</span> and <span class="math inline">\(\{R^{(i)}_{2}\}\)</span> be the ranks of the <span class="math inline">\(\{Y^{(i)}_{1}\}\)</span> and <span class="math inline">\(\{Y^{(i)}_{2}\}\)</span>, respectively.</p>
+The Spearman rank correlation coefficient is defined as
+<span class="math display">\[\begin{equation*}
+    r_{S} = \frac{\sum{(R^{(i)}_{1} - \bar{R}_1)(R^{(i)}_{2} -
+        \bar{R}_2)}}{\sqrt{(\sum{(R^{(i)}_1 - \bar{R}_1)^2}) (\sum{(R^{(i)}_2 - \bar{R}_2)^2})}}
+  \end{equation*}\]</span>
+<p>where <span class="math inline">\(\bar{R}_1 = \bar{R}_2 = (n+1)/2\)</span> are the average of the ranks of <span class="math inline">\(R^{(i)}_1\)</span> and <span class="math inline">\(R^{(i)}_2\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">X[<span class="dv">1</span><span class="op">:</span><span class="dv">95</span>] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">95</span>)
+X[<span class="dv">96</span><span class="op">:</span><span class="dv">100</span>] &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Y[<span class="dv">1</span><span class="op">:</span><span class="dv">95</span>] &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>X[<span class="dv">1</span><span class="op">:</span><span class="dv">95</span>] <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">95</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+Y[<span class="dv">96</span><span class="op">:</span><span class="dv">100</span>] &lt;-<span class="st"> </span><span class="fl">0.5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>X[<span class="dv">96</span><span class="op">:</span><span class="dv">100</span>] <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dt">sd =</span> <span class="dv">4</span>)
+<span class="kw">cor</span>(X, Y)  ## Pearson&#39;s correlation</code></pre></div>
+<pre><code>## _0.7194_</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">RX &lt;-<span class="st"> </span><span class="kw">rank</span>(X)  ## Rank of the elements in X
+RY &lt;-<span class="st"> </span><span class="kw">rank</span>(Y)
+<span class="kw">cor</span>(RX, RY)  ## Spearman&#39;s correlation </code></pre></div>
+<pre><code>## _0.5376_</code></pre>
+<p>We see that the Spearman rank correlation suffers less from ``outliers’’.</p>
+<p>We note that <span class="math inline">\(-1 \leq r_S \leq 1\)</span>. The Spearman rank correlation coefficient measure the <em>monotonic association</em> between the <span class="math inline">\(\{Y^{(i)}_{1}\}\)</span> and the <span class="math inline">\(\{Y^{(i)}_{2}\}\)</span>, e.g., <span class="math inline">\(Y^{(i)}_1 &gt; Y^{(j)}_1\)</span> is usually associated with <span class="math inline">\(Y^{(i)}_2 &gt; Y^{(j)}_2\)</span> for any <span class="math inline">\(i,j\)</span> pair if <span class="math inline">\(r_s \approx 1\)</span>, and <span class="math inline">\(Y^{(i)}_1 &gt; Y^{(j)}_1\)</span> is usually associated with <span class="math inline">\(Y^{(i)}_2 &lt; Y^{(j)}_2\)</span> if <span class="math inline">\(r_s \approx -  1\)</span>.</p>
+<p>We can perform hypothesis testing of monotone association, by using the fact that the test statistic <span class="math inline">\(\tfrac{r_{S} \sqrt{n - 2}}{1 -  r_{S}^2}\)</span> follows approximately the Student <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n - 2\)</span> degree of freedom under the null hypothesis (the null hypothesis being that ``there is no monotonic association’’).</p>
 
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="simple-linear-regression.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sample-correlation-and-aggregation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

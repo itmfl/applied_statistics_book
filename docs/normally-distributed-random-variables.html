@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="simple-linear-regression.html">
+<link rel="prev" href="least-squares-estimation.html">
+<link rel="next" href="hitchhiker-review-of-hypothesis-testing.html">
 <script src="assets/jquery-2.2.3/jquery.min.js"></script>
 <link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -175,30 +175,66 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Applied Statistics and Data Analysis</h1>
-<h4 class="author"><em>Minh Tang</em></h4>
+<div id="normally-distributed-random-variables" class="section level2">
+<h2><span class="header-section-number">1.5</span> Normally distributed random variables</h2>
+<blockquote>
+<p>“Everyone believes in the normal law of errors: the mathematicians, because they think it is an experimental fact; and the experimenters, because they suppose it is a theorem of mathematics.”</p>
+<p>— Gabriel Lippman</p>
+</blockquote>
+A random variable <span class="math inline">\(X\)</span> is said to have the <em>normal</em> or <em>Gaussian</em> distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2 &gt; 0\)</span> if its probability density function is
+<span class="math display">\[\begin{equation*}
+  \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\Bigl( - \frac{(x - \mu)^2}{2\sigma^2}\Bigr)
+\end{equation*}\]</span>
+<p>A normal random variable <span class="math inline">\(X\)</span> with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> will be denoted as <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>. A <span class="math inline">\(X \sim N(0,1)\)</span> is said to be a <em>standard normal</em> random variable. For any <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span> the random variable <span class="math inline">\(\tfrac{X - \mu}{\sigma}\)</span> is standard normal, i.e., <span class="math inline">\(\tfrac{X - \mu}{\sigma} \sim N(0,1)\)</span>.</p>
+An important property of normally distributed random variables is that a linear combination of independent normally distributed random variables is also normally distributed. 
+<div class="proposition">
+<span id="prp:linear-normal" class="proposition"><strong>Proposition 1.1  </strong></span>If <span class="math inline">\(X_1, X_2, \dots, X_m\)</span> are independent normal random variables with mean <span class="math inline">\(\mu_1, \mu_2, \dots, \mu_m\)</span> and variances <span class="math inline">\(\sigma_1^2, \sigma_2^2, \dots, \sigma_m^2\)</span>, then <span class="math inline">\(c_1 X_1 + c_2 X_2 + \cdots c_m X_m\)</span> is a normal random variable with mean <span class="math inline">\(\sum c_i \mu_i\)</span> and variance <span class="math inline">\(\sum c_i^2 \sigma_i^2\)</span>.
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>Advanced praise for the book</p>
-<blockquote>
-<p>“When I was young, I would rather write a (linear model) book than read one. But now that I am older, I would rather write two (linear model) books than read one.”</p>
-<p>— R. H. Bing</p>
-</blockquote>
-<blockquote>
-<p>“I was at the job of reading it for days and days, endlessly daunted and halted by its laborious dullness, its flatulent fatuity, its almost fabulous inconsequentiality.”</p>
-<p>— Mencken</p>
-</blockquote>
 
+<div id="chi_m2-distribution" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> <span class="math inline">\(\chi_{m}^{2}\)</span> distribution</h3>
+<p>Let <span class="math inline">\(X_1, X_2, \dots, X_m\)</span> be independent <span class="math inline">\(N(0,1)\)</span> random variables. Then <span class="math inline">\(\sum X_i^{2}\)</span> follows the (central) <em>chi-squared</em> distribution with <span class="math inline">\(m\)</span> degree of freedom. The mean and variance of a <span class="math inline">\(\chi^{2}_m\)</span> random variable is <span class="math inline">\(m\)</span> and <span class="math inline">\(2m\)</span> respectively.</p>
+<p>Similarly, let <span class="math inline">\(X_1, X_2, \dots, X_m\)</span> be independent <span class="math inline">\(N(\mu_i, 1)\)</span> random variables. Then <span class="math inline">\(\sum X_i^{2}\)</span> follows the <em>non-central</em> chi-squared distribution with <span class="math inline">\(m\)</span> degrees of freedom and <em>non-centrality</em> parameter <span class="math inline">\(\lambda = \sum_{i} \mu_i^2\)</span>. The mean and variance is <span class="math inline">\(m + \lambda\)</span> and <span class="math inline">\(2m + 4\lambda\)</span>, respectively.</p>
+<div class="figure" style="text-align: center"><span id="fig:chiplots-example"></span>
+<img src="bookdown-demo_files/figure-html/chiplots-example-1.png" alt="Plots of probability distribution functions for the chi-squared distributions with $1,2,3,4,6$, and $9$ degrees of freedom and non-centrality parameter $0$ (left plot) and $2$ (right plot)" width="80%" />
+<p class="caption">
+Figure 1.3: Plots of probability distribution functions for the chi-squared distributions with <span class="math inline">\(1,2,3,4,6\)</span>, and <span class="math inline">\(9\)</span> degrees of freedom and non-centrality parameter <span class="math inline">\(0\)</span> (left plot) and <span class="math inline">\(2\)</span> (right plot)
+</p>
+</div>
+</div>
+<div id="student-t-distribution" class="section level3">
+<h3><span class="header-section-number">1.5.2</span> Student <span class="math inline">\(t\)</span>-distribution</h3>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables with <span class="math inline">\(X \sim N(0,1)\)</span> and <span class="math inline">\(Y \sim \chi^{2}_{m}\)</span>. Then the random variable <span class="math inline">\(T = \tfrac{X}{\sqrt{Y/m}}\)</span> follows the Student <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(m\)</span> degree of freedom. Similarly, let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be independent random variables with <span class="math inline">\(X \sim N(\mu, 1)\)</span> and <span class="math inline">\(Y \sim \chi_{m}^{2}\)</span>. Then <span class="math inline">\(T = \tfrac{X}{\sqrt{Y/m}}\)</span> follows the non-central t-distribution with <span class="math inline">\(m\)</span> degree of freedom and non-centrality parameter <span class="math inline">\(\mu\)</span>.</p>
+
+<div class="proposition">
+<span id="prp:student-t" class="proposition"><strong>Proposition 1.2  </strong></span>Let <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> be independent <span class="math inline">\(N(\mu, \sigma^2)\)</span> random variables, <span class="math inline">\(n \geq 2\)</span>. Then <span class="math inline">\(\bar{X} = \tfrac{1}{n} \sum X_i\)</span> and <span class="math inline">\(s^2 = \tfrac{1}{n-1} \sum (X_i - \bar{X})^2\)</span>, the sample mean and sample variance of the <span class="math inline">\(\{X_i\}\)</span>, are independent (by Cochran’s theorem). Furthermore, <span class="math inline">\(\tfrac{(n-1)s^2}{\sigma^2} \sim \chi^{2}(n-1)\)</span>. Thus <span class="math inline">\(\tfrac{\bar{X} - \mu}{s/\sqrt{n}}\)</span> follows the Student <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n-1\)</span> degrees of freedom.
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:tplots-example"></span>
+<img src="bookdown-demo_files/figure-html/tplots-example-1.png" alt="Plots of probability distribution functions for the Student $t$-distributions with degrees of freedom $1,2,5,10,20$, and $50$ and non-centrality parameter $0$ (left plot) and $2$ (right plot)." width="80%" />
+<p class="caption">
+Figure 1.4: Plots of probability distribution functions for the Student <span class="math inline">\(t\)</span>-distributions with degrees of freedom <span class="math inline">\(1,2,5,10,20\)</span>, and <span class="math inline">\(50\)</span> and non-centrality parameter <span class="math inline">\(0\)</span> (left plot) and <span class="math inline">\(2\)</span> (right plot).
+</p>
+</div>
+</div>
+<div id="f-distribution" class="section level3">
+<h3><span class="header-section-number">1.5.3</span> <span class="math inline">\(F\)</span>-distribution</h3>
+<p>Let <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> be <em>independent</em> random variables with <span class="math inline">\(U_1 \sim \chi_{m_1}^{2}\)</span> and <span class="math inline">\(U_2 \sim \chi_{m_2}^{2}\)</span>. Then <span class="math inline">\(V = \tfrac{U_1/m_1}{U_2/m_2}\)</span> has the (central) <span class="math inline">\(F\)</span>-distribution with <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> degrees of freedom and is denoted as <span class="math inline">\(V \sim F_{m_1,m_2}\)</span>. Similarly, let <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> be independent random variables with <span class="math inline">\(U_1 \sim \chi_{m_1}^{2}(\lambda)\)</span> and <span class="math inline">\(U_2 \sim \chi_{m_2}^{2}\)</span>. Then <span class="math inline">\(V = \tfrac{U_1/m_1}{U_2/m_2}\)</span> has the non-central <span class="math inline">\(F\)</span>-distribution with <span class="math inline">\(m_1\)</span> and <span class="math inline">\(m_2\)</span> degrees of freedom and non-centrality parameter <span class="math inline">\(\lambda\)</span> and is denoted as <span class="math inline">\(V \sim F_{m_1,m_2}(\lambda)\)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:Fplots-example"></span>
+<img src="bookdown-demo_files/figure-html/Fplots-example-1.png" alt="Plots of probability distribution functions for the $F$-distributions with degrees of freedom $2,3,5,10,20$, and $30$ and non-centrality parameter $0$ (left plot) and $2$ (right plot)." width="80%" />
+<p class="caption">
+Figure 1.5: Plots of probability distribution functions for the <span class="math inline">\(F\)</span>-distributions with degrees of freedom <span class="math inline">\(2,3,5,10,20\)</span>, and <span class="math inline">\(30\)</span> and non-centrality parameter <span class="math inline">\(0\)</span> (left plot) and <span class="math inline">\(2\)</span> (right plot).
+</p>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="simple-linear-regression.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="least-squares-estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hitchhiker-review-of-hypothesis-testing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="assets/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Applied Statistics and Data Analysis</title>
+  <meta name="description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Applied Statistics and Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University" />
+  <meta name="github-repo" content="rstudio/applied-stats" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Applied Statistics and Data Analysis" />
+  
+  <meta name="twitter:description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University" />
+  
+
+<meta name="author" content="Minh Tang">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="relationships-between-variables.html">
+<link rel="next" href="normally-distributed-random-variables.html">
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Applied Statistics and Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>1</b> Simple linear regression</a><ul>
+<li class="chapter" data-level="1.1" data-path="advertising.html"><a href="advertising.html"><i class="fa fa-check"></i><b>1.1</b> Example: Advertising dataset</a></li>
+<li class="chapter" data-level="1.2" data-path="r-lang.html"><a href="r-lang.html"><i class="fa fa-check"></i><b>1.2</b> R ? Aaargh!</a></li>
+<li class="chapter" data-level="1.3" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html"><i class="fa fa-check"></i><b>1.3</b> Relationships between variables</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#regression-models"><i class="fa fa-check"></i><b>1.3.1</b> Regression models</a></li>
+<li class="chapter" data-level="1.3.2" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#the-simple-regression-model"><i class="fa fa-check"></i><b>1.3.2</b> The simple regression model</a></li>
+<li class="chapter" data-level="1.3.3" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#more-general-linear-regression-models"><i class="fa fa-check"></i><b>1.3.3</b> More general linear regression models</a></li>
+<li class="chapter" data-level="1.3.4" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#data-for-regression-model"><i class="fa fa-check"></i><b>1.3.4</b> Data for regression model</a></li>
+<li class="chapter" data-level="1.3.5" data-path="relationships-between-variables.html"><a href="relationships-between-variables.html#steps-in-regression-analysis"><i class="fa fa-check"></i><b>1.3.5</b> Steps in regression analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html"><i class="fa fa-check"></i><b>1.4</b> Least squares estimation</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>1.4.1</b> Gauss-Markov theorem</a></li>
+<li class="chapter" data-level="1.4.2" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#point-estimator-for-simple-linear-regression-model"><i class="fa fa-check"></i><b>1.4.2</b> Point estimator for simple linear regression model</a></li>
+<li class="chapter" data-level="1.4.3" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#example-electricity-usage"><i class="fa fa-check"></i><b>1.4.3</b> Example: Electricity usage</a></li>
+<li class="chapter" data-level="1.4.4" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#example-midterm-vs-final-exam-score"><i class="fa fa-check"></i><b>1.4.4</b> Example: Midterm vs Final exam score</a></li>
+<li class="chapter" data-level="1.4.5" data-path="least-squares-estimation.html"><a href="least-squares-estimation.html#normal-error-regression-model"><i class="fa fa-check"></i><b>1.4.5</b> Normal error regression model</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html"><i class="fa fa-check"></i><b>1.5</b> Normally distributed random variables</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html#chi_m2-distribution"><i class="fa fa-check"></i><b>1.5.1</b> <span class="math inline">\(\chi_{m}^{2}\)</span> distribution</a></li>
+<li class="chapter" data-level="1.5.2" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html#student-t-distribution"><i class="fa fa-check"></i><b>1.5.2</b> Student <span class="math inline">\(t\)</span>-distribution</a></li>
+<li class="chapter" data-level="1.5.3" data-path="normally-distributed-random-variables.html"><a href="normally-distributed-random-variables.html#f-distribution"><i class="fa fa-check"></i><b>1.5.3</b> <span class="math inline">\(F\)</span>-distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="hitchhiker-review-of-hypothesis-testing.html"><a href="hitchhiker-review-of-hypothesis-testing.html"><i class="fa fa-check"></i><b>1.6</b> Hitchhiker review of hypothesis testing</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="hitchhiker-review-of-hypothesis-testing.html"><a href="hitchhiker-review-of-hypothesis-testing.html#q.-what-is-power-a.-watt-is-power."><i class="fa fa-check"></i><b>1.6.1</b> Q. What is power ? A. Watt is power.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html"><i class="fa fa-check"></i><b>1.7</b> Inferences concerning <span class="math inline">\(\hat{\beta}_1\)</span></a><ul>
+<li class="chapter" data-level="1.7.1" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#inferences-concerning-hatbeta_0"><i class="fa fa-check"></i><b>1.7.1</b> Inferences concerning <span class="math inline">\(\hat{\beta}_0\)</span></a></li>
+<li class="chapter" data-level="1.7.2" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#inference-regarding-mathbbey_h"><i class="fa fa-check"></i><b>1.7.2</b> Inference regarding <span class="math inline">\(\mathbb{E}[Y_h]\)</span></a></li>
+<li class="chapter" data-level="1.7.3" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#predicting-y-for-a-given-x."><i class="fa fa-check"></i><b>1.7.3</b> Predicting <span class="math inline">\(Y\)</span> for a given <span class="math inline">\(X\)</span>.</a></li>
+<li class="chapter" data-level="1.7.4" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#confidence-band-for-regression-line"><i class="fa fa-check"></i><b>1.7.4</b> Confidence band for regression line</a></li>
+<li class="chapter" data-level="1.7.5" data-path="inferences-concerning-hatbeta-1.html"><a href="inferences-concerning-hatbeta-1.html#example-synthetic-dataset"><i class="fa fa-check"></i><b>1.7.5</b> Example: synthetic dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="sum-square.html"><a href="sum-square.html"><i class="fa fa-check"></i><b>1.8</b> Sum of squares and regression analysis</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="sum-square.html"><a href="sum-square.html#f-test-and-t-test"><i class="fa fa-check"></i><b>1.8.1</b> <span class="math inline">\(F\)</span>-test and <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="1.8.2" data-path="sum-square.html"><a href="sum-square.html#general-linear-test-approach"><i class="fa fa-check"></i><b>1.8.2</b> General linear test approach</a></li>
+<li class="chapter" data-level="1.8.3" data-path="sum-square.html"><a href="sum-square.html#descriptive-measures-of-linear-association"><i class="fa fa-check"></i><b>1.8.3</b> Descriptive measures of linear association</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="correlation-analysis.html"><a href="correlation-analysis.html"><i class="fa fa-check"></i><b>1.9</b> Correlation analysis</a><ul>
+<li class="chapter" data-level="1.9.1" data-path="correlation-analysis.html"><a href="correlation-analysis.html#bivariate-normal-distribution"><i class="fa fa-check"></i><b>1.9.1</b> Bivariate normal distribution</a></li>
+<li class="chapter" data-level="1.9.2" data-path="correlation-analysis.html"><a href="correlation-analysis.html#examples"><i class="fa fa-check"></i><b>1.9.2</b> Examples</a></li>
+<li class="chapter" data-level="1.9.3" data-path="correlation-analysis.html"><a href="correlation-analysis.html#sample-correlation-and-aggregation"><i class="fa fa-check"></i><b>1.9.3</b> Sample Correlation and Aggregation</a></li>
+<li class="chapter" data-level="1.9.4" data-path="correlation-analysis.html"><a href="correlation-analysis.html#pearsons-correlation-and-linearity"><i class="fa fa-check"></i><b>1.9.4</b> Pearson’s correlation and linearity</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a><ul>
+<li class="chapter" data-level="4.1" data-path="example-one.html"><a href="example-one.html"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
+<li class="chapter" data-level="4.2" data-path="example-two.html"><a href="example-two.html"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Applied Statistics and Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="least-squares-estimation" class="section level2">
+<h2><span class="header-section-number">1.4</span> Least squares estimation</h2>
+<blockquote>
+<p>“The method of least squares is the automobile of modern statistical analysis: despite its limitations, occasional accidents, and incidental pollution, it and its numerous variations, extensions, and related conveyances carry the bulk of statistical analyses, and are known and valued by nearly all.”</p>
+<p>— Stigler (1981)</p>
+</blockquote>
+<blockquote>
+<p>“The method of least squares was the dominant theme — the leitmotif — of nineteenth-century statistics. In several respects it was to statistics what the calculus had been to mathematics a century earlier. ‘Proofs’ of the method gave direction to the development of statistical theory, handbooks explaining its use guided the application of the higher methods, and disputes on the priority of its discovery signaled the intellectual community’s recognition of the method’s value. Like the calculus of mathematics, this ‘calculus of observations’ did not spring into existence without antecedents, and the exploration of its subtleties and potential took over a century.”</p>
+<p>— Stigler (1986)</p>
+</blockquote>
+<p>Suppose <span class="math inline">\((X_1,Y_1), (X_2, Y_2), \dots, (X_n, Y_n)\)</span> are given and a simple linear regression model <span class="math inline">\(Y_i = \beta_0 + \beta_1 X_i + \epsilon\)</span> is posited. One goal of regression analysis is to estimate the <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> along with characteristics of <span class="math inline">\(\epsilon_i\)</span> such as its mean and variance.</p>
+The method of least squares find estimates <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, respectively, by solving the optimization problem
+<span class="math display" id="eq:3">\[\begin{equation}
+  \tag{1.2}
+  \min_{b_0, b_1} \sum_{i=1}^{n} (Y_i - b_0 - b_1 X_i)^2.
+\end{equation}\]</span>
+<p>That is, the method of least squares try to fit a line among the sampled <span class="math inline">\((X_1,Y_1), (X_2, Y_2), \dots, (X_n, Y_n)\)</span> such that the total squared deviation of the <span class="math inline">\(Y_i\)</span> from the estimated <span class="math inline">\(b_0 + b_1 X_i\)</span> is minimum.</p>
+The least square estimators <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> can be obtained by taking the partial derivatives of <span class="math inline">\(Q := \sum_{i=1}^{n} (Y_i - b_0 - b_1 X_i)^2\)</span> with respect to <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>, set the resulting expression to zero and solve for <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>. Specifically,
+<span class="math display" id="eq:LS2" id="eq:LS1">\[\begin{gather}
+  \tag{1.3}
+  \frac{\partial Q}{\partial b_0} = - \sum_{i} 2 (Y_i - b_0 - b_1
+    X_i) \\
+    \tag{1.4}
+    \frac{\partial Q}{\partial b_1} = - \sum_{i} 2 X_i (Y_i - b_0 -
+    b_1 X_i)
+\end{gather}\]</span>
+Thus,
+<span class="math display">\[\begin{gather*}
+  \frac{\partial Q}{\partial b_0}  = 0 \Rightarrow \sum_{i} Y_i = n
+    b_0 + b_1 \sum_{i} X_i \\
+    \frac{\partial Q}{\partial b_1} = 0 \Rightarrow \sum_{i} X_i Y_i =
+    b_0 \sum_{i} X_i + b_1 \sum_{i} X_i^2
+\end{gather*}\]</span>
+And so,
+<span class="math display" id="eq:LS-bethat0" id="eq:LS-betahat1">\[\begin{gather}
+  \tag{1.5}
+    \hat{\beta}_1 = \frac{\sum_{i} (X_i - \bar{X}) (Y_i -
+      \bar{Y})}{\sum_{i}(X_i - \bar{X})^2} \\
+      \tag{1.6}
+      \hat{\beta}_0 =
+    \bar{Y} - \hat{\beta}_1 \bar{X}
+  \end{gather}\]</span>
+<div id="gauss-markov-theorem" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Gauss-Markov theorem</h3>
+
+<div class="theorem">
+<span id="thm:Gauss-Markov" class="theorem"><strong>Theorem 1.1  </strong></span> Under the regression model <span class="math inline">\(Y_i = \beta_0 + \beta_1 X_i +  \epsilon_i\)</span> where <span class="math inline">\(\mathbb{E}[\epsilon_i] = 0\)</span>, <span class="math inline">\(\mathrm{Var}[\epsilon_i] = \sigma^2\)</span> for all <span class="math inline">\(i\)</span> and <span class="math inline">\(\mathbb{E}[\epsilon_i \epsilon_j] = 0\)</span> for all <span class="math inline">\(i \not = j\)</span>, the least squares estimator <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are the best linear unbiased estimators (BLUE) for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.
+</div>
+
+A few remarks regarding the Gauss-Markov theorem. <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are unbiased estimator of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, i.e., <span class="math inline">\(\mathbb{E}[\hat{\beta}_0] = \beta_0\)</span> and <span class="math inline">\(\mathbb{E}[\hat{\beta}_1] = \beta_1\)</span>. <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are linear estimators in the sense that
+<span class="math display">\[\begin{gather*}
+  \hat{\beta}_1 = \frac{\sum_{i} (X_i - \bar{X}) (Y_i -
+    \bar{Y})}{\sum_{i}(X_i - \bar{X})^2} = \sum \frac{X_i -
+    \bar{X}}{\sum (X_i - \bar{X})^2} Y_i; \quad \hat{\beta}_0 =
+  \bar{Y} - \hat{\beta}_1 \bar{X}.
+\end{gather*}\]</span>
+<p>That is, <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> can be written as <span class="math inline">\(\sum c_i Y_i\)</span> where each <span class="math inline">\(c_i\)</span> does not depend on the <span class="math inline">\(\{Y_i\}\)</span>. <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are <em>best</em> estimators in that for any unbiased linear estimator <span class="math inline">\(\tilde{\beta}_0\)</span> and <span class="math inline">\(\tilde{\beta}_1\)</span> of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, one has <span class="math inline">\(\mathrm{Var}[\hat{\beta}_0] \leq \mathrm{Var}[\tilde{\beta}_0]\)</span>, <span class="math inline">\(\mathrm{Var}[\hat{\beta}_1] \leq \mathrm{Var}[\tilde{\beta}_1]\)</span>.</p>
+</div>
+<div id="point-estimator-for-simple-linear-regression-model" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Point estimator for simple linear regression model</h3>
+<p>Suppose that <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are estimated. Then, for any value of <span class="math inline">\(X\)</span>, the regression estimate <span class="math inline">\(\hat{Y}\)</span> for <span class="math inline">\(\mathbb{E}[Y]\)</span> is <span class="math inline">\(\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 X\)</span>. By the Gauss-Markov theorem, <span class="math inline">\(\hat{Y}\)</span> is the best linear unbiased estimator for <span class="math inline">\(\mathbb{E}[Y]\)</span>.</p>
+For the given <span class="math inline">\(\{(X_i, Y_i)\}\)</span>, <span class="math inline">\(\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_i\)</span> is termed the <em>fitted</em> value and <span class="math inline">\(e_i = Y_i - \hat{Y}_i\)</span> is termed the <em>residual</em>. Under the simple linear regression model, the <span class="math inline">\(\epsilon_i = Y_i - \beta_0 - \beta_1 X_i\)</span> are uncorrelated random variables with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Thus, one can estimate <span class="math inline">\(\sigma^2\)</span> from the residuals <span class="math inline">\(\{e_i\}\)</span>. Namely,
+<span class="math display">\[\begin{equation*}
+  s^2 = \frac{1}{n-2} \sum_{i=1}^{n} e_i^2
+\end{equation*}\]</span>
+<p>is an unbiased estimator for <span class="math inline">\(\sigma^2\)</span>. The quantity <span class="math inline">\(s^2\)</span> is also referred to as the mean squared error or MSE.</p>
+</div>
+<div id="example-electricity-usage" class="section level3">
+<h3><span class="header-section-number">1.4.3</span> Example: Electricity usage</h3>
+<table>
+<caption><span id="tab:unnamed-chunk-4">Table 1.2: </span>Snippet of the eletricity usage data</caption>
+<thead>
+<tr class="header">
+<th align="right">usage</th>
+<th align="right">temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">24.83</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td align="right">24.69</td>
+<td align="right">67</td>
+</tr>
+<tr class="odd">
+<td align="right">19.31</td>
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td align="right">59.71</td>
+<td align="right">43</td>
+</tr>
+<tr class="odd">
+<td align="right">99.67</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="right">49.33</td>
+<td align="right">41</td>
+</tr>
+</tbody>
+</table>
+<p>The  data frame has 55 observations on monthly electricity usage in kilowatt-hours and average temperature for a house in Westchester County, New York, USA. We now regress the <span class="math inline">\(\mathrm{log}\)</span> of <em>usage</em> as the response variable against <em>temp</em> as the predictor variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;SemiPar&quot;</span>)
+<span class="kw">data</span>(elec.temp)
+temp &lt;-<span class="st"> </span>elec.temp<span class="op">$</span>temp; 
+usage &lt;-<span class="st"> </span>elec.temp<span class="op">$</span>usage
+txx &lt;-<span class="st"> </span><span class="kw">sum</span>((temp <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(temp))<span class="op">^</span><span class="dv">2</span>)
+beta1.hat &lt;-<span class="st"> </span><span class="kw">sum</span>((temp <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(temp))<span class="op">*</span><span class="kw">log</span>(usage))<span class="op">/</span>txx
+beta0.hat &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">log</span>(usage)) <span class="op">-</span><span class="st"> </span>beta1.hat<span class="op">*</span><span class="kw">mean</span>(temp)
+
+<span class="kw">plot</span>(temp, <span class="kw">log</span>(usage))
+<span class="kw">curve</span>(beta0.hat <span class="op">+</span><span class="st"> </span>beta1.hat<span class="op">*</span>x, <span class="kw">seq</span>(<span class="kw">min</span>(temp),<span class="kw">max</span>(temp),<span class="dt">by=</span><span class="dv">1</span>), <span class="dt">add =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-1.png" width="80%" style="display: block; margin: auto;" /> The above computation yield <span class="math inline">\(\hat{\beta}_0 = 5.3351942\)</span> and <span class="math inline">\(\hat{\beta}_1 = -0.0318738\)</span>. Equivalently,</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">   <span class="kw">lm</span>(<span class="kw">log</span>(usage) <span class="op">~</span><span class="st"> </span>temp)</code></pre></div>
+<table style="width:88%;">
+<caption>Fitting linear model: log(usage) ~ temp</caption>
+<colgroup>
+<col width="25%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">t value</th>
+<th align="center">Pr(&gt;|t|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">5.335</td>
+<td align="center">0.1203</td>
+<td align="center">44.34</td>
+<td align="center">1.406e-43</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>temp</strong></td>
+<td align="center">-0.03187</td>
+<td align="center">0.002149</td>
+<td align="center">-14.83</td>
+<td align="center">1.661e-20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="example-midterm-vs-final-exam-score" class="section level3">
+<h3><span class="header-section-number">1.4.4</span> Example: Midterm vs Final exam score</h3>
+<table>
+<caption><span id="tab:stat500-example0">Table 1.3: </span>Snippet of the Stat500 data</caption>
+<thead>
+<tr class="header">
+<th align="right">midterm</th>
+<th align="right">final</th>
+<th align="right">hw</th>
+<th align="right">total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">24.5</td>
+<td align="right">26.0</td>
+<td align="right">28.5</td>
+<td align="right">79.0</td>
+</tr>
+<tr class="even">
+<td align="right">22.5</td>
+<td align="right">24.5</td>
+<td align="right">28.2</td>
+<td align="right">75.2</td>
+</tr>
+<tr class="odd">
+<td align="right">23.5</td>
+<td align="right">26.5</td>
+<td align="right">28.3</td>
+<td align="right">78.3</td>
+</tr>
+<tr class="even">
+<td align="right">23.5</td>
+<td align="right">34.5</td>
+<td align="right">29.2</td>
+<td align="right">87.2</td>
+</tr>
+<tr class="odd">
+<td align="right">22.5</td>
+<td align="right">30.5</td>
+<td align="right">27.3</td>
+<td align="right">80.3</td>
+</tr>
+<tr class="even">
+<td align="right">16.0</td>
+<td align="right">31.0</td>
+<td align="right">27.5</td>
+<td align="right">74.5</td>
+</tr>
+</tbody>
+</table>
+<p>Exam score for Statistics 500 in one year at the University of Michigan. We observe a ``regression to the mean’’ phenomenon.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  stat500 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">scale</span>(stat500))
+  midterm &lt;-<span class="st"> </span>stat500<span class="op">$</span>midterm 
+  final &lt;-<span class="st"> </span>stat500<span class="op">$</span>final
+  txx &lt;-<span class="st"> </span><span class="kw">sum</span>((midterm <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(midterm))<span class="op">^</span><span class="dv">2</span>)
+  beta1.hat &lt;-<span class="st"> </span><span class="kw">sum</span>((midterm <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(midterm))<span class="op">*</span>final)<span class="op">/</span>txx
+  beta0.hat &lt;-<span class="st"> </span><span class="kw">mean</span>(final) <span class="op">-</span><span class="st"> </span>beta1.hat<span class="op">*</span><span class="kw">mean</span>(midterm)
+  <span class="kw">c</span>(beta0.hat, beta1.hat)</code></pre></div>
+<pre><code>## [1] -4.104752e-16  5.452277e-01</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">plot</span>(midterm,final); <span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)
+  <span class="kw">curve</span>(beta0.hat <span class="op">+</span><span class="st"> </span>beta1.hat<span class="op">*</span>x, <span class="kw">seq</span>(<span class="kw">min</span>(midterm),<span class="kw">max</span>(midterm), <span class="dt">by =</span> <span class="fl">0.1</span>), <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:stat500-example2"></span>
+<p class="caption">
+Figure 1.2: Regression to the mean; the dashed-line is the regression line, indicating that students with extremely low scores on the midterm exam improved while those with extremely high scores regressed.
+</p>
+<img src="bookdown-demo_files/figure-html/stat500-example2-1.png" alt="Regression to the mean; the dashed-line is the regression line, indicating that students with extremely low scores on the midterm exam improved while those with extremely high scores regressed." width="80%"  />
+</div>
+</div>
+<div id="normal-error-regression-model" class="section level3">
+<h3><span class="header-section-number">1.4.5</span> Normal error regression model</h3>
+The normal regression is of the form
+<span class="math display" id="eq:normal-error">\[\begin{equation}
+  \tag{1.7}
+  Y_i = \beta_0 + \beta_1 X_i + \epsilon_i; \quad \epsilon_i
+  \overset{\mathrm{i.i.d}}{\sim} \mathcal{N}(0, \sigma^2)
+\end{equation}\]</span>
+<p>That is, the <span class="math inline">\(\epsilon_i\)</span> are independent, identically distributed Gaussian random variables with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. The normal error regression model is a special case of the simple linear regression model discussed earlier. The assumption of normally distributed <span class="math inline">\(\epsilon_i\)</span> allows one to perform more detailed inference, e.g., confidence interval estimation for the parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
+Given <span class="math inline">\((X_1,Y_1), (X_2, Y_2), \dots, (X_n, Y_n)\)</span>, the likelihood of observing the <span class="math inline">\(\{Y_1,Y_2, \dots, Y_n\}\)</span> under the normal error regression model with parameter <span class="math inline">\(\beta_0, \beta_1\)</span> and <span class="math inline">\(\sigma^2\)</span> is
+<span class="math display">\[\begin{equation*}
+L(\beta_0, \beta_1, \sigma^2) := \prod_{i=1}^{n} \frac{1}{\sqrt{ 2
+\pi \sigma^2}} \exp \Bigl( - \frac{(Y_i - \beta_0 -
+\beta_1X_i)^2}{2\sigma^2} \Bigr)
+\end{equation*}\]</span>
+The maximum likelihood estimator for <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\sigma^2\)</span> are then estimates that maximizes the likelihood <span class="math inline">\(L(\beta_0, \beta_1, \sigma^2)\)</span>. That is
+<span class="math display">\[\begin{equation*}
+\hat{\beta}_0, \hat{\beta}_1, \hat{\sigma}^2 := 
+\underset{\beta_0, \beta_1, \sigma^2}{\operatorname{argmax}}
+\prod_{i=1}^{n} \frac{1}{\sqrt{ 2
+\pi \sigma^2}} \exp \Bigl( - \frac{(Y_i - \beta_0 -
+\beta_1X_i)^2}{2\sigma^2} \Bigr).
+\end{equation*}\]</span>
+This can be done as follows. Taking the logarithm of the likelihood gives
+<span class="math display">\[\begin{equation*}
+\begin{split}
+\log{L} &amp;= \log
+\prod_{i=1}^{n} \frac{1}{\sqrt{ 2
+\pi \sigma^2}} \exp \bigl( - \frac{(Y_i - \beta_0 -
+\beta_1X_i)^2}{2\sigma^2} \bigr) \\ &amp;= - \frac{n}{2} \log{ 2
+\pi \sigma^2} - \sum_{i=1}^{n} \frac{(Y_i - \beta_0 -
+\beta_1X_i)^2}{2\sigma^2}.
+\end{split}
+\end{equation*}\]</span>
+Then as <span class="math inline">\(\log\)</span> is a non-decreasing function
+<span class="math display">\[\begin{equation*}
+\begin{split}
+\underset{\beta_0, \beta_1, \sigma^2}{\operatorname{argmax}}
+L(\beta_0, \beta_1, \sigma^2) &amp;= 
+\underset{\beta_0, \beta_1, \sigma^2}{\operatorname{argmax}}
+\log{L(\beta_0, \beta_1, \sigma^2)} \\ &amp;= \underset{\beta_0, \beta_1, \sigma^2}{\operatorname{argmin}} \frac{n}{2} \log{ 2
+\pi \sigma^2} + \sum_{i=1}^{n} \frac{(Y_i - \beta_0 -
+\beta_1X_i)^2}{2\sigma^2}.
+\end{split}
+\end{equation*}\]</span>
+The partial derivatives of <span class="math inline">\(\log{L}\)</span> with respect to <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\sigma^2\)</span> are
+<span class="math display">\[\begin{gather*}
+\frac{\partial \log{L}}{\partial \beta_0} = \frac{1}{2\sigma^2} \sum_{i=1}^{n} 2(Y_i -
+\beta_0 - \beta_1 X_i), \\
+\frac{\partial \log{L}}{\partial \beta_1} = \frac{1}{2 \sigma^2}
+\sum_{i=1}^{n} 2X_i(Y_i - \beta_0 - \beta_1 X_i), \\
+\frac{\partial \log{L}}{\partial \sigma^2} = -\frac{n}{2 \sigma^2} +
+\frac{1}{2 \sigma^4} \sum_{i=1}^{n} (Y_i - \beta_0 - \beta_1 X_i)^2.
+\end{gather*}\]</span>
+Setting the partial derivatives to <span class="math inline">\(0\)</span> yield the system of equations
+<span class="math display">\[\begin{gather*}
+\frac{1}{2\sigma^2} \sum_{i=1}^{n} 2(Y_i -
+\beta_0 - \beta_1 X_i) = 0, \\
+\frac{1}{2 \sigma^2}
+\sum_{i=1}^{n} 2X_i(Y_i - \beta_0 - \beta_1 X_i)  = 0, \\
+\frac{1}{2 \sigma^4} \sum_{i=1}^{n} (Y_i - \beta_0 - \beta_1
+X_i)^2 = \frac{n}{2 \sigma^2}.
+\end{gather*}\]</span>
+The first two equations (for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> ) are the same as in the least square estimation (up to scaling by <span class="math inline">\(1/(2\sigma^2)\)</span>). Thus,
+<span class="math display">\[\begin{gather*}
+\hat{\beta}_1 = \frac{\sum_{i} (X_i - \bar{X}) (Y_i -
+\bar{Y})}{\sum_{i}(X_i - \bar{X})^2}; \quad \hat{\beta}_0 =
+\bar{Y} - \hat{\beta}_1 \bar{X};   \end{gather*}\]</span>
+We note that the least square estimator for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> thus coincides with the maximum likelihood estimator in the setting of normal error. Substituting the value of <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> into the equation for <span class="math inline">\(\sigma^2\)</span> also yield
+<span class="math display">\[\begin{equation*}
+\hat{\sigma}^2 =
+\frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{\beta}_0 - \hat{\beta}_1
+X_i)^2 = \frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2 =
+\frac{n}{n-2} s^2
+\end{equation*}\]</span>
+<p>so the estimator <span class="math inline">\(\hat{\sigma}^{2}\)</span> differs (slightly) from the estimator <span class="math inline">\(s^2\)</span>.</p>
+On the other hand, if the error follows a Laplace distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(2a^2\)</span>, i.e., the probability density function of the error is <span class="math inline">\(\tfrac{1}{2a}\exp(-|x - \mu|/a)\)</span> then the maximum likelihood estimator for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> correspond to the following estimator
+<span class="math display">\[\begin{equation*}
+\underset{\beta_0, \beta_1, \sigma^2}{\operatorname{argmin}} \sum_{i=1}^{n} | Y_i - \beta_0 -
+\beta_1 X_i |
+\end{equation*}\]</span>
+<p>which has no closed-form formula.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="relationships-between-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="normally-distributed-random-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+},
+"toolbar": {
+"position": "static"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

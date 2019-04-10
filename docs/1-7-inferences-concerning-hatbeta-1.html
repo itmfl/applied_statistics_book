@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Applied Statistics and Data Analysis" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University" />
+<meta name="github-repo" content="rstudio/applied-stats" />
+
+<meta name="author" content="Minh Tang" />
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="This is a set of lecture notes for the course Applied Statistics and Data Analysis (EN. 550.413/613) at Johns Hopkins University">
+
+<title>Applied Statistics and Data Analysis</title>
+
+<link href="libs/tufte-css-2015.12.29/tufte-fonts.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-background.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte-italics.css" rel="stylesheet" />
+<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+<link rel="stylesheet" href="toc.css" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#preface">Preface</a></li>
+<li class="has-sub"><a href="1-simple-linear-regression.html#simple-linear-regression"><span class="toc-section-number">1</span> Simple linear regression</a><ul>
+<li><a href="1-1-advertising.html#advertising"><span class="toc-section-number">1.1</span> Example: Advertising dataset</a></li>
+<li><a href="1-2-r-lang.html#r-lang"><span class="toc-section-number">1.2</span> R ? Aaargh!</a></li>
+<li class="has-sub"><a href="1-3-relationships-between-variables.html#relationships-between-variables"><span class="toc-section-number">1.3</span> Relationships between variables</a><ul>
+<li><a href="1-3-relationships-between-variables.html#regression-models"><span class="toc-section-number">1.3.1</span> Regression models</a></li>
+<li><a href="1-3-relationships-between-variables.html#the-simple-regression-model"><span class="toc-section-number">1.3.2</span> The simple regression model</a></li>
+<li><a href="1-3-relationships-between-variables.html#more-general-linear-regression-models"><span class="toc-section-number">1.3.3</span> More general linear regression models</a></li>
+<li><a href="1-3-relationships-between-variables.html#data-for-regression-model"><span class="toc-section-number">1.3.4</span> Data for regression model</a></li>
+<li><a href="1-3-relationships-between-variables.html#steps-in-regression-analysis"><span class="toc-section-number">1.3.5</span> Steps in regression analysis</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-4-least-squares-estimation.html#least-squares-estimation"><span class="toc-section-number">1.4</span> Least squares estimation</a><ul>
+<li><a href="1-4-least-squares-estimation.html#gauss-markov-theorem"><span class="toc-section-number">1.4.1</span> Gauss-Markov theorem</a></li>
+<li><a href="1-4-least-squares-estimation.html#point-estimator-for-simple-linear-regression-model"><span class="toc-section-number">1.4.2</span> Point estimator for simple linear regression model</a></li>
+<li><a href="1-4-least-squares-estimation.html#example-electricity-usage"><span class="toc-section-number">1.4.3</span> Example: Electricity usage</a></li>
+<li><a href="1-4-least-squares-estimation.html#example-midterm-vs-final-exam-score"><span class="toc-section-number">1.4.4</span> Example: Midterm vs Final exam score</a></li>
+<li><a href="1-4-least-squares-estimation.html#normal-error-regression-model"><span class="toc-section-number">1.4.5</span> Normal error regression model</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-5-normally-distributed-random-variables.html#normally-distributed-random-variables"><span class="toc-section-number">1.5</span> Normally distributed random variables</a><ul>
+<li><a href="1-5-normally-distributed-random-variables.html#chi_m2-distribution"><span class="toc-section-number">1.5.1</span> <span class="math inline">\(\chi_{m}^{2}\)</span> distribution</a></li>
+<li><a href="1-5-normally-distributed-random-variables.html#student-t-distribution"><span class="toc-section-number">1.5.2</span> Student <span class="math inline">\(t\)</span>-distribution</a></li>
+<li><a href="1-5-normally-distributed-random-variables.html#f-distribution"><span class="toc-section-number">1.5.3</span> <span class="math inline">\(F\)</span>-distribution</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-6-hitchhiker-review-of-hypothesis-testing.html#hitchhiker-review-of-hypothesis-testing"><span class="toc-section-number">1.6</span> Hitchhiker review of hypothesis testing</a><ul>
+<li><a href="1-6-hitchhiker-review-of-hypothesis-testing.html#q.-what-is-power-a.-watt-is-power."><span class="toc-section-number">1.6.1</span> Q. What is power ? A. Watt is power.</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-7-inferences-concerning-hatbeta-1.html#inferences-concerning-hatbeta_1"><span class="toc-section-number">1.7</span> Inferences concerning <span class="math inline">\(\hat{\beta}_1\)</span></a><ul>
+<li><a href="1-7-inferences-concerning-hatbeta-1.html#inferences-concerning-hatbeta_0"><span class="toc-section-number">1.7.1</span> Inferences concerning <span class="math inline">\(\hat{\beta}_0\)</span></a></li>
+<li><a href="1-7-inferences-concerning-hatbeta-1.html#inference-regarding-mathbbey_h"><span class="toc-section-number">1.7.2</span> Inference regarding <span class="math inline">\(\mathbb{E}[Y_h]\)</span></a></li>
+<li><a href="1-7-inferences-concerning-hatbeta-1.html#predicting-y-for-a-given-x."><span class="toc-section-number">1.7.3</span> Predicting <span class="math inline">\(Y\)</span> for a given <span class="math inline">\(X\)</span>.</a></li>
+<li><a href="1-7-inferences-concerning-hatbeta-1.html#confidence-band-for-regression-line"><span class="toc-section-number">1.7.4</span> Confidence band for regression line</a></li>
+<li><a href="1-7-inferences-concerning-hatbeta-1.html#example-synthetic-dataset"><span class="toc-section-number">1.7.5</span> Example: synthetic dataset</a></li>
+</ul></li>
+<li class="has-sub"><a href="1-8-sum-square.html#sum-square"><span class="toc-section-number">1.8</span> Sum of squares and regression analysis</a><ul>
+<li><a href="1-8-sum-square.html#f-test-and-t-test"><span class="toc-section-number">1.8.1</span> <span class="math inline">\(F\)</span>-test and <span class="math inline">\(t\)</span>-test</a></li>
+<li><a href="1-8-sum-square.html#general-linear-test-approach"><span class="toc-section-number">1.8.2</span> General linear test approach</a></li>
+<li><a href="1-8-sum-square.html#descriptive-measures-of-linear-association"><span class="toc-section-number">1.8.3</span> Descriptive measures of linear association</a></li>
+</ul></li>
+</ul></li>
+<li><a href="2-literature.html#literature"><span class="toc-section-number">2</span> Literature</a></li>
+<li><a href="3-methods.html#methods"><span class="toc-section-number">3</span> Methods</a></li>
+<li class="has-sub"><a href="4-applications.html#applications"><span class="toc-section-number">4</span> Applications</a><ul>
+<li><a href="4-1-example-one.html#example-one"><span class="toc-section-number">4.1</span> Example one</a></li>
+<li><a href="4-2-example-two.html#example-two"><span class="toc-section-number">4.2</span> Example two</a></li>
+</ul></li>
+<li><a href="5-final-words.html#final-words"><span class="toc-section-number">5</span> Final Words</a></li>
+<li><a href="references.html#references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="inferences-concerning-hatbeta_1" class="section level2">
+<h2><span class="header-section-number">1.7</span> Inferences concerning <span class="math inline">\(\hat{\beta}_1\)</span></h2>
+We recall the simple linear regression model <span class="math inline">\(Y_i = \beta_0 +  \beta_1 X_i + \epsilon_i\)</span> with the <span class="math inline">\(\epsilon_i\)</span> i.i.d Gaussian with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Recall that <span class="math inline">\(\hat{\beta}_1\)</span>, the least-square estimator (and also maximum likelihood estimator) of <span class="math inline">\(\beta_1\)</span> is given by
+<span class="math display">\[\begin{equation*}
+    \hat{\beta}_1 = \frac{\sum{(X_i - \bar{X})(Y_i -
+        \bar{Y})}}{\sum_{j} {(X_j - \bar{X})^2}} = \sum{\frac{(X_i -
+          \bar{X})}{\sum_{j}{(X_j - \bar{X})^2}} Y_i}
+  \end{equation*}\]</span>
+Then <span class="math inline">\(\hat{\beta}_1\)</span> is normally distributed with parameters
+<span class="math display">\[\begin{equation*}
+   \mathbb{E}[\hat{\beta}_1] = \beta_1; \qquad \mathrm{Var}[\hat{\beta}_1] = \frac{\sigma^2}{\sum{(X_i -
+      \bar{X})^2}}.
+  \end{equation*}\]</span>
+Indeed,
+<span class="math display">\[\begin{equation*}
+    \begin{split}
+     \mathrm{Var}[\hat{\beta}_1] &amp;= \mathrm{Var}\Bigl[ \sum{\frac{(X_i -
+          \bar{X})}{\sum_{j}{(X_j - \bar{X})^2}} Y_i}\Bigr] =
+      \sum_{i}  \mathrm{Var}\Bigl[\frac{(X_i -
+          \bar{X})}{\sum_{j}{(X_j - \bar{X})^2}} Y_i\Bigr]  \\ &amp;=       \sum_{i}  \Bigl(\frac{(X_i -
+          \bar{X})}{\sum_{j}{(X_j - \bar{X})^2}}\Bigr)^{2} \mathrm{Var}[Y_i]
+         = \sigma^{2}
+         \sum_{i} \frac{(X_i -
+          \bar{X})^{2}}{(\sum_{j}{(X_j - \bar{X})^2})^2} \\ &amp; =
+          \frac{\sigma^2}{\sum{(X_i - \bar{X})^2}}
+        \end{split}
+  \end{equation*}\]</span>
+<p>As <span class="math inline">\(\sigma^2\)</span> is unknown, it can be replaced with its unbiased estimate <span class="math inline">\(\mathrm{MSE}  = \tfrac{1}{n-2} \sum{ (Y_i - \hat{\beta}_0 - \hat{\beta}_1 X_i)^2}  = \tfrac{1}{n-2} \sum{ (Y_i - \hat{Y}_i)^2}\)</span>.</p>
+We then arrived at the following expression for <span class="math inline">\(s^{2}\{\hat{\beta}_1\}\)</span>, an <em>estimate</em> for the <em>variance</em> of the <em>estimator</em> <span class="math inline">\(\hat{\beta}_1\)</span>
+<span class="math display">\[\begin{equation*}
+    s^{2}\{\hat{\beta}_1\} = \frac{\mathrm{MSE}}{\sum{(X_i - \bar{X})^2}}
+  \end{equation*}\]</span>
+<p>One can then show that the normalized statistic <span class="math inline">\(\tfrac{\hat{\beta}_1 -  \beta_1}{s\{\hat{\beta}_1\}}\)</span> follows a Student t-distribution with <span class="math inline">\(n - 2\)</span> degrees of freedom. Thus, general inference regarding confidence interval for <span class="math inline">\(\beta_1\)</span> can be made.</p>
+For example, for a given <span class="math inline">\(\alpha \in (0,1)\)</span>, the <span class="math inline">\((1 - \alpha)\times 100\%\)</span> confidence interval for <span class="math inline">\(\beta_1\)</span> is the interval
+<span class="math display">\[\begin{equation*}
+     [\hat{\beta}_1 - s\{\hat{\beta}_1\}*\mathrm{qt}(\alpha/2; n- 2), \hat{\beta}_1 + s\{\hat{\beta}_1\}*\mathrm{qt}(1 - \alpha/2; n-2)]
+  \end{equation*}\]</span>
+<p>where <span class="math inline">\(\mathrm{qt}(\alpha/2; n-2)\)</span> is the <span class="math inline">\(100*\alpha/2\)</span> percentile for the Student <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n - 2\)</span> degrees of freedom.</p>
+Similarly, hypothesis tests of the form
+<span class="math display">\[\begin{equation*}
+    H_0 \colon \beta_1 = c \quad{\text{against}} \quad H_{A} \colon \beta_1
+    \not = c
+  \end{equation*}\]</span>
+<p>for some given <span class="math inline">\(c\)</span> at some significance level <span class="math inline">\(\alpha\)</span> can be resolved by computing the test statistic <span class="math inline">\(\tfrac{\hat{\beta}_1 -  c}{s\{\hat{\beta}_1\}}\)</span> and decide, based on the rejection region <span class="math inline">\([\mathrm{qt}(\alpha/2;  n-2), \mathrm{qt}(1 - \alpha/2; n-2)]\)</span>.</p>
+<div id="inferences-concerning-hatbeta_0" class="section level3">
+<h3><span class="header-section-number">1.7.1</span> Inferences concerning <span class="math inline">\(\hat{\beta}_0\)</span></h3>
+Recall that <span class="math inline">\(\hat{\beta}_0\)</span> is given by
+<span class="math display">\[\begin{equation*}
+    \hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X} =
+    \sum{\frac{Y_i}{n}} -
+    \bar{X} \sum_{i=1}^{n} \frac{(X_i - \bar{X}) Y_i}{t_{xx}}
+  \end{equation*}\]</span>
+where <span class="math inline">\(t_{xx} = \sum{(X_i - \bar{X})^2}\)</span>. As <span class="math inline">\(\mathrm{Var}[Y_i] = \mathrm{Var}[\epsilon_i] = \sigma^{2}\)</span>, therefore
+<span class="math display">\[\begin{equation*}
+    \begin{split}
+    \mathrm{Var}[\hat{\beta}_0] &amp;= \mathrm{Var}\Bigl[\sum{ \Bigl(\frac{1}{n}
+      - \frac{\bar{X} (X_i - \bar{X})}{t_{xx}}\Bigr)
+      Y_i}\Bigr] \\
+    &amp;= \sum_{i=1}^{n} \Bigl(\frac{1}{n} -  \frac{\bar{X}(X_i - \bar{X})}{t_{xx}}\Bigr)^2
+    \mathrm{Var}[Y_i] \\
+    &amp;= \sigma^{2} \sum_{i=1}^{n} \Bigl( \frac{1}{n^2} -
+    \frac{2 \bar{X}(X_i - \bar{X})}{nt_{xx}} +
+    \frac{\bar{X}^{2}(X_i - \bar{X})^2}{t_{xx}^2}\Bigr) \\
+    &amp;= \sigma^{2} \Bigl( \frac{1}{n} +
+    \frac{\bar{X}^{2}}{t_{xx}}\Bigr) = \sigma^{2} \Bigl(\frac{1}{n} +
+    \frac{\bar{X}^{2}}{\sum{(X_i - \bar{X})^2}}\Bigr)
+    \end{split}
+  \end{equation*}\]</span>
+Thus <span class="math inline">\(\hat{\beta}_0\)</span> is normally distributed with mean and variance
+<span class="math display">\[\begin{equation*}
+    \mathbb{E}[\hat{\beta}_0] = \beta_0; \quad
+    \mathrm{Var}[\hat{\beta}_0] = \sigma^{2} \Bigl(\frac{1}{n} +
+    \frac{\bar{X}^{2}}{\sum{(X_i - \bar{X})^2}}\Bigr)
+  \end{equation*}\]</span>
+Once again, using <span class="math inline">\(\mathrm{MSE}\)</span> as an estimate for <span class="math inline">\(\sigma^2\)</span>, we have the following expression for <span class="math inline">\(s^{2}\{\hat{\beta}_0\}\)</span>, the estimate of the variance of the estimator <span class="math inline">\(\hat{\beta}_0\)</span>
+<span class="math display">\[\begin{equation*}
+    s^{2}\{\hat{\beta}_0\} = \mathrm{MSE} \Bigl(\frac{1}{n} +
+    \frac{\bar{X}^{2}}{\sum{(X_i - \bar{X})^2}}\Bigr)
+  \end{equation*}\]</span>
+<p>Then <span class="math inline">\(\tfrac{\hat{\beta}_0 - \beta_0}{s\{\hat{\beta_0}\}}\)</span> is distributed as a Student <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n - 2\)</span> degrees of freedom.</p>
+<p>We now make a few remarks on inferences concerning <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></p>
+<ul>
+<li><span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are normally distributed under the normal error regression model for the error terms <span class="math inline">\(\epsilon_i\)</span>. Non-normality of the <span class="math inline">\(\epsilon_i\)</span> will still result <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> being <em>approximately</em> normally distributed provided that <span class="math inline">\(n\)</span> is large enough. This is due to the central limit theorem as <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are of the form <span class="math inline">\(\sum{ c_i Y_i}\)</span> where the <span class="math inline">\(Y_i\)</span> are independent and the <span class="math inline">\(c_i\)</span> does not depend on the <span class="math inline">\(Y_i\)</span>, i.e., <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are sums of independent random variables.</li>
+<li>The confidence intervals and other inferences regarding <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are to be interpreted with respect to taking repeated samples in which the <span class="math inline">\(\{X_i\}\)</span> are kept constant between the samples. That is, the <span class="math inline">\(\{Y_i\}\)</span> might change but not the <span class="math inline">\(\{X_i\}\)</span>.</li>
+<li>The term <span class="math inline">\(\sum{(X_i - \bar{X})^2}\)</span> affects the variances of <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Larger values of <span class="math inline">\(\sum{(X_i - \bar{X})^2}\)</span> lead to smaller variances.</li>
+</ul>
+Assume the simple normal error linear regression model. Let <span class="math inline">\(\mathrm{MSE} = \frac{1}{n-2} \sum{(Y_i - \hat{\beta}_0 -  \hat{\beta}_1 X_i)^2}\)</span>. Then <span class="math inline">\(\mathrm{MSE}\)</span> is an unbiased estimate of <span class="math inline">\(\sigma^2\)</span>. Let <span class="math inline">\(t_{xy}\)</span>, <span class="math inline">\(t_{xx}\)</span> and <span class="math inline">\(t_{yy}\)</span> be given by
+<span class="math display">\[\begin{gather*}
+      t_{xx} = \sum{(X_i - \bar{X})^2} = \sum{(X_i - \bar{X}) X_i} = \sum{X_i^2} - n \bar{X}^2;
+      \\
+       t_{xy} = \sum{(X_i - \bar{X})(Y_i - \bar{Y})} = \sum{(X_i -
+          \bar{X})Y_i} = \sum{X_i Y_i}
+        - n \bar{X} \bar{Y}
+    \end{gather*}\]</span>
+
+</div>
+<div id="inference-regarding-mathbbey_h" class="section level3">
+<h3><span class="header-section-number">1.7.2</span> Inference regarding <span class="math inline">\(\mathbb{E}[Y_h]\)</span></h3>
+Suppose that <span class="math inline">\(\{(X_i,Y_i)\}_{i=1}^{n}\)</span> are given following the normal error simple regression model and that <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are estimated. Then, for a given <span class="math inline">\(X_h\)</span>, the fitted value <span class="math inline">\(\hat{Y}_h\)</span> of <span class="math inline">\(\mathbb{E}[Y_h]\)</span> is <span class="math inline">\(\hat{Y}_h = \hat{\beta}_0 +  \hat{\beta}_1 X_h = \bar{Y} - \hat{\beta}_1 (\bar{X} - X_h)\)</span>. That is
+<span class="math display">\[\begin{equation*}
+    \hat{Y}_h = \sum_{i=1}^{n} \Bigl(\frac{1}{n} - \frac{(\bar{X} -
+      X_h)(X_i - \bar{X})}{\sum{(X_i - \bar{X})^2}}\Bigr) Y_i
+  \end{equation*}\]</span>
+Thus, <span class="math inline">\(\hat{Y}_h\)</span> is normally distributed with
+<span class="math display">\[\begin{equation*}
+    \mathbb{E}[\hat{Y}_h] = \mathbb{E}[Y_h]; \quad \mathrm{Var}[\hat{Y}_h] =
+    \sigma^2 \Bigl[ \frac{1}{n} + \frac{(X_h - \bar{X})^2}{\sum{(X_i - \bar{X})^2}}\Bigr]
+  \end{equation*}\]</span>
+and the <span class="math inline">\(1 - \alpha\)</span> confidence interval for <span class="math inline">\(\mathbb{E}[Y_h]\)</span> is
+<span class="math display">\[\begin{equation*}
+    \hat{Y}_h \pm \mathrm{qt}(1 - \alpha/2; n - 2) \sqrt{\mathrm{MSE}} \sqrt{\frac{1}{n} + \frac{(X_h - \bar{X})^2}{\sum{(X_i - \bar{X})^2}}}
+  \end{equation*}\]</span>
+</div>
+<div id="predicting-y-for-a-given-x." class="section level3">
+<h3><span class="header-section-number">1.7.3</span> Predicting <span class="math inline">\(Y\)</span> for a given <span class="math inline">\(X\)</span>.</h3>
+<p>In the previous discussion, one wants to infer the mean or expected value <span class="math inline">\(\mathbb{E}[Y_h]\)</span> of some <span class="math inline">\((X_h,Y_h)\)</span> sampled point.</p>
+Suppose instead that a new <span class="math inline">\(X_{*}\)</span> is given and one wants to infer the possible value of <span class="math inline">\(Y_{*}\)</span> associated with <span class="math inline">\(X_{*}\)</span>. We can do that through the notion of a <em>prediction interval</em>. Using the fitted regression line, one has an estimate <span class="math inline">\(\hat{Y}_{*} = \hat{\beta}_0 + \hat{\beta}_1  X_{*}\)</span> for the expected value <span class="math inline">\(\mathbb{E}[Y_*]\)</span> of <span class="math inline">\(Y_*\)</span>. Furthermore, as <span class="math inline">\(Y_{*} = \mathbb{E}[Y_*] + \epsilon_{*}\)</span> where <span class="math inline">\(\epsilon_{*} \sim N(0,\sigma^2)\)</span>, the <span class="math inline">\(1 - \alpha\)</span> prediction interval for <span class="math inline">\(Y\)</span> is
+<span class="math display">\[\begin{equation*}
+    \hat{Y}_{*} \pm \mathrm{qt}(\alpha/2; n - 2) \sqrt{ \color{blue}{s^{2}\{\hat{Y_{*}}\}} \color{black}{+}
+      \color{red}{s^{2}\{\epsilon\}}}
+   \end{equation*}\]</span>
+Substituting previous result for <span class="math inline">\(s^{2}\{\hat{Y_{*}}\}\)</span> gives the prediction interval
+<span class="math display">\[\begin{equation*}
+    \hat{\beta}_0 + \hat{\beta}_1 X_{*} \pm \mathrm{qt}(1 - \alpha/2;
+    n - 2) \sqrt{\mathrm{MSE}}
+      \sqrt{1 + \frac{1}{n} + \frac{(X_{*} - \bar{X})^2}{\sum{(X_i -
+            \bar{X})^2}} }
+  \end{equation*}\]</span>
+<ul>
+<li>Variability in prediction interval depends on how far <span class="math inline">\(X_*\)</span> is from <span class="math inline">\(\bar{X}\)</span>.</li>
+<li>The construction of the prediction interval depends strongly on the normal error assumption. That is, departures from normality assumption will most likely lead to erroneous inference even when the number of sampled data points <span class="math inline">\(\{(X_i,Y_i)\}\)</span> is large.</li>
+<li>The difference between inference regarding <span class="math inline">\(\mathbb{E}[Y_h]\)</span> and <span class="math inline">\(Y_h\)</span> are mainly due to difference in inferring the <em>trend/mean response</em> in the former and the <em>individual outcome</em> in the latter. For example, if <span class="math inline">\(X\)</span> is GPA in high-school and <span class="math inline">\(Y\)</span> is GPA in college, then inference regarding <span class="math inline">\(\mathbb{E}[Y_h]\)</span> is concerned with the average GPA of all students whose high school GPA is <span class="math inline">\(X_h\)</span>. Meanwhile, inference regarding <span class="math inline">\(Y_h\)</span> is concerned with the GPA of a (specific) student whose high school GPA is <span class="math inline">\(X_h\)</span>.</li>
+</ul>
+</div>
+<div id="confidence-band-for-regression-line" class="section level3">
+<h3><span class="header-section-number">1.7.4</span> Confidence band for regression line</h3>
+We want to obtain a, say <span class="math inline">\((1 - \alpha)\times100\%\)</span> confidence band/region for the entire regression line <span class="math inline">\(\mathbb{E}[Y] = \beta_0 + \beta_1 X\)</span>. This region is defined by the following curves
+<span class="math display">\[\begin{equation*}
+    \hat{\beta}_0 + \hat{\beta}_1 X \pm W_{\alpha} s\{\hat{Y}\} = \hat{\beta}_0 +
+    \hat{\beta}_1 X \pm W_{\alpha} \ast \sqrt{\mathrm{MSE}} \sqrt{\frac{1}{n} + \frac{(X -
+        \bar{X})^{2}}{\sum{(X_i - \bar{X})^2}}}
+  \end{equation*}\]</span>
+<p>where <span class="math inline">\(W_{\alpha}^2 = 2 \mathrm{qf}(1 - \alpha; 2, n - 2)\)</span> is the <span class="math inline">\((1 - \alpha)\times 100\%\)</span> quantile level of the <span class="math inline">\(F\)</span> distribution with <span class="math inline">\(\mathrm{df1} = 2, \mathrm{df2} = n - 2\)</span>.</p>
+<p>The above confidence band is known as the Working-Hotellling procedure. It is an example of simultaneous inference. <span class="math inline">\(W\)</span> induces a joint confidence region for the <span class="math inline">\(\{\mathbb{E}[Y_h]\}\)</span>.</p>
+<p>A <span class="math inline">\(1 - \alpha\)</span> confidence interval derived from <span class="math inline">\(\hat{\beta}_0\)</span> and a <span class="math inline">\(1 - \alpha\)</span> confidence interval derived from <span class="math inline">\(\hat{\beta}_1\)</span> does not necessarily combine to give a joint confidence region of <span class="math inline">\(1 - \alpha\)</span> for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. Similarly, a collection of <span class="math inline">\((1 - \alpha) \times  100\%\)</span> confidence intervals for <span class="math inline">\(\mathbb{E}[Y_h]\)</span> as <span class="math inline">\(X_h\)</span> varies do not necessarily combine to give a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> joint confidence band for the entire regression line.</p>
+</div>
+<div id="example-synthetic-dataset" class="section level3">
+<h3><span class="header-section-number">1.7.5</span> Example: synthetic dataset</h3>
+<p>The Toluca data set is a synthetic data set used in <span class="citation">(Kutner et al. <label for="tufte-mn-4" class="margin-toggle">&#8853;</label><input type="checkbox" id="tufte-mn-4" class="margin-toggle">2004<span class="marginnote">Kutner, M., C. Nachtsheim, J. Neter, and W. Li. 2004. <em>Applied Linear Statistical Models</em>. 5th ed. McGraw-Hill/Irwin.</span>)</span>. The data set describe the lot size and work hours required for a number of manufacturing requests. We will denote these variables as <span class="math inline">\(X\)</span> (lot size) and <span class="math inline">\(Y\)</span> (work hours). We want to perform a simple linear regression of work hours on lot size.</p>
+<p><img src="bookdown-demo_files/figure-html/toluca-example1-1.png" width="80%"  style="display: block; margin: auto;" /></p>
+The following values are computed from the data.
+<span class="math display">\[\begin{gather*}
+   n = 25; \quad \bar{X} = 70;
+   \quad \bar{Y} = 312.28 \\
+   \quad t_{xx} = \sum_{i=1}^{n} (X_i -
+   \bar{X})^2 = 1.98\times 10^{4}; \\ \quad t_{xy} = \sum_{i=1}^{n} (X_i - \bar{X})(Y_i
+   - \bar{Y}) = 7.07\times 10^{4} \\
+   \hat{\beta}_1 = \frac{t_{xy}}{t_{xx}} = 3.57; \quad
+   \hat{\beta}_0 = \bar{Y} - \hat{\beta}_1 \bar{X} = 62.37 \\
+   \mathrm{MSE} = \frac{1}{n-2}\sum_{i=1}^{n}(Y_i - \hat{Y}_i)^2 =
+   2383.72 \\
+   s^2\{\hat{\beta}_0\} = \mathrm{MSE}\Bigl(\frac{1}{n} +
+   \frac{\bar{X}^2}{t_{xx}}\Bigr) = 685.26; \\ 
+   \quad
+   s^2\{\hat{\beta_1}\} = \frac{\mathrm{MSE}}{t_{xx}} = 0.12.
+ \end{gather*}\]</span>
+We now want to test the hypothesis <span class="math inline">\(H_0 \colon \beta_1 = 0\)</span> versus <span class="math inline">\(H_1 \colon \beta_1 \not = 0\)</span>. The test statistic for this is
+<span class="math display">\[\begin{equation*}
+  T = \frac{\hat{\beta}_1}{s\{\hat{\beta}_1\}} = 10.29
+\end{equation*}\]</span>
+<p>If we assume that the errors are independent and identically distributed normal random variables, then <span class="math inline">\(T\)</span> follows a Student <span class="math inline">\(t\)</span>-distribution with 23 degrees of freedom under the null hypothesis (the hypothesis that <span class="math inline">\(Y_i = \beta_0 + 0 \times X_i + \epsilon_i\)</span> with <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span> and independent). We now let <span class="math inline">\(\alpha = 0.05\)</span> be the significance level of the test. As this is a two-sided hypothesis test, the rejection region corresponding to this level <span class="math inline">\(\alpha\)</span> is <span class="math inline">\(|T| \geq \mathrm{qt}(1 - \alpha/2, 23)\)</span>, i.e., <span class="math inline">\(|T| \geq 2.07\)</span>. We thus reject the hypothesis <span class="math inline">\(H_0 \colon \beta_1 = 0\)</span> in favor of <span class="math inline">\(H_1 \colon \beta_1 \not = 0\)</span>. The <span class="math inline">\(p\)</span>-value of the test is <span class="math inline">\(&lt; 10^{-6}\)</span>. We conclude that there is strong evidence that there is an association between lot size and work hours.</p>
+As another example, we test the hypothesis <span class="math inline">\(H_0 \colon \beta_0 \leq 10\)</span> against <span class="math inline">\(H_A \colon \beta_0 &gt; 10\)</span>. The test statistic for this is
+<span class="math display">\[\begin{equation*}
+ T = \frac{\hat{\beta}_0 - 10}{s\{\hat{\beta}_0\}} = 2 
+\end{equation*}\]</span>
+<p>If we assume that the errors are independent and identically distributed normal random variables, then <span class="math inline">\(T\)</span> follows a Student <span class="math inline">\(t\)</span>-distribution with 23 degrees of freedom under the null hypothesis (the hypothesis that <span class="math inline">\(Y_i = \beta_0 + \beta_1 \times X_i +  \epsilon_i\)</span> with <span class="math inline">\(\beta_0 \leq 10\)</span>, <span class="math inline">\(\epsilon_i \sim N(0, \sigma^2)\)</span> and independent). We now let <span class="math inline">\(\alpha = 0.05\)</span> be the significance level of the test. As this is a one-sided hypothesis test, the rejection region corresponding to this level <span class="math inline">\(\alpha\)</span> is <span class="math inline">\(T \geq \mathrm{qt}(1 - \alpha, 23)\)</span>, i.e., <span class="math inline">\(T \geq 1.71\)</span>. We thus reject the hypothesis <span class="math inline">\(H_0 \colon \beta_0 \leq 10\)</span> in favor of <span class="math inline">\(H_1 \colon \beta_0 &gt; 10\)</span>. The <span class="math inline">\(p\)</span>-value of the test is <span class="math inline">\(0.03\)</span>. Should we conclude that there is strong evidence that there is an association between positive lot size and doing no work hours ?</p>
+The <span class="math inline">\(95\%\)</span> confidence intervals for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> is given by
+<span class="math display">\[\begin{gather*}
+  62.37 \pm 2.07
+  \sqrt{685.26} =   (8.21, 116.52);  \\
+  3.57 \pm 2.07
+  \sqrt{0.12} = (2.85, 4.29) 
+\end{gather*}\]</span>
+<p>respectively. The confidence interval for <span class="math inline">\(\beta_1\)</span> indicates that we will reject the hypothesis <span class="math inline">\(H_0 \colon \beta_1 \leq c\)</span> in favor of <span class="math inline">\(H_1 \colon \beta_1 &gt; c\)</span> at significance level <span class="math inline">\(0.05\)</span> for any <span class="math inline">\(c &lt; 2.85\)</span>.</p>
+Suppose now that <span class="math inline">\(X_h = 100\)</span>. Then the estimate <span class="math inline">\(\hat{Y}_h\)</span> for <span class="math inline">\(\mathbb{E}[Y_h]\)</span> and its estimated variability is
+<span class="math display">\[\begin{gather*}
+  \hat{Y}_h = \hat{\beta}_0 + \hat{\beta}_1 X_h = 419.39; \\
+  s^{2}\{\hat{Y_h}\} = \mathrm{MSE}\Bigl(\frac{1}{n} + \frac{(X_h - \bar{X})^2}{t_{xx}}\Bigr) = 203.7
+\end{gather*}\]</span>
+The <span class="math inline">\(95\%\)</span> confidence interval for <span class="math inline">\(\mathbb{E}[Y_h]\)</span> is then given by
+<span class="math display">\[\begin{equation*}
+  \hat{Y}_h \pm s\{\hat{Y}_h\} \ast t(0.98, 23) = (389.86, 448.91)
+\end{equation*}\]</span>
+We now compute a prediction interval for <span class="math inline">\(X_{*} = 100\)</span>. From our previous derivations, the estimated variability for <span class="math inline">\(\hat{Y_{*}}\)</span> is
+<span class="math display">\[\begin{equation*}
+   s^{2}_{\mathrm{pred}}\{\hat{Y}_{*}\} = \mathrm{MSE}\sqrt{1 +
+     \frac{1}{n} + \frac{(X_* - \bar{X})^2}{t_{xx}}} = 2587.41.
+ \end{equation*}\]</span>
+Thus the <span class="math inline">\(95\)</span> prediction interval for <span class="math inline">\(Y_{*}\)</span> is
+<span class="math display">\[\begin{equation*}
+   \hat{Y}_{*} \pm s_{\mathrm{pred}}\{\hat{Y}_{*}\}
+   \mathrm{qt}(0.98, 23) = (314.16, 524.61)
+ \end{equation*}\]</span>
+<div class="figure" style="text-align: center"><span id="fig:toluca-example6"></span>
+<p class="caption marginnote shownote">
+Figure 1.7: Least square regression line (in black) and associated confidence bands. The green curve is the 95% Working-Hotelling confidence band. The blue curve is the 95% confidence band from the confidence intervals for <span class="math inline">\(\mathbb{E}[Y_h]\)</span> as <span class="math inline">\(X_h\)</span> varies. The red curve is the 95% confidence band obtained from combining the 95% confidence intervals for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.
+</p>
+<img src="bookdown-demo_files/figure-html/toluca-example6-1.png" alt="Least square regression line (in black) and associated confidence bands. The green curve is the 95\% Working-Hotelling confidence band. The blue curve is the 95\% confidence band from the confidence intervals for $\mathbb{E}[Y_h]$ as $X_h$ varies. The red curve is the 95\% confidence band obtained from combining the 95\% confidence intervals for $\beta_0$ and $\beta_1$." width="60%"  />
+</div>
+</div>
+</div>
+<p style="text-align: center;">
+<a href="1-6-hitchhiker-review-of-hypothesis-testing.html"><button class="btn btn-default">Previous</button></a>
+<a href="1-8-sum-square.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+
+</body>
+</html>

@@ -3,18 +3,6 @@ output:
   ioslides_presentation: default
   beamer_presentation: default
 ---
-```{r load_pander_methods, echo=FALSE, warning=FALSE, message=FALSE}
-require(pander)
-replace.print.methods <- function(PKG_name = "pander") {
-   PKG_methods <- as.character(methods(PKG_name))
-   print_methods <- gsub(PKG_name, "print", PKG_methods)
-   for(i in seq_along(PKG_methods)) {
-      f <- eval(parse(text=paste(PKG_name,":::", PKG_methods[i], sep = ""))) # the new function to use for print
-      assign(print_methods[i], f, ".GlobalEnv")
-   }
-}
-replace.print.methods()
-```
 
 ```{r setup, include=FALSE}
 knitr::opts_hooks$set(rm.last = function(options) {
@@ -39,6 +27,19 @@ knitr::knit_hooks$set(source = function(x, options) {
     invisible(NULL)
   }
 })
+```
+
+```{r loadpanders, include=FALSE}
+require(pander)
+replace.print.methods <- function(PKG_name = "pander") {
+   PKG_methods <- as.character(methods(PKG_name))
+   print_methods <- gsub(PKG_name, "print", PKG_methods)
+   for(i in seq_along(PKG_methods)) {
+      f <- eval(parse(text=paste(PKG_name,":::", PKG_methods[i], sep = ""))) # the new function to use for print
+      assign(print_methods[i], f, ".GlobalEnv")
+   }
+}
+replace.print.methods()
 ```
 
 # Simple linear regression 

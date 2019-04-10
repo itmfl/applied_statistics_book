@@ -125,6 +125,12 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="1-8-sum-square.html#general-linear-test-approach"><span class="toc-section-number">1.8.2</span> General linear test approach</a></li>
 <li><a href="1-8-sum-square.html#descriptive-measures-of-linear-association"><span class="toc-section-number">1.8.3</span> Descriptive measures of linear association</a></li>
 </ul></li>
+<li class="has-sub"><a href="1-9-correlation-analysis.html#correlation-analysis"><span class="toc-section-number">1.9</span> Correlation analysis</a><ul>
+<li><a href="1-9-correlation-analysis.html#bivariate-normal-distribution"><span class="toc-section-number">1.9.1</span> Bivariate normal distribution</a></li>
+<li><a href="1-9-correlation-analysis.html#examples"><span class="toc-section-number">1.9.2</span> Examples</a></li>
+<li><a href="1-9-correlation-analysis.html#sample-correlation-and-aggregation"><span class="toc-section-number">1.9.3</span> Sample Correlation and Aggregation</a></li>
+<li><a href="1-9-correlation-analysis.html#pearsons-correlation-and-linearity"><span class="toc-section-number">1.9.4</span> Pearson’s correlation and linearity</a></li>
+</ul></li>
 </ul></li>
 <li><a href="2-literature.html#literature"><span class="toc-section-number">2</span> Literature</a></li>
 <li><a href="3-methods.html#methods"><span class="toc-section-number">3</span> Methods</a></li>
@@ -226,7 +232,7 @@ Once again, using <span class="math inline">\(\mathrm{MSE}\)</span> as an estima
 <li>The confidence intervals and other inferences regarding <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are to be interpreted with respect to taking repeated samples in which the <span class="math inline">\(\{X_i\}\)</span> are kept constant between the samples. That is, the <span class="math inline">\(\{Y_i\}\)</span> might change but not the <span class="math inline">\(\{X_i\}\)</span>.</li>
 <li>The term <span class="math inline">\(\sum{(X_i - \bar{X})^2}\)</span> affects the variances of <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span>. Larger values of <span class="math inline">\(\sum{(X_i - \bar{X})^2}\)</span> lead to smaller variances.</li>
 </ul>
-Assume the simple normal error linear regression model. Let <span class="math inline">\(\mathrm{MSE} = \frac{1}{n-2} \sum{(Y_i - \hat{\beta}_0 -  \hat{\beta}_1 X_i)^2}\)</span>. Then <span class="math inline">\(\mathrm{MSE}\)</span> is an unbiased estimate of <span class="math inline">\(\sigma^2\)</span>. Let <span class="math inline">\(t_{xy}\)</span>, <span class="math inline">\(t_{xx}\)</span> and <span class="math inline">\(t_{yy}\)</span> be given by
+Assume the simple normal error linear regression model. Let <span class="math inline">\(\mathrm{MSE} = \frac{1}{n-2} \sum{(Y_i - \hat{\beta}_0 -  \hat{\beta}_1 X_i)^2}\)</span>. Then <span class="math inline">\(\mathrm{MSE}\)</span> is an unbiased estimate of <span class="math inline">\(\sigma^2\)</span>. Let <span class="math inline">\(t_{xy}\)</span> and <span class="math inline">\(t_{xx}\)</span> be given by
 <span class="math display">\[\begin{gather*}
       t_{xx} = \sum{(X_i - \bar{X})^2} = \sum{(X_i - \bar{X}) X_i} = \sum{X_i^2} - n \bar{X}^2;
       \\
@@ -234,7 +240,37 @@ Assume the simple normal error linear regression model. Let <span class="math in
           \bar{X})Y_i} = \sum{X_i Y_i}
         - n \bar{X} \bar{Y}
     \end{gather*}\]</span>
-
+<table style="width:67%;">
+<caption>Parameter estimates and associated variances</caption>
+<colgroup>
+<col width="13%" />
+<col width="12%" />
+<col width="12%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>parameter</th>
+<th>estimate</th>
+<th>variance</th>
+<th>estimated variance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\beta_0\)</span></td>
+<td><span class="math inline">\(\bar{Y} - \hat{\beta}_1 \bar{X}\)</span></td>
+<td><span class="math inline">\(\sigma^2(n^{-1} + \bar{X}^2/t_{xx})\)</span></td>
+<td><span class="math inline">\(\mathrm{MSE} (n^{-1} + \bar{X}^2/t_{xx})\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta_1\)</span></td>
+<td><span class="math inline">\(t_{xy}/t_{xx}\)</span></td>
+<td><span class="math inline">\(\sigma^2/t_{xx}\)</span></td>
+<td><span class="math inline">\(\mathrm{MSE}/t_{xx}\)</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="inference-regarding-mathbbey_h" class="section level3">
 <h3><span class="header-section-number">1.7.2</span> Inference regarding <span class="math inline">\(\mathbb{E}[Y_h]\)</span></h3>

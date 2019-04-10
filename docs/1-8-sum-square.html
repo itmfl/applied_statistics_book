@@ -125,6 +125,12 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="1-8-sum-square.html#general-linear-test-approach"><span class="toc-section-number">1.8.2</span> General linear test approach</a></li>
 <li><a href="1-8-sum-square.html#descriptive-measures-of-linear-association"><span class="toc-section-number">1.8.3</span> Descriptive measures of linear association</a></li>
 </ul></li>
+<li class="has-sub"><a href="1-9-correlation-analysis.html#correlation-analysis"><span class="toc-section-number">1.9</span> Correlation analysis</a><ul>
+<li><a href="1-9-correlation-analysis.html#bivariate-normal-distribution"><span class="toc-section-number">1.9.1</span> Bivariate normal distribution</a></li>
+<li><a href="1-9-correlation-analysis.html#examples"><span class="toc-section-number">1.9.2</span> Examples</a></li>
+<li><a href="1-9-correlation-analysis.html#sample-correlation-and-aggregation"><span class="toc-section-number">1.9.3</span> Sample Correlation and Aggregation</a></li>
+<li><a href="1-9-correlation-analysis.html#pearsons-correlation-and-linearity"><span class="toc-section-number">1.9.4</span> Pearson’s correlation and linearity</a></li>
+</ul></li>
 </ul></li>
 <li><a href="2-literature.html#literature"><span class="toc-section-number">2</span> Literature</a></li>
 <li><a href="3-methods.html#methods"><span class="toc-section-number">3</span> Methods</a></li>
@@ -189,7 +195,7 @@ F^{*} = \frac{\mathrm{MSR}}{\mathrm{MSE}} =
 <p>Thus testing <span class="math inline">\(\mathbb{H}_0 \colon \beta_1 = 0\)</span> against <span class="math inline">\(\mathbb{H}_{A} \colon \beta_1 \not = 0\)</span> using either the test statistics <span class="math inline">\(F^{*}\)</span> and <span class="math inline">\(T\)</span> give identical results.</p>
 <p>In general, if <span class="math inline">\(T\)</span> is Student <span class="math inline">\(t\)</span> with <span class="math inline">\(n\)</span> degrees of freedom, then <span class="math inline">\(T^2\)</span> is <span class="math inline">\(F(1, n)\)</span>. The <span class="math inline">\(F\)</span> test will prove to be very useful when we want to test multiple coefficients in the multivariate linear regression model. On the other hand, one can test <span class="math inline">\(\mathbb{H}_0 \colon \beta_1 \leq 0\)</span> versus <span class="math inline">\(\mathbb{H}_{A} \colon \beta_1 \geq 0\)</span> using <span class="math inline">\(T\)</span> but not using <span class="math inline">\(F^{*}\)</span>.</p>
 <p><!--
-<caption>--><span class="marginnote shownote"><span id="tab:salinity-example0">Table 1.4: </span>The salinity dataset records the salinity level in the Pamlico Sound (North Carolina) from 1972 to 1977. There are 28 measurements in total.</span><!--</caption>--></p>
+<caption>--><span class="marginnote shownote"><span id="tab:salinity-example0">Table 1.4: </span>The salinity dataset records the salinity level in the Pamlico Sound (North Carolina) from 1972 to 1977. There are 28 measurements in total. A snippet of the data is provided here.</span><!--</caption>--></p>
 <table>
 <thead>
 <tr class="header">
@@ -257,9 +263,27 @@ SSTO &lt;-<span class="st"> </span><span class="kw">sum</span>((Y <span class="o
 MSE &lt;-<span class="st"> </span>SSE<span class="op">/</span>(n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)
 Fstar &lt;-<span class="st"> </span>(SSTO <span class="op">-</span><span class="st"> </span>SSE)<span class="op">/</span>SSE <span class="op">*</span><span class="st"> </span>(n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)<span class="op">/</span><span class="dv">1</span>  ## Fstar = (SSTO - SSE)/MSE
 s2.beta1.hat &lt;-<span class="st"> </span>MSE<span class="op">/</span>txx
-T &lt;-<span class="st"> </span>beta1.hat<span class="op">/</span><span class="kw">sqrt</span>(s2.beta1.hat)
-<span class="kw">c</span>(T, T<span class="op">^</span><span class="dv">2</span>, Fstar, <span class="kw">qf</span>(<span class="fl">0.95</span>, <span class="dv">1</span>, n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>), <span class="kw">qt</span>(<span class="fl">0.975</span>, n <span class="op">-</span><span class="st"> </span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] -2.3  5.1  5.1  4.2  4.2</code></pre>
+T &lt;-<span class="st"> </span>beta1.hat<span class="op">/</span><span class="kw">sqrt</span>(s2.beta1.hat)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">T</th>
+<th align="right">T^2</th>
+<th align="right">F</th>
+<th align="right">95% qf</th>
+<th align="right">97.5% qt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">-2.25</td>
+<td align="right">5.07</td>
+<td align="right">5.07</td>
+<td align="right">4.22</td>
+<td align="right">4.22</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="general-linear-test-approach" class="section level3">
 <h3><span class="header-section-number">1.8.2</span> General linear test approach</h3>
@@ -318,15 +342,13 @@ SSE.modelF &lt;-<span class="st"> </span><span class="kw">sum</span>((Y <span cl
 <p class="caption marginnote shownote">
 Figure 1.8: <a href="https://xkcd.com/1725/" class="uri">https://xkcd.com/1725/</a>
 </p>
-<img src="https://imgs.xkcd.com/comics/linear_regression.png" alt="https://xkcd.com/1725/" width="80%"  />
-</div>
-
+<img src="figure/linear_regression.png" alt="https://xkcd.com/1725/" width="80%"  />
 </div>
 </div>
-<!-- </div> -->
+</div>
 <p style="text-align: center;">
 <a href="1-7-inferences-concerning-hatbeta-1.html"><button class="btn btn-default">Previous</button></a>
-<a href="2-literature.html"><button class="btn btn-default">Next</button></a>
+<a href="1-9-correlation-analysis.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>

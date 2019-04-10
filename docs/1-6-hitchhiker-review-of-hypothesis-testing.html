@@ -125,6 +125,12 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="1-8-sum-square.html#general-linear-test-approach"><span class="toc-section-number">1.8.2</span> General linear test approach</a></li>
 <li><a href="1-8-sum-square.html#descriptive-measures-of-linear-association"><span class="toc-section-number">1.8.3</span> Descriptive measures of linear association</a></li>
 </ul></li>
+<li class="has-sub"><a href="1-9-correlation-analysis.html#correlation-analysis"><span class="toc-section-number">1.9</span> Correlation analysis</a><ul>
+<li><a href="1-9-correlation-analysis.html#bivariate-normal-distribution"><span class="toc-section-number">1.9.1</span> Bivariate normal distribution</a></li>
+<li><a href="1-9-correlation-analysis.html#examples"><span class="toc-section-number">1.9.2</span> Examples</a></li>
+<li><a href="1-9-correlation-analysis.html#sample-correlation-and-aggregation"><span class="toc-section-number">1.9.3</span> Sample Correlation and Aggregation</a></li>
+<li><a href="1-9-correlation-analysis.html#pearsons-correlation-and-linearity"><span class="toc-section-number">1.9.4</span> Pearson’s correlation and linearity</a></li>
+</ul></li>
 </ul></li>
 <li><a href="2-literature.html#literature"><span class="toc-section-number">2</span> Literature</a></li>
 <li><a href="3-methods.html#methods"><span class="toc-section-number">3</span> Methods</a></li>
@@ -144,9 +150,9 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">1.6</span> Hitchhiker review of hypothesis testing</h2>
 <div class="figure" style="text-align: center"><span id="fig:anova-fig"></span>
 <p class="caption marginnote shownote">
-Figure 1.6: <a href="http://phdcomics.com/comics/archive.php?comicid=905">Piled Higher and Deeper by Jorge Cham</a>
+Figure 1.6: Piled higher and deeper
 </p>
-<img src="figure/anova-fig.gif" alt="[Piled Higher and Deeper by Jorge Cham](http://phdcomics.com/comics/archive.php?comicid=905)" width="80%"  />
+<img src="figure/anova-fig.png" alt="Piled higher and deeper" width="80%"  />
 </div>
 Let <span class="math inline">\(\mathbf{X} = (X_1, X_2, \dots, X_n)\)</span> are observed data. Then a parametric <em>statistical model</em> <span class="math inline">\(\mathcal{P}\)</span> for <span class="math inline">\(\mathbf{X}\)</span> is a family of distributions <span class="math inline">\(P_{\theta}\)</span> with <span class="math inline">\(\theta \in \Theta \subset \mathbb{R}^{k}\)</span> for some <span class="math inline">\(k\)</span>, i.e.,
 <span class="math display">\[\begin{equation*}
@@ -173,7 +179,27 @@ For example, let <span class="math inline">\(\mathbf{X}\)</span> be a sequence o
 <p>A rejection region is a subset <span class="math inline">\(C\)</span> of the observation space for which we will reject the null hypothesis <span class="math inline">\(H_0\)</span> if our observation <span class="math inline">\(\mathbf{X}\)</span> lies in <span class="math inline">\(C\)</span>. For example, if <span class="math inline">\(\mathbf{X} = \{X_1, X_2, \dots, X_n\}\)</span> and each of the <span class="math inline">\(X_i \in \{0,1\}\)</span> then the rejection region is a subset of <span class="math inline">\(\{0,1\}^{n}\)</span>. Similarly, if <span class="math inline">\(X_i \in \mathbb{R}\)</span> then the rejection region is a subset of <span class="math inline">\(\mathbb{R}^{n}\)</span>.</p>
 <div id="q.-what-is-power-a.-watt-is-power." class="section level3">
 <h3><span class="header-section-number">1.6.1</span> Q. What is power ? A. Watt is power.</h3>
-
+<table>
+<thead>
+<tr class="header">
+<th>Action</th>
+<th><span class="math inline">\(H_0\)</span> is true</th>
+<th><span class="math inline">\(H_0\)</span> is false</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reject <span class="math inline">\(H_0\)</span></td>
+<td>Type-I error</td>
+<td>No error</td>
+</tr>
+<tr class="even">
+<td>Fail to reject <span class="math inline">\(H_0\)</span></td>
+<td>No error</td>
+<td>Type-II error</td>
+</tr>
+</tbody>
+</table>
 <p>The two-type of errors are not equivalent. The distinguishing feature of hypothesis testing is the manner in which it addresses the trade-off between Type-I error and Type-II error. Under the Neyman-Pearson formulation of hypothesis testing, the null hypothesis is given a privileged status, i.e., <span class="math inline">\(H_0\)</span> is maintained unless there is compelling evidence against it. Under the Neyman-Pearson formulation, the <em>significance</em> level of a test is the upper bound on the maximum Type-I error of the test and the <em>power</em> of a test is one minus the Type-II error of the test.</p>
 <p>Many of the hypothesis testing problem in this course is concerned with a “two-sided” test or a “one-sided” test with the null hypothesis being a simple hypothesis.</p>
 <p>A test statistic <span class="math inline">\(T(\mathbf{X})\)</span> is a random variable (a function of the observed data) whose values are used to decide between the null and the alternative hypothesis. Associated with a test statistic is a partition <span class="math inline">\(C_0\)</span> and <span class="math inline">\(C_1\)</span> of <span class="math inline">\(\mathbb{R}\)</span> such that if <span class="math inline">\(T(\mathbf{X}) \in C_1\)</span> then we “reject” <span class="math inline">\(H_0\)</span> and if <span class="math inline">\(T(\mathbf{X}) \in C_0\)</span> then we “fail to reject” <span class="math inline">\(H_0\)</span>.</p>

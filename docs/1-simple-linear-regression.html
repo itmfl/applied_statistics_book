@@ -125,6 +125,12 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="1-8-sum-square.html#general-linear-test-approach"><span class="toc-section-number">1.8.2</span> General linear test approach</a></li>
 <li><a href="1-8-sum-square.html#descriptive-measures-of-linear-association"><span class="toc-section-number">1.8.3</span> Descriptive measures of linear association</a></li>
 </ul></li>
+<li class="has-sub"><a href="1-9-correlation-analysis.html#correlation-analysis"><span class="toc-section-number">1.9</span> Correlation analysis</a><ul>
+<li><a href="1-9-correlation-analysis.html#bivariate-normal-distribution"><span class="toc-section-number">1.9.1</span> Bivariate normal distribution</a></li>
+<li><a href="1-9-correlation-analysis.html#examples"><span class="toc-section-number">1.9.2</span> Examples</a></li>
+<li><a href="1-9-correlation-analysis.html#sample-correlation-and-aggregation"><span class="toc-section-number">1.9.3</span> Sample Correlation and Aggregation</a></li>
+<li><a href="1-9-correlation-analysis.html#pearsons-correlation-and-linearity"><span class="toc-section-number">1.9.4</span> Pearson’s correlation and linearity</a></li>
+</ul></li>
 </ul></li>
 <li><a href="2-literature.html#literature"><span class="toc-section-number">2</span> Literature</a></li>
 <li><a href="3-methods.html#methods"><span class="toc-section-number">3</span> Methods</a></li>
@@ -154,17 +160,6 @@ Figure 1.1: The Advertising dataset. The plots display sales (in thousand of uni
 </p>
 <img src="figure/advertising.pdf" alt="The Advertising dataset. The plots display sales (in thousand of units) against advertising budgets (in thousand of USD) for TV, radio and newspaper." width="80%"  />
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(pander)</code></pre></div>
-<pre><code>## Loading required package: pander</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">replace.print.methods &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">PKG_name =</span> <span class="st">&quot;pander&quot;</span>) {
-   PKG_methods &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="kw">methods</span>(PKG_name))
-   print_methods &lt;-<span class="st"> </span><span class="kw">gsub</span>(PKG_name, <span class="st">&quot;print&quot;</span>, PKG_methods)
-   <span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(PKG_methods)) {
-      f &lt;-<span class="st"> </span><span class="kw">eval</span>(<span class="kw">parse</span>(<span class="dt">text=</span><span class="kw">paste</span>(PKG_name,<span class="st">&quot;:::&quot;</span>, PKG_methods[i], <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>))) <span class="co"># the new function to use for print</span>
-      <span class="kw">assign</span>(print_methods[i], f, <span class="st">&quot;.GlobalEnv&quot;</span>)
-   }
-}
-<span class="kw">replace.print.methods</span>()</code></pre></div>
 <p>Suppose that we are asked to recommend a marketing plan for next year based on this sales &amp; advertising data. Several questions can then be posed</p>
 <ul>
 <li>Is there a relationship between advertising budget and sales ? If there is a relationship, how strong is the relationship ?</li>
